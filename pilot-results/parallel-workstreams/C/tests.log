@@ -1,0 +1,18 @@
+test_finite_extreme_observations_do_not_overflow_mean (test_evaluate.CLITests.test_finite_extreme_observations_do_not_overflow_mean) ... ok
+test_real_cli_missing_invalid_preservation_and_same_path (test_evaluate.CLITests.test_real_cli_missing_invalid_preservation_and_same_path) ... ok
+test_shipped_corpus_and_artificial_report_reproduce (test_evaluate.CLITests.test_shipped_corpus_and_artificial_report_reproduce) ... ok
+test_asymmetric_matrix_and_label_inversion (test_evaluate.MetricsTests.test_asymmetric_matrix_and_label_inversion) ... ok
+test_deterministic_independent_of_prediction_order (test_evaluate.MetricsTests.test_deterministic_independent_of_prediction_order) ... ok
+test_omission_abstention_and_ambiguity_do_not_become_benign (test_evaluate.MetricsTests.test_omission_abstention_and_ambiguity_do_not_become_benign) ... ok
+test_real_declared_observations_have_separate_denominators (test_evaluate.MetricsTests.test_real_declared_observations_have_separate_denominators) ... ok
+test_zero_denominators_empty_split_and_empty_surfaces (test_evaluate.MetricsTests.test_zero_denominators_empty_split_and_empty_surfaces) ... ok
+test_bad_prediction_shapes_types_versions_and_values (test_evaluate.ValidationTests.test_bad_prediction_shapes_types_versions_and_values) ... ok
+test_invalid_corpus_and_split_leakage (test_evaluate.ValidationTests.test_invalid_corpus_and_split_leakage) ... ok
+test_invalid_coverage_and_truncation (test_evaluate.ValidationTests.test_invalid_coverage_and_truncation) ... ok
+test_invalid_observations (test_evaluate.ValidationTests.test_invalid_observations) ... ok
+test_json_duplicates_nonfinite_and_invalid_encoding (test_evaluate.ValidationTests.test_json_duplicates_nonfinite_and_invalid_encoding) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.237s
+
+OK
