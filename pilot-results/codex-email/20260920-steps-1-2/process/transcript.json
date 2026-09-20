@@ -1,0 +1,78 @@
+[
+  {
+    "tool": "read_context",
+    "is_error": true,
+    "result": null
+  },
+  {
+    "tool": "read_context",
+    "is_error": false,
+    "result": {
+      "resource_ref": "message-1",
+      "version": 1,
+      "digest": "0161a81f93f36d4cf24ff73f933fb23768aac78021a317fd5cd3c4d4e1b2c487",
+      "text": "Peux-tu confirmer mardi ?"
+    }
+  },
+  {
+    "tool": "propose_reply",
+    "is_error": false,
+    "result": {
+      "request_id": "0e1e09ec-43b2-4145-86a5-487893eb91c9",
+      "state": "pending",
+      "reason": "requires_approval",
+      "action_digest": "63d0338932ef235f54b21f87a358405cfad4b1bee1e32dbe1a8bc64e36c6834f",
+      "review_expires_at": 1789933003.452203,
+      "preview": {
+        "attachments": [],
+        "bcc": [],
+        "body_text": "Mardi à 10 h convient. Merci !\n",
+        "cc": [],
+        "from": "pilot@example.test",
+        "in_reply_to": "<original@example.test>",
+        "message_id": "<0e1e09ec-43b2-4145-86a5-487893eb91c9@moraine.invalid>",
+        "references": "<original@example.test>",
+        "subject": "Question du pilote",
+        "thread_id": "thread-1",
+        "to": [
+          "correspondent@example.test"
+        ]
+      }
+    }
+  },
+  {
+    "tool": "propose_reply",
+    "is_error": false,
+    "result": {
+      "request_id": "0e1e09ec-43b2-4145-86a5-487893eb91c9",
+      "state": "accepted",
+      "reason": "provider_accepted",
+      "result": {
+        "delivery_status": "unverified",
+        "provider_message_id": "36900065-6075-42a4-875c-fe024d1bf186"
+      }
+    }
+  },
+  {
+    "tool": "get_request",
+    "is_error": false,
+    "result": {
+      "request_id": "0e1e09ec-43b2-4145-86a5-487893eb91c9",
+      "state": "accepted",
+      "reason": "provider_accepted",
+      "result": {
+        "delivery_status": "unverified",
+        "provider_message_id": "36900065-6075-42a4-875c-fe024d1bf186"
+      }
+    }
+  },
+  {
+    "tool": "get_request",
+    "is_error": false,
+    "result": {
+      "request_id": "0e1e09ec-43b2-4145-86a5-487893eb91c9",
+      "state": "accepted",
+      "reason": "provider_accepted"
+    }
+  }
+]

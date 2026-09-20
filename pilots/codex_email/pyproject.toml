@@ -1,0 +1,24 @@
+[project]
+name = "moraine-email-pilot"
+version = "0.1.0"
+description = "Local simulated Codex MCP email pilot"
+requires-python = ">=3.14,<3.15"
+dependencies = ["httpx==0.28.1", "mcp==1.30.0"]
+
+[project.scripts]
+moraine-email = "moraine_email.server:main"
+moraine-human = "moraine_email.human_cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/moraine_email"]
+
+[dependency-groups]
+dev = ["pytest==9.0.2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]

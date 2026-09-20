@@ -1,6 +1,6 @@
 # Pilote email Moraine depuis Codex
 
-Date : 20 septembre 2026. Statut : **choix de Codex CLI sous identité Linux dédiée accepté; revues du plan intégrées; développement local des étapes 1–2 autorisé**. L'utilisateur demande également l'initialisation Git et un commit de l'existant avant développement. Installation système, configuration Codex/comptes et envois réels restent des étapes ultérieures. Mission : [plan-codex-mcp-email.md](../prompts/plan-codex-mcp-email.md).
+Date : 20 septembre 2026. Statut : **choix de Codex CLI sous identité Linux dédiée accepté; étapes 1–2 implémentées et validées localement sur fournisseur simulé**. Le dépôt a été initialisé et l'existant commité avant développement (`5feab54`). Voir le [rapport de développement](../../pilot-results/codex-email/20260920-steps-1-2/REPORT.md). Installation système, configuration Codex/comptes et envois réels restent des étapes ultérieures. Mission : [plan-codex-mcp-email.md](../prompts/plan-codex-mcp-email.md).
 
 ## 1. Recommandation et résultat recherché
 
@@ -14,7 +14,7 @@ La séparation Linux a été acceptée par l'utilisateur (§ 10), qui demande é
 
 ## 2. Base vérifiée et portée des preuves
 
-Racine documentaire retenue : `docs`. La commande `git config --local --get codex.docs-root` échoue car aucun dépôt Git utilisable n'est présent; aucun `docs/AGENTS.md` n'a été trouvé. La présence d'un répertoire `.git` ne suffit pas à établir un dépôt. Aucun workflow de branche, commit ou publication n'est prescrit; réexaminer ce point seulement si une mission ultérieure le demande.
+Constat lors de la planification initiale : racine documentaire retenue `docs`; aucun dépôt Git utilisable ni `docs/AGENTS.md` n'était présent. La présence d'un répertoire `.git` ne suffisait pas à établir un dépôt. Le dépôt a depuis été initialisé à la demande de l'utilisateur; la racine documentaire reste `docs`.
 
 Documents lus dans l'ordre de la mission : [comparaison](../experiments/COMPARISON.md), [contrat expérimental](../experiments/EXPERIMENT.md), [implémentation B](../experiments/B-implementation.md), [README B](../../experiments/b_broker/README.md), [résumé final](../../experiments/results/final-summary.json), [campagne finale](../../experiments/results/final-campaign/report.json), [revue B](../experiments/reviews/B-review.md), puis sources et preuves ciblées.
 
@@ -370,7 +370,7 @@ Pages publiques ouvertes le **20 septembre 2026**, sans compte ni secret. Les ve
 | [Google OAuth installé](https://developers.google.com/identity/protocols/oauth2/native-app), [expiration](https://developers.google.com/identity/protocols/oauth2#expiration) | PKCE et renouvellement; éligibilité du compte non vérifiée |
 | [Graph : list messages](https://learn.microsoft.com/en-us/graph/api/user-list-messages?view=graph-rest-1.0), [sendMail](https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0) | Alternative lecture/envoi; acceptation 202 distincte de livraison |
 
-Cette mission a produit uniquement ce plan : lecture du workspace et des sources publiques, vérification ciblée des hashes et contrôle documentaire. Vérification finale : tous les liens locaux du plan résolvent vers des fichiers existants; les 66 fichiers du [manifest final expérimental](../../experiments/results/final-source/manifest.json) correspondent toujours à leurs empreintes. Aucun prototype/test/preuve historique modifié, aucune suite expérimentale relancée, aucun service installé ou lancé, aucun compte configuré, aucun secret utilisé, aucun email envoyé, aucune publication ni opération Git.
+La mission initiale de planification a produit uniquement ce plan : lecture du workspace et des sources publiques, vérification ciblée des hashes et contrôle documentaire. Sa vérification finale confirmait les liens locaux et les 66 fichiers du [manifest final expérimental](../../experiments/results/final-source/manifest.json). À ce stade initial, aucun prototype/test/preuve historique n'avait été modifié, aucune suite expérimentale relancée, aucun service installé ou lancé, aucun compte configuré, aucun secret utilisé, aucun email envoyé, aucune publication ni opération Git. Le développement ultérieurement autorisé est rapporté séparément ci-dessous.
 
 ## 13. Revue indépendante du plan après décision utilisateur
 
@@ -381,3 +381,9 @@ Cette mission a produit uniquement ce plan : lecture du workspace et des sources
 - Contrat et sérialisation MIME communs dès l'étape 1; emplacement explicite de l'adaptateur simulé et de son oracle indépendant.
 
 Les reviewers ont relu les corrections initiales; `review_handoff` a confirmé la résolution de ses trois constats. `review_authority` a confirmé le scénario A/B et identifié le complément sur l'échec du commit de résultat, intégré ci-dessus par le coordinateur. Ces revues portent sur le plan et les sources B consultées. Elles ne constituent ni une revue d'implémentation du futur pilote ni une validation d'isolation. Aucun test ni service n'a été lancé pendant ces revues.
+
+## 14. Développement local des étapes 1–2
+
+Le [pilote distinct](../../pilots/codex_email/README.md) possède le broker OPA/SQLite, les snapshots MIME, les quatre outils MCP, le socket et la CLI humains, ainsi qu'un fournisseur simulé sans déduplication. Deux subagents ont implémenté des composants distincts; les contre-revues et le test en processus séparés ont conduit à des corrections documentées dans le [rapport](../../pilot-results/codex-email/20260920-steps-1-2/REPORT.md).
+
+Validation locale : **64 tests réussis**, avec OPA réel, SDK MCP officiel sur TCP et redémarrage gracieux du broker; les 66 empreintes historiques restent identiques. Cette validation utilise un seul utilisateur Linux et aucun client Codex réel. L'étape 3 (isolation et intégration Codex), le fournisseur Gmail et l'essai réel restent à réaliser. Les étapes de ce plan ne sont pas assimilées à une validation de sécurité ou à une livraison réelle.

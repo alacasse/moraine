@@ -1,0 +1,13 @@
+{
+  "command": [
+    "bash",
+    "test.sh",
+    "-q",
+    "--basetemp=/tmp/moraine-email-final-20260920",
+    "--junitxml=/home/alacasse/projects/moraine/pilot-results/codex-email/20260920-steps-1-2/tests.xml"
+  ],
+  "cwd": "pilots/codex_email",
+  "exit_code": 0,
+  "seconds": 18.877,
+  "scope": "synthetic provider, actual OPA and MCP SDK; same Linux user; no Codex integration or real mail"
+}

@@ -1,0 +1,14 @@
+{
+  "historical_manifest": "experiments/results/final-source/manifest.json",
+  "historical_files_verified": 66,
+  "mismatches": [],
+  "tracked_historical_changes": [],
+  "pilot_files_hashed": 34,
+  "python_files_parsed": 24,
+  "markdown_files_checked": 5,
+  "broken_local_links": [],
+  "process_attempts": 1,
+  "process_effects": 1,
+  "secret_signature_scan": "No matching private-key or API-token signatures; selected synthetic process files only.",
+  "scope": "Source integrity and local evidence; no OS isolation or real delivery claim."
+}
