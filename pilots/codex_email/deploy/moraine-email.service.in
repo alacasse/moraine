@@ -1,0 +1,44 @@
+# Render @HUMAN_UID@ and @HUMAN_GID@ after selecting real accounts. Not installed.
+[Unit]
+Description=Moraine simulated email pilot (broker and private OPA)
+After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=exec
+User=moraine-service
+Group=moraine-human
+UMask=0077
+WorkingDirectory=/opt/moraine-pilot
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStartPre=/usr/bin/python3 -I /opt/moraine-pilot/deploy/verify_install.py /opt/moraine-pilot /etc/moraine-pilot/config.json
+ExecStartPre=/usr/bin/sha256sum --check --strict /opt/moraine-pilot/SHA256SUMS
+ExecStartPre=/usr/bin/mkdir -p -m 0700 /run/moraine-pilot/opa
+ExecStart=/opt/moraine-pilot/.venv/bin/python -I -m moraine_email.server --state-dir /var/lib/moraine-pilot --config /etc/moraine-pilot/config.json --agent-token-file /etc/moraine-pilot/secrets/agent-token --provider-token-file /etc/moraine-pilot/secrets/provider-token --provider-url http://127.0.0.1:8099 --opa-binary /opt/moraine-pilot/.tools/opa --human-socket /run/moraine-pilot/human.sock --human-uid @HUMAN_UID@ --human-socket-gid @HUMAN_GID@ --opa-runtime-dir /run/moraine-pilot/opa --port 8765
+RuntimeDirectory=moraine-pilot
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=no
+StateDirectory=moraine-pilot
+StateDirectoryMode=0700
+Restart=on-failure
+RestartSec=2
+KillMode=control-group
+SendSIGKILL=yes
+TimeoutStopSec=20
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_UNIX AF_INET
+LockPersonality=yes
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target

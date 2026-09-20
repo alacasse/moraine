@@ -14,7 +14,7 @@ from .adapters.simulated import SimulatedProvider
 from .broker import Broker
 from .human_server import HumanServer, strict_json
 from .mcp_server import create_app
-from .policy import OPA
+from .policy import OPA, PolicyFailure
 
 
 def read_secret(path: Path) -> str:
@@ -32,6 +32,36 @@ def read_secret(path: Path) -> str:
     return value
 
 
+def run_http(app, policy, port):
+    """An exited policy child retires this broker; systemd owns group restart.
+
+    Requests already in progress still use the broker's fail-closed policy path.
+    No attempt is made to restart OPA in place or replay work.
+    """
+    server = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=port,
+                                         access_log=False, log_level="warning",
+                                         timeout_graceful_shutdown=10))
+    stop = threading.Event()
+    failed = threading.Event()
+
+    def watch():
+        while not stop.wait(0.1):
+            if policy.process.poll() is not None:
+                failed.set()
+                server.should_exit = True
+                return
+
+    watcher = threading.Thread(target=watch, name="opa-watch", daemon=True)
+    watcher.start()
+    try:
+        server.run()
+    finally:
+        stop.set()
+        watcher.join(timeout=3)
+    if failed.is_set() or policy.process.poll() is not None:
+        raise PolicyFailure()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state-dir", required=True, type=Path)
@@ -42,6 +72,8 @@ def main():
     parser.add_argument("--opa-binary", required=True, type=Path)
     parser.add_argument("--human-socket", required=True, type=Path)
     parser.add_argument("--human-uid", required=True, type=int)
+    parser.add_argument("--human-socket-gid", type=int, help="Connection group; peer UID remains authoritative")
+    parser.add_argument("--opa-runtime-dir", type=Path, help="Existing private service runtime directory")
     parser.add_argument("--port", default=8765, type=int)
     args = parser.parse_args()
     policy = provider = broker = human = worker = None
@@ -75,16 +107,17 @@ def main():
         info = args.state_dir.lstat()
         if not stat.S_ISDIR(info.st_mode) or info.st_mode & 0o077 or info.st_uid != os.geteuid():
             raise ValueError("state directory must be private and owned by the service UID")
-        policy = OPA(args.opa_binary)
+        policy = OPA(args.opa_binary, runtime_dir=args.opa_runtime_dir)
         provider = SimulatedProvider(args.provider_url, provider_token)
         broker = Broker(args.state_dir, policy, provider, **config)
-        human = HumanServer(args.human_socket, broker, allowed_uid=args.human_uid, owner=config["owner"])
+        human = HumanServer(args.human_socket, broker, allowed_uid=args.human_uid, owner=config["owner"],
+                            socket_gid=args.human_socket_gid)
         worker = threading.Thread(target=human.serve_forever, name="human-channel", daemon=True)
         worker.start()
         app = create_app(broker, token=token, agent=config["agent"], port=args.port)
         del token, provider_token
-        uvicorn.run(app, host="127.0.0.1", port=args.port, access_log=False, log_level="warning")
-    except (OSError, ValueError):
+        run_http(app, policy, args.port)
+    except (OSError, ValueError, PolicyFailure):
         parser.exit(1, "Pilot startup refused; check protected configuration, paths and local dependencies.\n")
     finally:
         signal.signal(signal.SIGTERM, signal.SIG_IGN)
