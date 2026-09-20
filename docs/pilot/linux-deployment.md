@@ -3,8 +3,11 @@
 Ce lot prépare **le fournisseur simulé uniquement**. Rien dans ce document n’est
 une preuve que l’installation est effectuée. Création des comptes, installation,
 authentification Codex et comptes email demandent leur étape autorisée distincte.
-Le [plan A](../../docs/plans/linux-isolation-preparation.md) et son
+Le [plan A](../plans/linux-isolation-preparation.md) et son
 [rapport](../../pilot-results/parallel-workstreams/A/REPORT.md) délimitent les preuves.
+
+Les fichiers de déploiement sont sous `pilots/codex_email/deploy/` dans le dépôt.
+Les commandes sous `/opt/moraine-pilot` concernent la future copie installée.
 
 ## Contrat d’installation à réaliser par l’administrateur
 

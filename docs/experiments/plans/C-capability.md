@@ -1,6 +1,6 @@
 # C — Biscuit capabilities in a protected executor
 
-Planning handoff, 2026-09-20. Implements the [experiment contract](../EXPERIMENT.md); no implementation or installation performed during planning. Documentation root is `docs`: local Git configuration is unavailable and no documentation `AGENTS.md` exists. Ownership for development: `experiments/c_capability/` and its implementation note only.
+Historical planning handoff, 2026-09-20, for the [experiment contract](../EXPERIMENT.md); no implementation or installation was performed during planning. Subsequent delivery and deviations are in [C-implementation.md](../C-implementation.md). During planning, the documentation root was `docs`, local Git configuration was unavailable and no documentation `AGENTS.md` existed. The original development ownership below applied only to `experiments/c_capability/` and its implementation note; that mission is complete.
 
 ## Decision and dependency evidence
 

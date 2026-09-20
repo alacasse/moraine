@@ -211,7 +211,7 @@ are a fixture contract; other providers may not provide equivalent deduplication
 No real email, payment, production OAuth or external deployment was exercised.
 
 Usage, modules and exact HTTP startup flags are in the
-[approach README](../../experiments/c_capability/README.md). API references:
+[approach README](c-capability.md). API references:
 [Python basic use](https://python.biscuitsec.org/basic-use),
 [parameter binding](https://python.biscuitsec.org/datalog),
 [Datalog scoping](https://doc.biscuitsec.org/reference/datalog),

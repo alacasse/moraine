@@ -1,16 +1,22 @@
 # Pilote email Moraine depuis Codex
 
-Date : 20 septembre 2026. Statut : **choix de Codex CLI sous identité Linux dédiée accepté; étapes 1–2 implémentées et validées localement sur fournisseur simulé**. Le dépôt a été initialisé et l'existant commité avant développement (`5feab54`). Voir le [rapport de développement](../../pilot-results/codex-email/20260920-steps-1-2/REPORT.md). Installation système, configuration Codex/comptes et envois réels restent des étapes ultérieures. Mission : [plan-codex-mcp-email.md](../prompts/plan-codex-mcp-email.md).
+Date : 20 septembre 2026. Statut : **étapes 1–2 et laboratoire local implémentés et validés; préparation Linux livrée, installation séparée restant à qualifier**. Le choix de Codex CLI sous identité Linux dédiée demeure une direction de déploiement. Le dépôt a été initialisé avant développement (`5feab54`). Voir l’[état actuel](../status.md), la [validation initiale](../../pilot-results/codex-email/20260920-steps-1-2/REPORT.md) et la [validation locale E2E](../../pilot-results/local-lab/20260920/REPORT.md). Mission initiale : [plan-codex-mcp-email.md](../prompts/plan-codex-mcp-email.md).
+
+**Orientation actuelle :** l’utilisateur a demandé des services métier locaux,
+sans compte fournisseur, que l’assistant puisse manipuler et diagnostiquer.
+Le [laboratoire](local-e2e-lab.md) réalise ce parcours. Les sections ci-dessous
+sur Gmail, OAuth et l’installation système restent des étapes futures possibles,
+pas des prérequis aux tests locaux ni une autorisation de les exécuter.
 
 ## 1. Recommandation et résultat recherché
 
-Conserver **B, broker indépendant avec OPA et SQLite**, et lui ajouter une façade MCP étroite et un adaptateur Gmail API. Premier client : **Codex CLI sous un utilisateur Linux dédié**. Le propriétaire sélectionne le contexte et approuve dans un terminal de sa propre session Linux, hors des outils de Codex. Le fournisseur simulé sert d'abord à démontrer tout le parcours; une boîte Gmail dédiée remplace ensuite la simulation.
+Conserver **B, broker indépendant avec OPA et SQLite**, avec sa façade MCP étroite et le fournisseur local simulé. Le propriétaire sélectionne le contexte et approuve par le canal humain. Le laboratoire permet à l’assistant de simuler les deux rôles pour tester ce protocole. Le déploiement ultérieur prévoit **Codex CLI sous un utilisateur Linux dédié**, avec le terminal humain dans une autre session. Un adaptateur Gmail API et une boîte dédiée restent des hypothèses pour une éventuelle étape fournisseur réel.
 
 Premier usage : préparer une réponse utile à un message sélectionné, à un seul correspondant autorisé, en texte simple UTF-8, sans pièce jointe sortante. L'humain voit le message exact, approuve ou refuse; Codex consulte ensuite le résultat. Toutes les réponses nécessitent une approbation. Pas de boîte principale, d'envoi automatique, de recherche libre dans la messagerie ou de framework de connecteurs.
 
 **Cadrage retenu le 20 septembre 2026 :** prévoir une couche d'inspection et d'assainissement entre la récupération du contenu sélectionné et sa publication à l'agent (§ 6), avec Prompt Guard comme l'une de ses briques de détection. L'implémentation, la variante/version de Prompt Guard, les autres bibliothèques et l'emploi éventuel d'un inspecteur génératif restent à qualifier. Les validations enregistrées des étapes 1–2 ne couvrent pas cette nouvelle couche.
 
-**Critère de réussite réel :** depuis Codex, une réponse préparée à partir de 1 à 5 messages sélectionnés atteint un correspondant de test consentant; son adresse et son contenu décodé correspondent au snapshot approuvé. Une répétition de soumission/approbation et un redémarrage n'ajoutent aucun envoi. Un refus humain et une tentative de lecture hors sélection produisent respectivement zéro effet et zéro lecture protégée. L'humain distingue une acceptation par Gmail d'une livraison constatée. Ces observations seront des preuves de pilote, pas une certification.
+**Critère de la future étape fournisseur réel :** depuis Codex, une réponse préparée à partir de 1 à 5 messages sélectionnés atteint un correspondant de test consentant; son adresse et son contenu décodé correspondent au snapshot approuvé. Une répétition de soumission/approbation et un redémarrage n'ajoutent aucun envoi. Un refus humain et une tentative de lecture hors sélection produisent respectivement zéro effet et zéro lecture protégée. L'humain distingue une acceptation par Gmail d'une livraison constatée. Ces observations seront des preuves de pilote, pas une certification.
 
 La séparation Linux a été acceptée par l'utilisateur (§ 10), qui demande également des subagents et des reviewers. Gmail, la sélection explicite et les limites ci-dessous restent des hypothèses de travail.
 
@@ -18,10 +24,10 @@ La séparation Linux a été acceptée par l'utilisateur (§ 10), qui demande é
 
 Constat lors de la planification initiale : racine documentaire retenue `docs`; aucun dépôt Git utilisable ni `docs/AGENTS.md` n'était présent. La présence d'un répertoire `.git` ne suffisait pas à établir un dépôt. Le dépôt a depuis été initialisé à la demande de l'utilisateur; la racine documentaire reste `docs`.
 
-Documents lus dans l'ordre de la mission : [comparaison](../experiments/COMPARISON.md), [contrat expérimental](../experiments/EXPERIMENT.md), [implémentation B](../experiments/B-implementation.md), [README B](../../experiments/b_broker/README.md), [résumé final](../../experiments/results/final-summary.json), [campagne finale](../../experiments/results/final-campaign/report.json), [revue B](../experiments/reviews/B-review.md), puis sources et preuves ciblées.
+Documents lus dans l'ordre de la mission : [comparaison](../experiments/COMPARISON.md), [contrat expérimental](../experiments/EXPERIMENT.md), [implémentation B](../experiments/B-implementation.md), [README B](../experiments/b-broker.md), [résumé final](../../experiments/results/final-summary.json), [campagne finale](../../experiments/results/final-campaign/report.json), [revue B](../experiments/reviews/B-review.md), puis sources et preuves ciblées.
 
 - Résultats **enregistrés**, non réexécutés pendant cette planification : 30 scénarios communs réussis par approche; 115 tests locaux au total. Pour B : 17 tests Python et 12 Rego; la campagne finale comporte 30 réussites, 16 effets et 14 lectures. Ils concernent des identités et fournisseurs synthétiques avec moteurs réels.
-- Vérification actuelle par SHA-256 : les 18 fichiers sous `experiments/b_broker/` du [manifest après correction](../../experiments/b_broker/evidence/post-review-source-manifest.json) correspondent; les 20 fichiers sélectionnés dans le manifest de la campagne finale — B, fournisseur commun et runner — correspondent aussi. Le broker lu a l'empreinte `83a5e2986ba4681ca78fee0d9679355022617966c66cd5d3bf4da5fc2c7ea292`.
+- Vérification par SHA-256 lors de cette planification initiale : les 18 fichiers sous `experiments/b_broker/` du [manifest après correction](../../experiments/b_broker/evidence/post-review-source-manifest.json) correspondent; les 20 fichiers sélectionnés dans le manifest de la campagne finale — B, fournisseur commun et runner — correspondent aussi. Le broker lu a l'empreinte `83a5e2986ba4681ca78fee0d9679355022617966c66cd5d3bf4da5fc2c7ea292`.
 - B-R1 est un **défaut initial corrigé** : expiration pendant l'attente SQLite avant l'effet. [Reproduction avant correction](../../experiments/results/review-b/reproduction.json), [quatre régressions après correction](../../experiments/b_broker/evidence/post-review-regressions.log), [suite complète corrigée](../../experiments/b_broker/evidence/post-review-local-tests.log). `execute()` recontrôle désormais les échéances après le commit de l'intention, juste avant l'IO.
 - B-R2 concernait l'oracle fournisseur : mutation malgré un `/control` rejeté. Le code actuel valide avant mutation; les [contrôles finaux indépendants](../../experiments/results/final-local-checks/results.json) documentent la correction. Les preuves pré-correction restent historiques.
 - La revue A interrompue par un filtre automatique puis complétée par le coordinateur est signalée dans la comparaison; elle ne devient pas une revue indépendante intégralement exécutée. A et C restent des références, sans réouverture de leur comparaison.
@@ -218,7 +224,7 @@ Conditions proposées pour évaluer cette piste :
 
 ### Préparation et snapshot
 
-Contrat privé de l'adaptateur, avec des noms indicatifs à figer à l'étape 1 :
+Découpage initial de l'adaptateur, avec des noms indicatifs. L'[interface livrée](../pilot/interface.md) décrit les opérations actuelles; inventaire fournisseur, capture entrante et investigation Gmail restent hors implémentation :
 
 | Opération | Entrées fiables et sortie | Responsabilité |
 |---|---|---|
@@ -230,7 +236,7 @@ Contrat privé de l'adaptateur, avec des noms indicatifs à figer à l'étape 1 
 
 Le broker possède l'authentification, les grants, la politique, les transactions et la décision d'appeler. L'adaptateur possède les règles Gmail, le MIME, les credentials et l'interprétation des réponses. MCP transporte des demandes; il ne connaît ni endpoint fournisseur arbitraire ni secret et ne sert pas de framework d'adaptateurs.
 
-Le contrat d'ingestion devra compléter `capture_selected` et la publication des snapshots avec l'inspection/assainissement décrite ci-dessus. Il n'est pas encore défini; l'inspecteur éventuel ne reçoit pas les credentials que possède l'adaptateur.
+Le contrat d'ingestion devra compléter `capture_selected` et la publication des snapshots avec l'inspection/assainissement décrite ci-dessus. Une [proposition B revue](email-ingestion-contract.md) existe; le contrat reste non accepté et non implémenté. L'inspecteur éventuel ne reçoit pas les credentials que possède l'adaptateur.
 
 Périmètre sortant précis : `From` fixé à la boîte; un unique `To` ASCII choisi explicitement par l'humain lors de la délégation; `Cc=[]`, `Bcc=[]`, aucune pièce jointe, aucune enveloppe ou en-tête libre. Le destinataire doit correspondre à l'adresse de réponse choisie pour le message (Reply-To unique, sinon From unique); les cas ambigus demandent une nouvelle sélection humaine, pas une inférence du modèle. L'adresse du message ne confère aucune autorité par elle-même.
 
@@ -242,7 +248,7 @@ L'égalité garantie porte sur la requête MIME remise à Gmail. Le fournisseur 
 
 ### Envoi, erreurs et incertitude
 
-La référence Gmail `messages.send` examinée ne documente pas de clé d'idempotence client garantissant la déduplication. Il en va de même pour Graph `sendMail` dans la référence examinée. **C'est une absence de garantie trouvée, pas une preuve de toutes leurs implémentations internes.** Ni un `Message-ID` stable ni l'ID d'intention de B n'autorisent un renvoi sûr. Le fournisseur synthétique, lui, impose l'unicité de `execution_id`; cette propriété ne sera pas transférée à Gmail.
+La référence Gmail `messages.send` examinée ne documente pas de clé d'idempotence client garantissant la déduplication. Il en va de même pour Graph `sendMail` dans la référence examinée. **C'est une absence de garantie trouvée, pas une preuve de toutes leurs implémentations internes.** Ni un `Message-ID` stable ni l'ID d'intention de B n'autorisent un renvoi sûr. Le fournisseur synthétique des expériences A/B/C impose l'unicité de `execution_id`; cette propriété ne sera pas transférée à Gmail. Le fournisseur simulé du pilote est distinct et ne déduplique pas, afin d'observer toute tentative répétée.
 
 | Observation | État et conduite |
 |---|---|
@@ -264,6 +270,11 @@ Une intention d'exécution non résolue bloque elle aussi toute autre demande po
 
 ## 7. Réutilisé / à adapter / à créer
 
+Ce tableau conserve le découpage initial de l'extraction. Plusieurs éléments
+sont maintenant livrés aux étapes 1–2; la [provenance](../pilot/provenance.md)
+décrit la réutilisation réalisée et l'[état courant](../status.md) distingue
+code livré, préparation Linux et ingestion encore proposée.
+
 Toutes les extractions vont dans le pilote; **aucune modification des fichiers expérimentaux**. La copie bornée et attribuée évite de rendre les preuves historiques dépendantes d'un refactor.
 
 | Source actuelle | Réutilisé | À adapter ou à créer |
@@ -284,15 +295,28 @@ Les versions de départ effectivement établies sont OPA 1.9.0, Python 3.14, HTT
 
 ## 8. Étapes de réalisation et preuves attendues
 
-Tous les chemins ci-dessous sont **à créer lors d'une future mission autorisée**, à part ce plan. Proposition : `pilots/codex_email/` pour code/tests/locks/runbook et `pilot-results/codex-email/<run-id>/` pour preuves synthétiques, séparés de `experiments/`. Les preuves réelles détaillées restent dans le stockage protégé du service; n'exporter dans le workspace que des reçus expurgés, jamais corps réels, credentials ou bases réelles. Les modules proposés expriment les responsabilités, sans imposer un framework.
+Ce découpage de réalisation conserve les objectifs et estimations d'origine.
+Les étapes 1–2 sont livrées; l'étape 3 est préparée mais son isolation reste à
+qualifier. Les étapes fournisseur réel restent ultérieures et optionnelles.
+Le code, les tests et locks sont sous `pilots/codex_email/`; les guides maintenus
+sont sous `docs/pilot/`, conformément à la [migration documentaire](../documentation.md).
+Les résultats synthétiques sont sous `pilot-results/`, séparés de `experiments/`;
+voir le [statut courant](../status.md) pour les dossiers effectivement produits.
+Les futurs chemins et noms de modules ci-dessous expriment des responsabilités,
+pas des fichiers tous encore à créer. Les preuves réelles détaillées restent
+dans le stockage protégé du service; n'exporter dans le workspace que des reçus
+expurgés, jamais corps réels, credentials ou bases réelles.
 
 ### Étape 1 — Extraire le cycle de B avec un contrat de pilote fermé (2–3 jours)
 
+**État : réalisée.** Les critères ci-dessous décrivent le lot initial, dont les
+preuves sont référencées dans l'[état courant](../status.md).
+
 **Objectif :** produire un service de test réutilisant les garanties B, sans MCP ni compte réel. C'est la première unité de développement autonome.
 
-**Fichiers :** `pilots/codex_email/{README.md,pyproject.toml,uv.lock,dependencies.lock.json}`, `src/moraine_email/{broker.py,store.py,models.py,policy.py,mime.py,adapters/simulated.py}`, `policy/`, `tests/{test_lifecycle.py,test_policy.py,test_mime_snapshot.py,fixtures/}`, `PROVENANCE.md`. Le développeur possède uniquement cette nouvelle arborescence et ses résultats; prototypes, sources communes et preuves restent intacts.
+**Fichiers :** `pilots/codex_email/{pyproject.toml,uv.lock,dependencies.lock.json}`, `src/moraine_email/{broker.py,store.py,models.py,policy.py,mime.py,adapters/simulated.py}`, `policy/`, `tests/{test_lifecycle.py,test_policy.py,test_mime_snapshot.py,fixtures/}`; guides maintenus : [README du pilote](../pilot/README.md) et [provenance](../pilot/provenance.md). Les noms de modules/tests étaient indicatifs; la [carte actuelle](../architecture.md) décrit le code livré. Le mandat initial limitait le développeur à cette arborescence et ses résultats; prototypes, sources communes et preuves restent intacts.
 
-**Dépendances :** B corrigé identifié au § 2, OPA/Python/HTTPX disponibles, nouvelle mission d'implémentation autorisée. Les seules identités de test sont synthétiques; aucune opération OS privilégiée, OAuth ou configuration Codex nécessaire.
+**Dépendances du lot réalisé :** B corrigé identifié au § 2, OPA/Python/HTTPX disponibles, mission d'implémentation autorisée. Les seules identités de test sont synthétiques; aucune opération OS privilégiée, OAuth ou configuration Codex nécessaire.
 
 **Travail :** extraire le cycle et la politique dans une base distincte; figer dans `models.py` le contrat `PreparedReply` contenant l'enveloppe de snapshot du § 6, ses bytes MIME et sa vue humaine, avec sérialisation MIME minimale commune dès cette étape. Le fournisseur simulé consomme ces mêmes bytes; Gmail/OAuth viendront seulement à l'étape 4. Spécifier reçus/projection et adaptateur de test suivant les § 5–6; garder un processus propriétaire et un verrou de cycle. Ajouter refus humain, masquage sur replay après révocation, contrôle avant/après divulgation et barrière durable des résultats incertains. Distinguer commandes de test et lancement réel. Fournisseur de test observable sans déduplication : il doit pouvoir enregistrer chaque tentative indépendamment pour révéler les doublons que la fixture historique pourrait masquer.
 
@@ -300,9 +324,13 @@ L'adaptateur simulé réside dans `adapters/simulated.py`; le serveur oracle ind
 
 **Acceptation :** scénario lecture autorisée → réponse `pending` → décision humaine synthétique → effet exact; refus humain sans effet; lecture non sélectionnée sans accès; rejets d'identité/champs; même clé identique sans nouvelle préparation/envoi, contenu différent en conflit; crash autour de l'intention sans renvoi; révocation/expiration pendant SQLite et pendant lectures; OPA mort/indéfini en refus fermé. Préparer A et B pour le même message, faire terminer A en `unknown`, puis vérifier que B ne part pas, même après redémarrage/changement de grant; seule une levée humaine explicite permet une nouvelle approbation. L'expiration/révocation conserve les résultats terminaux tout en masquant leur contenu. Observer effets, accès et contenu, pas seulement états.
 
-**Preuve :** manifest SHA-256 des sources copiées et tests exécutés, commandes/versions, rapport des cas, journal séparé des lectures/effets/tentatives dans `pilot-results/codex-email/<run-id>/step-1/`. Vérification que le manifest expérimental reste identique. **Action humaine :** aucune configuration de compte; seulement l'autorisation ultérieure de développer.
+**Preuve attendue initialement :** manifest SHA-256 des sources copiées et tests exécutés, commandes/versions, rapport des cas, journal séparé des lectures/effets/tentatives dans `pilot-results/codex-email/<run-id>/step-1/`. Vérification que le manifest expérimental reste identique. Les preuves livrées sont liées dans l'état courant. **Action humaine :** aucune configuration de compte; l'autorisation de développer ce lot a déjà été donnée et exécutée.
 
 ### Étape 2 — Parcours MCP et revue humaine, fournisseur simulé (2–3 jours)
+
+**État : réalisée avec un client MCP de test.** Cela ne clôture pas le parcours
+Codex CLI et l'installation séparée de l'étape 3. Le laboratoire Web ultérieur
+ajoute le parcours opérateur décrit dans son [guide](../pilot/local-lab.md).
 
 **Objectif :** les quatre outils et la revue interactive couvrent le parcours complet sans ouvrir d'appel pendant l'attente humaine.
 
@@ -314,7 +342,7 @@ L'adaptateur simulé réside dans `adapters/simulated.py`; le serveur oracle ind
 
 ### Étape 3 — Séparation Linux et démonstration depuis Codex CLI (2–3 jours)
 
-**Préparation locale livrée :** [lot Linux](linux-isolation-preparation.md), [runbook](../../pilots/codex_email/RUNBOOK.md), unité systemd et sondes opt-in. Les tests locaux couvrent socket, décès d'OPA et reprise, sous un seul UID; ils ne clôturent pas cette étape. Installation, cgroup réel, identités distinctes et parcours Codex restent à exécuter. Voir le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md).
+**Préparation locale livrée :** [lot Linux](linux-isolation-preparation.md), [runbook](../pilot/linux-deployment.md), unité systemd et sondes opt-in. Les tests locaux couvrent socket, décès d'OPA et reprise, sous un seul UID; ils ne clôturent pas cette étape. Installation, cgroup réel, identités distinctes et parcours Codex restent à exécuter. Voir le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md).
 
 **Objectif :** établir la propriété d'autorité avec les outils réels de l'agent, encore sur fournisseur simulé.
 
@@ -326,7 +354,7 @@ L'adaptateur simulé réside dans `adapters/simulated.py`; le serveur oracle ind
 
 ### Étape 4 — Adaptateur Gmail, d'abord contre un transport contrôlé (2–3 jours)
 
-**Travaux préparatoires livrés :** le [contrat d'ingestion](email-ingestion-contract.md) est proposé et revu, sans acceptation de sa politique de publication. Le [banc de qualification](../../qualification/email_inspection/README.md) est utilisable sur données fictives et prédictions fournies; aucun modèle n'est exécuté ou qualifié. Leurs interfaces restent indépendantes et ne modifient pas le contrat actuel du pilote.
+**Travaux préparatoires livrés :** le [contrat d'ingestion](email-ingestion-contract.md) est proposé et revu, sans acceptation de sa politique de publication. Le [banc de qualification](../qualification/email-inspection.md) est utilisable sur données fictives et prédictions fournies; aucun modèle n'est exécuté ou qualifié. Leurs interfaces restent indépendantes et ne modifient pas le contrat actuel du pilote.
 
 **Objectif :** produire le MIME exact et les résultats prudents d'une API dépourvue de déduplication garantie.
 
@@ -438,6 +466,6 @@ Les reviewers ont relu les corrections initiales; `review_handoff` a confirmé l
 
 ## 14. Développement local des étapes 1–2
 
-Le [pilote distinct](../../pilots/codex_email/README.md) possède le broker OPA/SQLite, les snapshots MIME, les quatre outils MCP, le socket et la CLI humains, ainsi qu'un fournisseur simulé sans déduplication. Deux subagents ont implémenté des composants distincts; les contre-revues et le test en processus séparés ont conduit à des corrections documentées dans le [rapport](../../pilot-results/codex-email/20260920-steps-1-2/REPORT.md).
+Le [pilote distinct](../pilot/README.md) possède le broker OPA/SQLite, les snapshots MIME, les quatre outils MCP, le socket et la CLI humains, ainsi qu'un fournisseur simulé sans déduplication. Deux subagents ont implémenté des composants distincts; les contre-revues et le test en processus séparés ont conduit à des corrections documentées dans le [rapport](../../pilot-results/codex-email/20260920-steps-1-2/REPORT.md).
 
-Validation locale : **64 tests réussis**, avec OPA réel, SDK MCP officiel sur TCP et redémarrage gracieux du broker; les 66 empreintes historiques restent identiques. Cette validation utilise un seul utilisateur Linux et aucun client Codex réel. L'étape 3 (isolation et intégration Codex), le fournisseur Gmail et l'essai réel restent à réaliser. Les étapes de ce plan ne sont pas assimilées à une validation de sécurité ou à une livraison réelle.
+Validation initiale des étapes 1–2 : **64 tests réussis**, avec OPA réel, SDK MCP officiel sur TCP et redémarrage gracieux du broker; les 66 empreintes historiques restent identiques. Cette validation utilise un seul utilisateur Linux et aucun client Codex réel. L'étape 3 (isolation et intégration Codex), le fournisseur Gmail et l'essai réel restent à réaliser. Les étapes de ce plan ne sont pas assimilées à une validation de sécurité ou à une livraison réelle.

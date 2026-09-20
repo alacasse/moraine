@@ -1,0 +1,43 @@
+{
+  "actor": "scripted",
+  "status": "passed",
+  "results": [
+    {
+      "scenario": "unknown_after_effect",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-6e291d3aac3e",
+      "attempts": 1,
+      "effects": 1,
+      "checks": 15,
+      "request": {
+        "request_id": "27f36679-9293-4098-8554-a44409ad217a",
+        "state": "unknown",
+        "reason": "provider_outcome_unknown",
+        "result": {}
+      },
+      "evidence": "/tmp/moraine-lab-cli-final/run-6e291d3aac3e/report.json",
+      "duration_seconds": 2.362
+    },
+    {
+      "scenario": "restart",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-04894d63da10",
+      "attempts": 1,
+      "effects": 1,
+      "checks": 12,
+      "request": {
+        "request_id": "a75244b4-8bb6-4b11-a950-07965e2ccae8",
+        "state": "accepted",
+        "reason": "provider_accepted",
+        "result": {
+          "delivery_status": "unverified",
+          "provider_message_id": "21e84ba8-38e2-4008-9c63-8380a9753837"
+        }
+      },
+      "evidence": "/tmp/moraine-lab-cli-final/run-04894d63da10/report.json",
+      "duration_seconds": 2.17
+    }
+  ]
+}

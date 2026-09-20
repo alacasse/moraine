@@ -1,6 +1,6 @@
 # B — independently deployed execution broker with OPA
 
-Status: development handoff, plan only. Date: 2026-09-20. Governing interface: [experiment contract](../EXPERIMENT.md). No implementation, installation, or execution evidence is claimed here.
+Status: historical development handoff, plan only. Date: 2026-09-20. Governing interface: [experiment contract](../EXPERIMENT.md). No implementation, installation, or execution evidence is claimed by this planning document; subsequent delivery and deviations are in [B-implementation.md](../B-implementation.md). The assignments below belong to that completed mission.
 
 ## Experiment and module seam
 

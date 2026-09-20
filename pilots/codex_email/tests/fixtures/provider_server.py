@@ -98,8 +98,11 @@ def main():
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--token-file", type=Path, required=True)
     parser.add_argument("--port", type=int, default=8099)
+    parser.add_argument("--initial-mode", default="normal",
+                        choices=["normal", "reject_before", "accept_then_disconnect", "malformed_success"])
     args = parser.parse_args()
     server = ProviderServer(args.directory, args.token_file.read_text().strip(), args.port)
+    server.mode = args.initial_mode
     try:
         server.serve_forever()
     except KeyboardInterrupt:

@@ -1,5 +1,9 @@
 # Mission : planifier un premier usage de Moraine depuis Codex
 
+**Mission historique exécutée.** Le plan, le pilote et le laboratoire local
+existent désormais. Consulter l’[état courant](../status.md) avant toute reprise;
+les restrictions et hypothèses ci-dessous décrivent la phase initiale.
+
 Tu travailles dans `/home/alacasse/projects/moraine`. Produis en français un plan de réalisation qui permette de passer des prototypes existants à un premier usage utile depuis Codex.
 
 **Mandat : planification uniquement.** Tu peux lire le code, les preuves et la documentation publique. Écris le plan dans `docs/plans/codex-mcp-email-pilot.md`. L'implémentation, l'installation dans Codex, la configuration de comptes, l'utilisation de secrets, les appels API payants, les envois réels et la publication appartiennent à une étape ultérieure. Conserve les prototypes, leurs tests et leurs preuves. Respecte les instructions applicables et vérifie l'état du workspace avant de proposer des opérations Git; aucun dépôt Git utilisable n'était présent pendant l'expérience.
@@ -31,7 +35,7 @@ La revue a notamment trouvé des expirations franchies pendant une écriture SQL
 Lis dans cet ordre :
 
 1. `docs/experiments/COMPARISON.md` et `docs/experiments/EXPERIMENT.md` : conclusions, contrat et limites.
-2. `docs/experiments/B-implementation.md` et `experiments/b_broker/README.md` : comportement actuel et corrections. Les sections antérieures à la revue décrivent une baseline historique.
+2. `docs/experiments/B-implementation.md` et `docs/experiments/b-broker.md` : comportement actuel et corrections. Les sections antérieures à la revue décrivent une baseline historique.
 3. `experiments/results/final-summary.json`, `experiments/results/final-campaign/report.json`, `docs/experiments/reviews/B-review.md` et les preuves ciblées qu'ils référencent. Distingue défaut initial et statut après correction; vérifie les sources si une conclusion dépend de leur version.
 4. Le code utile dans `experiments/b_broker/`, en particulier `broker.py`, `opa.py`, `policy/`, les scripts de démarrage et les tests. Identifie ce qui est réutilisable et ce qui est lié à la fixture : Alice/Bob, jetons de lancement, schémas, données et contrat du fournisseur.
 

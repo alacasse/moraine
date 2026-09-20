@@ -2,7 +2,7 @@
 
 Implemented and locally validated on 2026-09-20. Ownership: `experiments/b_broker/` and this note. The governing interface is [EXPERIMENT.md](EXPERIMENT.md); the development handoff is [B-broker.md](plans/B-broker.md). This is an experimental independently launched HTTP service, not an embedded authorization SDK or a production security product.
 
-The executable entry point is [run.sh](../../experiments/b_broker/run.sh); [README.md](../../experiments/b_broker/README.md) documents its exact common flags, prerequisites and integration steps. The provider runs separately. No external credentials, actual emails, payments, Git changes or global package installs were used.
+The executable entry point is [run.sh](../../experiments/b_broker/run.sh); [README.md](b-broker.md) documents its exact common flags, prerequisites and integration steps. The provider runs separately. No external credentials, actual emails, payments, Git changes or global package installs were used.
 
 ## Implemented boundary
 

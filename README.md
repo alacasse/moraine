@@ -1,37 +1,64 @@
 # Moraine
 
-Moraine explore la délégation d'actions à un agent avec un contexte limité, des permissions explicites et une approbation humaine avant exécution.
+Moraine explore une brique open source qui contrôle les accès et les actions
+qu'un humain délègue à un agent. Le modèle consulte un contexte limité et propose
+une action; un service indépendant vérifie ses droits, conserve le message exact
+et attend l'approbation avant d'effectuer une tentative d'envoi.
 
-Le pilote actuel prépare une réponse email en texte simple. L'agent consulte une sélection de messages via MCP et propose une réponse; l'humain relit le message figé dans un terminal séparé. Un broker OPA/SQLite contrôle les permissions, conserve la décision et effectue une tentative auprès d'un fournisseur simulé.
+Le pilote actuel prépare une réponse email en texte simple à un seul destinataire.
+Il utilise un vrai broker Python, OPA, SQLite, quatre outils MCP et un canal humain
+Unix. Le fournisseur email est simulé et observe ses tentatives et effets dans
+ses propres journaux.
 
-## État actuel
+## Essayer en local
 
-- Broker, quatre outils MCP, canal humain Unix et sérialisation MIME implémentés.
-- Fournisseur simulé indépendant, sans déduplication, avec journal des tentatives et effets.
-- 96 tests du pilote réussis dans la validation intégrée, contre 64 dans la validation initiale des étapes 1–2. La préparation Linux ajoute les permissions du socket, la surveillance d'OPA, la reprise et des artefacts de déploiement; voir le [rapport d'intégration](pilot-results/parallel-workstreams/integration-20260920/REPORT.md).
-- Isolation entre utilisateurs Linux, intégration Codex réelle, OAuth/Gmail et livraison réelle encore à réaliser. Les essais actuels utilisent un seul utilisateur Linux et des données fictives.
-- Couche d'inspection et d'assainissement du contenu entrant prévue, avec Prompt Guard comme l'une de ses briques de détection. Intégration, autres bibliothèques et éventuel inspecteur génératif restent à qualifier; aucune implémentation ni immunité aux injections n'est présumée.
-- Contrat d'ingestion proposé et revu, encore non accepté. Banc indépendant disponible sur 24 cas fictifs français/anglais et prédictions fournies : 13 tests réussis et 13 824 combinaisons vérifiées; aucun modèle exécuté ou qualifié.
+Le laboratoire web permet à l'utilisateur ou à l'assistant de lire le contexte,
+rédiger, proposer, simuler une décision humaine et vérifier la boîte reçue. Il
+lance aussi neuf scénarios E2E reproductibles. Aucun compte fournisseur n'est
+nécessaire; l'assistant utilise sa session existante, sans modèle embarqué dans
+le laboratoire.
 
-## Démarrer
-
-Le [guide du pilote](pilots/codex_email/README.md) décrit les prérequis, l'installation locale, les tests et la démonstration. Depuis `pilots/codex_email/`, sur Linux x86_64 avec Python 3.14 et `uv` :
+Prérequis : Linux x86_64, Python 3.14 et `uv`. Depuis la racine du dépôt :
 
 ```sh
+cd pilots/codex_email
 ./setup.sh
 ./test.sh -q
+PYTHONPATH=src:. .venv/bin/python -m lab serve \
+  --state-dir /tmp/moraine-lab-demo --port 8790
 ```
 
-## Documentation et preuves
+Le setup télécharge les dépendances publiques verrouillées et OPA si nécessaire;
+il n'installe rien globalement. Ouvrir `http://127.0.0.1:8790`, puis utiliser le
+jeton du fichier privé `/tmp/moraine-lab-demo/connection.json`. Choisir un nouveau
+dossier à chaque lancement. Le [guide du laboratoire](docs/pilot/local-lab.md)
+détaille la connexion, les scénarios, les preuves et le nettoyage.
 
-- [Plan du pilote](docs/plans/codex-mcp-email-pilot.md)
-- [Préparation Linux et sondes d'installation](pilots/codex_email/RUNBOOK.md)
-- [Contrat d'ingestion proposé](docs/plans/email-ingestion-contract.md)
-- [Banc de qualification hors modèle](qualification/email_inspection/README.md)
-- [Coordination des lots et commits sources](docs/plans/parallel-workstreams.md)
-- [Pistes pour l'inspection et l'assainissement des emails](docs/research/email-content-inspection-sources.md)
-- [Rapport de développement et validation](pilot-results/codex-email/20260920-steps-1-2/REPORT.md)
-- [Provenance de l'implémentation](pilots/codex_email/PROVENANCE.md)
-- [Expériences initiales A/B/C](experiments/README.md) et [comparaison](docs/experiments/COMPARISON.md)
+## État et limites
 
-Les expériences et leurs preuves sont conservées séparément du pilote. Les résultats locaux ne constituent pas une validation de l'isolation système ou d'un fournisseur email réel.
+Le parcours navigateur assisté et la campagne automatique ont été validés avec
+des données fictives. Les [résultats datés et travaux restants](docs/status.md)
+distinguent code livré, préparation Linux, propositions et garanties non testées.
+
+Les processus du laboratoire partagent un utilisateur Linux, et l'opérateur de
+test joue les deux rôles. Cette validation ne prouve pas l'isolation système ni
+une livraison email réelle. La couche d'inspection et le rôle de Prompt Guard
+sont retenus; le contrat d'ingestion reste proposé et cette couche n'est pas
+implémentée. Aucun modèle Prompt Guard n'est installé ou qualifié.
+
+## Se repérer
+
+| Besoin | Point d'entrée |
+| --- | --- |
+| Documentation, plans et recherches | [Index documentaire](docs/README.md) |
+| Composants, données et frontières d'autorité | [Architecture actuelle](docs/architecture.md) |
+| Développement, tests et interfaces du pilote | [Guide du pilote](docs/pilot/README.md) |
+| Installation Linux séparée à qualifier | [Runbook](docs/pilot/linux-deployment.md) |
+| Évaluer des prédictions d'inspection fournies | [Banc de qualification](docs/qualification/email-inspection.md) |
+| Comparer les trois prototypes historiques | [Expériences](docs/experiments/README.md) |
+| Consignes pour les agents de développement | [AGENTS.md](AGENTS.md) |
+
+La documentation maintenue se trouve sous `docs/`. `pilots/` contient le pilote,
+`qualification/` le banc hors modèle et `experiments/` les prototypes. Les preuves
+datées restent avec leurs artefacts dans `pilot-results/` et les répertoires
+historiques des expériences; voir la [politique documentaire](docs/documentation.md).

@@ -1,0 +1,31 @@
+{
+  "desktop_width": 1440,
+  "mobile_width": 390,
+  "horizontal_overflow": false,
+  "console_errors": 0,
+  "console_warnings": 0,
+  "hostile_html_created_elements": 0,
+  "hostile_javascript_marker_executed": false,
+  "webmcp_available": false,
+  "browser_roles": "assistant author and simulated human approver",
+  "approval_before_decision": {
+    "state": "pending",
+    "attempts": 0,
+    "effects": 0
+  },
+  "approval_after_decision": {
+    "state": "accepted",
+    "attempts": 1,
+    "effects": 1
+  },
+  "human_rejection": {
+    "state": "rejected",
+    "attempts": 0,
+    "effects": 0
+  },
+  "unknown_after_effect": {
+    "state": "unknown",
+    "attempts": 1,
+    "effects": 1
+  }
+}

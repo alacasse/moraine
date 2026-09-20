@@ -2,9 +2,12 @@
 
 Ce banc hors modèle valide des artefacts de prédictions et calcule des métriques
 sur un petit corpus fictif versionné. Il ne contient ni détecteur, ni modèle,
-ni runner d'inférence. Le [plan et contrat v1](../../docs/plans/email-inspection-qualification.md)
+ni runner d'inférence. Le [plan et contrat v1](../plans/email-inspection-qualification.md)
 font autorité pour cette qualification; ce format ne fixe pas le contrat
 d'ingestion proposé par le lot B.
+
+Les fichiers cités sans préfixe sont relatifs à `qualification/email_inspection/`;
+les commandes indiquent explicitement leur répertoire de départ.
 
 ## Corpus et annotation
 

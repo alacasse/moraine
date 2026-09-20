@@ -1,6 +1,6 @@
 # Contrat proposé d’ingestion des emails
 
-Date : 20 septembre 2026. Lot B. **Plan proposé et soumis à revue technique;
+Date : 20 septembre 2026. Lot B. **Plan proposé, revu techniquement;
 aucune acceptation produit et aucune ingestion implémentée.** Base examinée :
 `b63590cc02dbcb31859aeb683f4f71314beeb775`.
 

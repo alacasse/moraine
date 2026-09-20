@@ -1,0 +1,165 @@
+{
+  "actor": "scripted",
+  "status": "passed",
+  "results": [
+    {
+      "scenario": "approval",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-34412f0d6931",
+      "attempts": 1,
+      "effects": 1,
+      "checks": 9,
+      "request": {
+        "request_id": "1c3e46c0-c3ef-4c52-ad8f-1c733747d537",
+        "state": "accepted",
+        "reason": "provider_accepted",
+        "result": {
+          "delivery_status": "unverified",
+          "provider_message_id": "b99b254f-e0b6-429e-81b2-b4aed5b768c4"
+        }
+      },
+      "evidence": "scenarios/approval/report.json",
+      "duration_seconds": 1.172,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-34412f0d6931/report.json"
+    },
+    {
+      "scenario": "human_rejection",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-5c49041b5ccd",
+      "attempts": 0,
+      "effects": 0,
+      "checks": 6,
+      "request": {
+        "request_id": "a9d30352-bbf9-4b5e-a740-03caff757662",
+        "state": "rejected",
+        "reason": "human_rejected"
+      },
+      "evidence": "scenarios/human_rejection/report.json",
+      "duration_seconds": 1.173,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-5c49041b5ccd/report.json"
+    },
+    {
+      "scenario": "revocation",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-883dba8423e4",
+      "attempts": 0,
+      "effects": 0,
+      "checks": 8,
+      "request": {
+        "request_id": "ac652b6b-6be2-4587-af90-24d765f805e2",
+        "state": "denied",
+        "reason": "grant_revoked"
+      },
+      "evidence": "scenarios/revocation/report.json",
+      "duration_seconds": 1.239,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-883dba8423e4/report.json"
+    },
+    {
+      "scenario": "expiration",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-62c28515cb3b",
+      "attempts": 0,
+      "effects": 0,
+      "checks": 8,
+      "request": {
+        "request_id": "3649ec55-1cb3-488c-82f2-959170df2414",
+        "state": "denied",
+        "reason": "grant_expired"
+      },
+      "evidence": "scenarios/expiration/report.json",
+      "duration_seconds": 4.204,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-62c28515cb3b/report.json"
+    },
+    {
+      "scenario": "replay",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-9180376df69f",
+      "attempts": 1,
+      "effects": 1,
+      "checks": 16,
+      "request": {
+        "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+        "state": "accepted",
+        "reason": "provider_accepted"
+      },
+      "evidence": "scenarios/replay/report.json",
+      "duration_seconds": 1.25,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/report.json"
+    },
+    {
+      "scenario": "restart",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-374f6415adf0",
+      "attempts": 1,
+      "effects": 1,
+      "checks": 12,
+      "request": {
+        "request_id": "64f94c8f-2202-4296-9b59-9972eee9f8a3",
+        "state": "accepted",
+        "reason": "provider_accepted",
+        "result": {
+          "delivery_status": "unverified",
+          "provider_message_id": "724f3dd8-1ee6-4ddf-9f6d-ae6a04d76af9"
+        }
+      },
+      "evidence": "scenarios/restart/report.json",
+      "duration_seconds": 2.167,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-374f6415adf0/report.json"
+    },
+    {
+      "scenario": "provider_rejection",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-1fe07caaafd8",
+      "attempts": 1,
+      "effects": 0,
+      "checks": 6,
+      "request": {
+        "request_id": "f4734004-4df8-44f2-b356-3890d60de132",
+        "state": "failed",
+        "reason": "provider_rejected",
+        "result": {}
+      },
+      "evidence": "scenarios/provider_rejection/report.json",
+      "duration_seconds": 1.204,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-1fe07caaafd8/report.json"
+    },
+    {
+      "scenario": "unknown_after_effect",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-5b101adeed4e",
+      "attempts": 1,
+      "effects": 1,
+      "checks": 15,
+      "request": {
+        "request_id": "3d301bb7-2b77-4c15-aeec-e9ff6c589a99",
+        "state": "unknown",
+        "reason": "provider_outcome_unknown",
+        "result": {}
+      },
+      "evidence": "scenarios/unknown_after_effect/report.json",
+      "duration_seconds": 2.235,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-5b101adeed4e/report.json"
+    },
+    {
+      "scenario": "outside_scope",
+      "passed": true,
+      "actor": "scripted",
+      "run_id": "run-e4d85626035f",
+      "attempts": 0,
+      "effects": 0,
+      "checks": 3,
+      "request": null,
+      "evidence": "scenarios/outside_scope/report.json",
+      "duration_seconds": 1.11,
+      "runtime_evidence": "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-e4d85626035f/report.json"
+    }
+  ]
+}

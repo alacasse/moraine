@@ -16,7 +16,9 @@ Les défauts appartiennent à la partie MIME concernée, pas nécessairement à 
 
 DOMPurify vise la prévention des XSS dans le HTML. Son modèle de menace exclut notamment la protection complète contre les chargements de ressources distantes et l'assainissement CSS. **Implication :** ce composant ne suffirait ni à empêcher tout suivi réseau, ni à détecter une consigne malveillante écrite en texte ordinaire. [Objectifs et limites officiels](https://github.com/cure53/DOMPurify/wiki/Security-Goals-%26-Threat-Model)
 
-L'usage serveur dépend d'une implémentation DOM telle que `jsdom`, dont la version influence la sécurité. Modifier le balisage après assainissement peut invalider la protection. Cette piste n'élargit pas le pilote, qui refuse les emails uniquement HTML. [Usage serveur et post-traitement](https://github.com/cure53/DOMPurify#running-dompurify-on-the-server)
+L'usage serveur dépend d'une implémentation DOM telle que `jsdom`, dont la version influence la sécurité. Modifier le balisage après assainissement peut invalider la protection. [Usage serveur et post-traitement](https://github.com/cure53/DOMPurify#running-dompurify-on-the-server)
+
+Cette piste n'élargit pas le périmètre de la [proposition d'ingestion](../plans/email-ingestion-contract.md), qui prévoit de refuser les emails uniquement HTML. Le pilote actuel reçoit des textes fournis par le canal humain; il n'implémente ni parsing MIME entrant ni ce refus de format.
 
 ### 3. Meta Llama Prompt Guard 2 : classifieur spécialisé
 
@@ -52,9 +54,11 @@ L'exemple officiel retourne des scores, permet l'exécution CPU et propose un d�
 
 **Analyse pour Moraine :** une sortie limitée à un score/une classe réduit la possibilité de réintroduire une consigne via un résumé ou une justification générée. Le classifieur peut néanmoins se tromper; son score n'est pas une autorisation. Cette piste couvre la détection, pas le parsing MIME, l'assainissement technique ou la fidélité d'une réécriture. Elle fournirait un point de comparaison pour décider ensuite si un inspecteur génératif apporte un gain.
 
-Premier essai proposé, encore non exécuté :
+Le [banc C](../qualification/email-inspection.md) fournit désormais un corpus
+fictif et un évaluateur hors ligne. Aucun détecteur n'y a encore été exécuté;
+l'essai de Prompt Guard et sa qualification restent à réaliser :
 
-1. Constituer un petit corpus fictif et annoté : demandes ordinaires, citations légitimes de consignes suspectes, injections explicites/indirectes, français et anglais, messages longs avec attaque en fin ou entre deux segments. Séparer les exemples servant au réglage des seuils de ceux servant à l'évaluation.
+1. Partir du corpus fictif annoté livré et vérifier sa couverture : demandes ordinaires, citations légitimes de consignes suspectes, injections explicites/indirectes, français et anglais, messages longs avec attaque en fin ou entre deux segments. Compléter les cas manquants en conservant la séparation entre réglage des seuils et évaluation.
 2. Vérifier que chaque partie du message est inspectée et mesurer les omissions liées au découpage; ne jamais présenter un message tronqué comme inspecté intégralement.
 3. Mesurer faux positifs/faux négatifs, latence et mémoire; comparer au traitement technique seul. Ne pas transformer un score du modèle en probabilité de sécurité pour Moraine.
 4. Décider à partir des cas ratés si ce signal vaut une alerte/revue, si un autre détecteur est nécessaire ou si l'analyse générative mérite un essai distinct. Les permissions restent indépendantes dans tous les cas.

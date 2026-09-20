@@ -1,6 +1,6 @@
 # Delegated authority for AI agents: technical investigation
 
-Research date: 20 September 2026. Status: investigation and proposed experiment; no implementation or product decision.
+Research date: 20 September 2026. Historical investigation and initial experiment proposal; no implementation or product decision was made during this research. Subsequent work is recorded in the [experimental comparison](../experiments/COMPARISON.md) and [current project status](../status.md). The proposals and deployment assumptions below are not a description of the implemented pilot.
 
 **Recommendation: do not start a new general-purpose authorization library yet.** The decision model already exists in standards and policy engines, and open-source Python integrations overlap closely with the proposal. A potentially useful contribution is a small, reusable implementation of the boundary between a proposed action, an approval, and the exact operation executed. Whether that contribution deserves its own package remains unproven.
 
@@ -155,7 +155,7 @@ An existing enforcement deployment is **agentgateway**, whose MCP authorization 
 
 The supporting notes cover additional comparisons—OpenFGA/Cerbos for authorization, PermitRail for signed approval receipts, and Agent Control for guardrails—without treating them all as required dependencies. A recurring trap is a cooperative loop in which the agent first asks an authorization tool and then separately calls an unrestricted executor. That loop fails under the compromised-agent threat model.
 
-Detailed evidence and implementation limits: [standards and credentials](/home/alacasse/projects/moraine/docs/research/delegation-standards-sources.md), [policy engines and OSS source snapshots](/home/alacasse/projects/moraine/docs/research/policy-overlap-sources.md), [identity, MCP, and approval frameworks](/home/alacasse/projects/moraine/docs/research/identity-mcp-approval-sources.md).
+Detailed evidence and implementation limits: [standards and credentials](delegation-standards-sources.md), [policy engines and OSS source snapshots](policy-overlap-sources.md), [identity, MCP, and approval frameworks](identity-mcp-approval-sources.md).
 
 ## 4. Does a new project need to exist?
 
@@ -181,7 +181,7 @@ This is a **candidate integration gap**, not an established missing primitive. A
 
 ## 5. Smallest credible proof of concept
 
-The following is a proposal for a later experiment. Nothing here has been implemented.
+The following was the initial proof-of-concept proposal, before the three comparative experiments. See their [contract](../experiments/EXPERIMENT.md) and implementation reports for what was subsequently built and tested; this section preserves the original proposed scope.
 
 ### Scope and API
 

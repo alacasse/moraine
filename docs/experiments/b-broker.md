@@ -1,8 +1,8 @@
 # B: independently deployed OPA execution broker
 
-A local experimental service using genuine OPA 1.9.0/Rego v1, a protected Unix-socket policy child, and durable SQLite grants, snapshots, approvals and execution intents. The common HTTP contract is [EXPERIMENT.md](../../docs/experiments/EXPERIMENT.md). This fixture is not production security infrastructure.
+A local experimental service using genuine OPA 1.9.0/Rego v1, a protected Unix-socket policy child, and durable SQLite grants, snapshots, approvals and execution intents. The common HTTP contract is [EXPERIMENT.md](EXPERIMENT.md). This fixture is not production security infrastructure.
 
-From any working directory, launch the executable `run.sh` with:
+From the repository root, launch the executable `run.sh` with:
 
 ```sh
 ./experiments/b_broker/run.sh \
@@ -14,14 +14,15 @@ From any working directory, launch the executable `run.sh` with:
 
 The root-owned fake provider must already be running. The four synthetic tokens must be nonempty, ASCII and distinct; actor mappings are fixed by the common contract. The listener binds only `127.0.0.1`. Requires Linux x86_64, Python 3.14 and uv. Actual verified host runtime is Python 3.14.7, SQLite 3.51.2 and uv 0.11.6. Python patch versions are recorded rather than downloaded; `uv` disables interpreter downloads. No global installation is performed.
 
-First startup obtains the fixed official OPA artifact, checks its SHA-256 against `dependencies.lock.json`, and installs the frozen HTTPX dependency graph under `.venv` using `.cache/uv`. Every startup verifies OPA checksum/version and runs `opa check --strict`. The cached binary is under `.tools/opa-1.9.0`. `uv.lock` includes full package hashes; `run.sh --inexact` retains existing development dependencies so concurrent local test runners are not uninstalled.
+First startup obtains the fixed official OPA artifact, checks its SHA-256 against `dependencies.lock.json`, and installs the frozen HTTPX dependency graph under `.venv` using `.cache/uv`. Every startup verifies OPA checksum/version and runs `opa check --strict`. The cached binary is under `.tools/opa-1.9.0`. `uv.lock` includes full package hashes; `run.sh` invokes `uv sync` with `--inexact` to retain existing development dependencies so concurrent local test runners are not uninstalled. This is an internal `uv` option, not an option to pass to `run.sh`.
 
 ```sh
 ./experiments/b_broker/test.sh
-python3 experiments/run_campaign.py --approach b --output experiments/b_broker/evidence/campaign
+campaign_dir=$(mktemp -d /tmp/moraine-exp-b.XXXXXX)
+python3 experiments/run_campaign.py --approach b --output "$campaign_dir"
 ```
 
-`test.sh` performs native OPA strict checking, 12 native Rego tests, then 17 real process/HTTP tests. The consent expiry regression deliberately waits for the actual 60-second lifetime. The common campaign provides the broader domain/snapshot/replay checks and observes downstream effects. Tests require permission to open Unix and loopback sockets. Evidence and detailed deviations are in [B-implementation.md](../../docs/experiments/B-implementation.md).
+`test.sh` performs native OPA strict checking, 12 native Rego tests, then 17 real process/HTTP tests. The consent expiry regression deliberately waits for the actual 60-second lifetime. The common campaign provides the broader domain/snapshot/replay checks and observes downstream effects. Tests require permission to open Unix and loopback sockets. Evidence and detailed deviations are in [B-implementation.md](B-implementation.md).
 
 ## Lifecycle and policy boundary
 

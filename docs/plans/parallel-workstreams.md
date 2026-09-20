@@ -10,6 +10,11 @@ B reste un contrat proposé et revu, sans acceptation produit.
 Après cette validation, l'utilisateur a demandé « Commit et pousse tout ça » :
 commit d'intégration et publication de `master` et des branches A/B/C autorisés.
 
+L’intégration publiée est `f4350fe37d285598ebe5ef9e3253ac2af12e3b35`.
+Ce document conserve l’historique de ces lots. Le laboratoire et la réorganisation
+documentaire sont postérieurs; voir l’[état courant](../status.md). Les permissions
+et responsabilités ci-dessous s’appliquent au mandat daté, pas aux nouveaux lots.
+
 ## Mandat et frontières
 
 L'utilisateur demande plusieurs tâches dans des processus séparés, avec revue
@@ -33,7 +38,7 @@ publics et les expériences historiques restent inchangés.
 
 | Lot | Résultat demandé | Propriété des fichiers | Dépendance |
 |---|---|---|---|
-| A — Préparer l'isolation Linux | Adaptation du socket humain au service non privilégié; supervision et reprise; artefacts de déploiement et sondes | `pilots/codex_email/src/moraine_email/{human_server,server,policy}.py`, tests associés, `pilots/codex_email/deploy/`, `pilots/codex_email/RUNBOOK.md`, `docs/plans/linux-isolation-preparation.md` | Socle actuel uniquement |
+| A — Préparer l'isolation Linux | Adaptation du socket humain au service non privilégié; supervision et reprise; artefacts de déploiement et sondes | `pilots/codex_email/src/moraine_email/{human_server,server,policy}.py`, tests associés, `pilots/codex_email/deploy/`, `docs/pilot/linux-deployment.md`, `docs/plans/linux-isolation-preparation.md` | Socle actuel uniquement |
 | B — Contrat d'ingestion | Plan technique prêt à décider, politique de publication proposée, provenance/versionnement et découpage d'implémentation | `docs/plans/email-ingestion-contract.md` et ses rapports de revue dédiés | Socle actuel et cadrage inspection; aucune dépendance au code A/C |
 | C — Banc de qualification | Corpus fictif français/anglais annoté, validation du corpus, évaluation reproductible de prédictions fournies et rapport | Nouvelle arborescence `qualification/email_inspection/`, `docs/plans/email-inspection-qualification.md` | Cadrage inspection actuel; aucun contrat interne de B à présumer |
 

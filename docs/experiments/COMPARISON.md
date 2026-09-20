@@ -2,6 +2,11 @@
 
 Campagne locale du 20 septembre 2026. Trois plans indépendants ont été transmis à trois développeurs distincts, puis revus sur une baseline archivée. Le coordinateur possède le contrat, le fournisseur synthétique et la campagne commune. Aucun compte réel, message, paiement, commit ou déploiement externe.
 
+Cette comparaison conserve la recommandation issue de cette campagne : A pour
+une intégration embarquée, B pour un service. Le [pilote email ultérieur](../plans/codex-mcp-email-pilot.md)
+a retenu B pour son service MCP; cela ne constitue pas une validation produit de
+A ou de B auprès de développeurs extérieurs. Voir l'[état courant](../status.md).
+
 ## Ce que l'expérience change dans notre décision
 
 **Les trois directions sont réalisables avec de vraies briques open source. Le travail difficile restant est le cycle d'exécution : préparer ce qui sera approuvé, conserver cette décision, vérifier qu'elle est encore valable, puis rendre compte honnêtement de l'effet obtenu.** Un moteur de règles ou un jeton signé ne prend pas en charge ce cycle à notre place.
@@ -86,4 +91,4 @@ L'absence de préférence ou de gain observable serait une raison de garder des 
 
 Tout tourne sous le même utilisateur Linux, avec jetons et données synthétiques. La séparation HTTP des identités est testée; l'isolation contre du code arbitraire capable de lire les fichiers, arguments ou secrets de cet utilisateur ne l'est pas. Il n'y a pas de production OAuth, de budget de dépenses cumulé, de prix marchand authentifié, de système distribué, de charge soutenue ou de validation par utilisateurs externes. Le test de contenu malveillant prouve que ce texte ne modifie pas l'autorisation technique; il ne mesure pas le taux de prompt injection d'un modèle.
 
-Les [instructions reproductibles](../../experiments/README.md) lancent les trois implémentations et le fournisseur local. [Contrat fixé avant résultats](EXPERIMENT.md), [plans](README.md), [archive avant revue](../../experiments/results/before-review/manifest.json), [manifest final](../../experiments/results/final-source/manifest.json). Aucun dépôt Git utilisable n'était présent : les archives et hashes identifient les sources sans constituer une attestation externe.
+Les [instructions reproductibles](running.md) lancent les trois implémentations et le fournisseur local. [Contrat fixé avant résultats](EXPERIMENT.md), [plans](README.md), [archive avant revue](../../experiments/results/before-review/manifest.json), [manifest final](../../experiments/results/final-source/manifest.json). Aucun dépôt Git utilisable n'était présent : les archives et hashes identifient les sources sans constituer une attestation externe.

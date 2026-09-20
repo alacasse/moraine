@@ -1,0 +1,1027 @@
+{
+  "run_id": "run-9180376df69f",
+  "actor": "scripted",
+  "provider_mode": "normal",
+  "source_message": {
+    "resource_ref": "message-1",
+    "provider_message_id": "local-incoming-1",
+    "kind": "message",
+    "version": 1,
+    "title": "Réunion de mardi",
+    "text": "Bonjour, peux-tu confirmer la réunion mardi à 10 h ? Nous serons trois. Merci, Camille.",
+    "from_address": "camille@example.test",
+    "reply_address": "camille@example.test",
+    "message_id": "<meeting@example.test>",
+    "thread_id": "meeting-1"
+  },
+  "context": {
+    "resource_ref": "message-1",
+    "version": 1,
+    "digest": "9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00",
+    "text": "Bonjour, peux-tu confirmer la réunion mardi à 10 h ? Nous serons trois. Merci, Camille."
+  },
+  "grant": {
+    "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+    "expires_at": 1789942624.847227
+  },
+  "unselected_message": {
+    "resource_ref": "message-private",
+    "provider_message_id": "local-private-2",
+    "kind": "message",
+    "version": 1,
+    "title": "Hors sélection",
+    "text": "TEMOIN-NON-DELEGUE-7d21 : le rendez-vous confidentiel est jeudi.",
+    "from_address": "camille@example.test",
+    "reply_address": "camille@example.test",
+    "message_id": "<private@example.test>",
+    "thread_id": "private-2"
+  },
+  "request": {
+    "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+    "state": "accepted",
+    "reason": "provider_accepted"
+  },
+  "review": {
+    "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+    "action_digest": "ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99",
+    "review_expires_at": 1789942324.8937666,
+    "snapshot": {
+      "account_id": "pilot@example.test",
+      "context": [
+        {
+          "digest": "9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00",
+          "resource_ref": "message-1",
+          "version": 1
+        }
+      ],
+      "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+      "policy_revision": "f6442e9fb6c186bd0f42b20618533efcab45417459ac64013beb030fc1c6720a",
+      "prepared_at": 1789942024.8937666,
+      "prepared_reply": {
+        "mime_b64": "RnJvbTogcGlsb3RAZXhhbXBsZS50ZXN0DQpUbzogY2FtaWxsZUBleGFtcGxlLnRlc3QNClN1YmplY3Q6ID0/dXRmLTg/cT9SPUMzPUE5dW5pb24/PSBkZSBtYXJkaQ0KRGF0ZTogU3VuLCAyMCBTZXAgMjAyNiAyMjowNzowNCArMDAwMA0KTWVzc2FnZS1JRDogPDMxNDJhZmYyLWQ0ODEtNDJhZS1hMjc3LTk2ZmJhMmY1OTRiY0Btb3JhaW5lLmludmFsaWQ+DQpJbi1SZXBseS1UbzogPG1lZXRpbmdAZXhhbXBsZS50ZXN0Pg0KUmVmZXJlbmNlczogPG1lZXRpbmdAZXhhbXBsZS50ZXN0Pg0KQ29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PSJ1dGYtOCINCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IHF1b3RlZC1wcmludGFibGUNCk1JTUUtVmVyc2lvbjogMS4wDQoNCkJvbmpvdXIgQ2FtaWxsZSwgamUgY29uZmlybWUgbWFyZGkgPUMzPUEwIDEwIGggcG91ciB0cm9pcyBwZXJzb25uZXMuID1DMz04MCBtPQ0KYXJkaSAhDQo=",
+        "mime_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17",
+        "preview": {
+          "attachments": [],
+          "bcc": [],
+          "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+          "cc": [],
+          "from": "pilot@example.test",
+          "in_reply_to": "<meeting@example.test>",
+          "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+          "references": "<meeting@example.test>",
+          "subject": "Réunion de mardi",
+          "thread_id": "meeting-1",
+          "to": [
+            "camille@example.test"
+          ]
+        }
+      },
+      "principal": "agent:pilot",
+      "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+      "review_expires_at": 1789942324.8937666,
+      "schema_version": 1,
+      "source_key": {
+        "account_id": "pilot@example.test",
+        "provider_message_id": "local-incoming-1"
+      }
+    }
+  },
+  "received": [
+    {
+      "to": "camille@example.test",
+      "from": "pilot@example.test",
+      "subject": "Réunion de mardi",
+      "body": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\r\n",
+      "sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17"
+    }
+  ],
+  "attempts": 1,
+  "effects": 1,
+  "processes": {},
+  "events": [
+    {
+      "sequence": 1,
+      "at": 1789942024.3493977,
+      "kind": "process.started",
+      "data": {
+        "name": "provider",
+        "pid": 230604,
+        "command": [
+          "/home/alacasse/projects/moraine/pilots/codex_email/.venv/bin/python",
+          "-m",
+          "tests.fixtures.provider_server",
+          "--directory",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/provider",
+          "--token-file",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/provider-token",
+          "--port",
+          "44973",
+          "--initial-mode",
+          "normal"
+        ]
+      }
+    },
+    {
+      "sequence": 2,
+      "at": 1789942024.4362202,
+      "kind": "process.started",
+      "data": {
+        "name": "broker",
+        "pid": 230606,
+        "command": [
+          "/home/alacasse/projects/moraine/pilots/codex_email/.venv/bin/python",
+          "-m",
+          "moraine_email.server",
+          "--state-dir",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/state",
+          "--config",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/config.json",
+          "--agent-token-file",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/agent-token",
+          "--provider-token-file",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/provider-token",
+          "--provider-url",
+          "http://127.0.0.1:44973",
+          "--opa-binary",
+          "/home/alacasse/projects/moraine/pilots/codex_email/.tools/opa",
+          "--human-socket",
+          "/tmp/moraine-lab-20260920-final/campaign-f0216db80526/run-9180376df69f/human.sock",
+          "--human-uid",
+          "1000",
+          "--port",
+          "48821"
+        ]
+      }
+    },
+    {
+      "sequence": 3,
+      "at": 1789942024.8471494,
+      "kind": "human.create_grant",
+      "data": {
+        "result": {
+          "grant_id": "69bab636-0e16-477b-801f-2db4b6a0df97",
+          "expires_at": 1789942624.846143
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "at": 1789942024.8476806,
+      "kind": "human.create_grant",
+      "data": {
+        "result": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "expires_at": 1789942624.847227
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "at": 1789942024.8477542,
+      "kind": "run.ready",
+      "data": {
+        "actor": "scripted",
+        "provider_mode": "normal"
+      }
+    },
+    {
+      "sequence": 6,
+      "at": 1789942024.864742,
+      "kind": "mcp.list_context",
+      "data": {
+        "arguments": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d"
+        },
+        "is_error": false,
+        "result": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "resources": [
+            {
+              "digest": "9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00",
+              "from_address": "camille@example.test",
+              "kind": "message",
+              "message_id": "<meeting@example.test>",
+              "provider_message_id": "local-incoming-1",
+              "reply_address": "camille@example.test",
+              "resource_ref": "message-1",
+              "thread_id": "meeting-1",
+              "title": "Réunion de mardi",
+              "version": 1
+            }
+          ]
+        },
+        "content": [
+          "{\n  \"grant_id\": \"e1ff230d-d545-49bb-842d-1bf8e7896f0d\",\n  \"resources\": [\n    {\n      \"digest\": \"9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00\",\n      \"from_address\": \"camille@example.test\",\n      \"kind\": \"message\",\n      \"message_id\": \"<meeting@example.test>\",\n      \"provider_message_id\": \"local-incoming-1\",\n      \"reply_address\": \"camille@example.test\",\n      \"resource_ref\": \"message-1\",\n      \"thread_id\": \"meeting-1\",\n      \"title\": \"R\\u00e9union de mardi\",\n      \"version\": 1\n    }\n  ]\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 7,
+      "at": 1789942024.8795912,
+      "kind": "mcp.read_context",
+      "data": {
+        "arguments": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "resource_ref": "message-1",
+          "version": 1
+        },
+        "is_error": false,
+        "result": {
+          "resource_ref": "message-1",
+          "version": 1,
+          "digest": "9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00",
+          "text": "Bonjour, peux-tu confirmer la réunion mardi à 10 h ? Nous serons trois. Merci, Camille."
+        },
+        "content": [
+          "{\n  \"resource_ref\": \"message-1\",\n  \"version\": 1,\n  \"digest\": \"9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00\",\n  \"text\": \"Bonjour, peux-tu confirmer la r\\u00e9union mardi \\u00e0 10 h ? Nous serons trois. Merci, Camille.\"\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 8,
+      "at": 1789942024.8796725,
+      "kind": "assertion",
+      "data": {
+        "name": "positive_context_read",
+        "passed": true,
+        "observed": {}
+      }
+    },
+    {
+      "sequence": 9,
+      "at": 1789942024.8983119,
+      "kind": "mcp.propose_reply",
+      "data": {
+        "arguments": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "idempotency_key": "b6d5774a-0751-41a4-ac09-e0c845809ed3",
+          "reply_to_ref": "message-1",
+          "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "pending",
+          "reason": "requires_approval",
+          "action_digest": "ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99",
+          "review_expires_at": 1789942324.8937666,
+          "preview": {
+            "attachments": [],
+            "bcc": [],
+            "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+            "cc": [],
+            "from": "pilot@example.test",
+            "in_reply_to": "<meeting@example.test>",
+            "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+            "references": "<meeting@example.test>",
+            "subject": "Réunion de mardi",
+            "thread_id": "meeting-1",
+            "to": [
+              "camille@example.test"
+            ]
+          }
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"pending\",\n  \"reason\": \"requires_approval\",\n  \"action_digest\": \"ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99\",\n  \"review_expires_at\": 1789942324.8937666,\n  \"preview\": {\n    \"attachments\": [],\n    \"bcc\": [],\n    \"body_text\": \"Bonjour Camille, je confirme mardi \\u00e0 10 h pour trois personnes. \\u00c0 mardi !\\n\",\n    \"cc\": [],\n    \"from\": \"pilot@example.test\",\n    \"in_reply_to\": \"<meeting@example.test>\",\n    \"message_id\": \"<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>\",\n    \"references\": \"<meeting@example.test>\",\n    \"subject\": \"R\\u00e9union de mardi\",\n    \"thread_id\": \"meeting-1\",\n    \"to\": [\n      \"camille@example.test\"\n    ]\n  }\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 10,
+      "at": 1789942024.8984284,
+      "kind": "assertion",
+      "data": {
+        "name": "proposal_created",
+        "passed": true,
+        "observed": {}
+      }
+    },
+    {
+      "sequence": 11,
+      "at": 1789942024.9140472,
+      "kind": "mcp.get_request",
+      "data": {
+        "arguments": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "pending",
+          "reason": "requires_approval",
+          "action_digest": "ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99",
+          "review_expires_at": 1789942324.8937666,
+          "preview": {
+            "attachments": [],
+            "bcc": [],
+            "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+            "cc": [],
+            "from": "pilot@example.test",
+            "in_reply_to": "<meeting@example.test>",
+            "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+            "references": "<meeting@example.test>",
+            "subject": "Réunion de mardi",
+            "thread_id": "meeting-1",
+            "to": [
+              "camille@example.test"
+            ]
+          }
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"pending\",\n  \"reason\": \"requires_approval\",\n  \"action_digest\": \"ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99\",\n  \"review_expires_at\": 1789942324.8937666,\n  \"preview\": {\n    \"attachments\": [],\n    \"bcc\": [],\n    \"body_text\": \"Bonjour Camille, je confirme mardi \\u00e0 10 h pour trois personnes. \\u00c0 mardi !\\n\",\n    \"cc\": [],\n    \"from\": \"pilot@example.test\",\n    \"in_reply_to\": \"<meeting@example.test>\",\n    \"message_id\": \"<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>\",\n    \"references\": \"<meeting@example.test>\",\n    \"subject\": \"R\\u00e9union de mardi\",\n    \"thread_id\": \"meeting-1\",\n    \"to\": [\n      \"camille@example.test\"\n    ]\n  }\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 12,
+      "at": 1789942024.914141,
+      "kind": "assertion",
+      "data": {
+        "name": "broker_state",
+        "passed": true,
+        "observed": {
+          "expected": "pending",
+          "actual": {
+            "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+            "state": "pending",
+            "reason": "requires_approval",
+            "action_digest": "ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99",
+            "review_expires_at": 1789942324.8937666,
+            "preview": {
+              "attachments": [],
+              "bcc": [],
+              "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+              "cc": [],
+              "from": "pilot@example.test",
+              "in_reply_to": "<meeting@example.test>",
+              "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+              "references": "<meeting@example.test>",
+              "subject": "Réunion de mardi",
+              "thread_id": "meeting-1",
+              "to": [
+                "camille@example.test"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "sequence": 13,
+      "at": 1789942024.9142358,
+      "kind": "assertion",
+      "data": {
+        "name": "provider_counts",
+        "passed": true,
+        "observed": {
+          "expected": [
+            0,
+            0
+          ],
+          "actual": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "sequence": 14,
+      "at": 1789942024.9148362,
+      "kind": "human.review",
+      "data": {
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "action_digest": "ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99",
+          "review_expires_at": 1789942324.8937666,
+          "snapshot": {
+            "account_id": "pilot@example.test",
+            "context": [
+              {
+                "digest": "9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00",
+                "resource_ref": "message-1",
+                "version": 1
+              }
+            ],
+            "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+            "policy_revision": "f6442e9fb6c186bd0f42b20618533efcab45417459ac64013beb030fc1c6720a",
+            "prepared_at": 1789942024.8937666,
+            "prepared_reply": {
+              "mime_b64": "RnJvbTogcGlsb3RAZXhhbXBsZS50ZXN0DQpUbzogY2FtaWxsZUBleGFtcGxlLnRlc3QNClN1YmplY3Q6ID0/dXRmLTg/cT9SPUMzPUE5dW5pb24/PSBkZSBtYXJkaQ0KRGF0ZTogU3VuLCAyMCBTZXAgMjAyNiAyMjowNzowNCArMDAwMA0KTWVzc2FnZS1JRDogPDMxNDJhZmYyLWQ0ODEtNDJhZS1hMjc3LTk2ZmJhMmY1OTRiY0Btb3JhaW5lLmludmFsaWQ+DQpJbi1SZXBseS1UbzogPG1lZXRpbmdAZXhhbXBsZS50ZXN0Pg0KUmVmZXJlbmNlczogPG1lZXRpbmdAZXhhbXBsZS50ZXN0Pg0KQ29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PSJ1dGYtOCINCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IHF1b3RlZC1wcmludGFibGUNCk1JTUUtVmVyc2lvbjogMS4wDQoNCkJvbmpvdXIgQ2FtaWxsZSwgamUgY29uZmlybWUgbWFyZGkgPUMzPUEwIDEwIGggcG91ciB0cm9pcyBwZXJzb25uZXMuID1DMz04MCBtPQ0KYXJkaSAhDQo=",
+              "mime_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17",
+              "preview": {
+                "attachments": [],
+                "bcc": [],
+                "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+                "cc": [],
+                "from": "pilot@example.test",
+                "in_reply_to": "<meeting@example.test>",
+                "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+                "references": "<meeting@example.test>",
+                "subject": "Réunion de mardi",
+                "thread_id": "meeting-1",
+                "to": [
+                  "camille@example.test"
+                ]
+              }
+            },
+            "principal": "agent:pilot",
+            "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+            "review_expires_at": 1789942324.8937666,
+            "schema_version": 1,
+            "source_key": {
+              "account_id": "pilot@example.test",
+              "provider_message_id": "local-incoming-1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sequence": 15,
+      "at": 1789942024.9246557,
+      "kind": "human.decide_review",
+      "data": {
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted",
+          "snapshot": {
+            "account_id": "pilot@example.test",
+            "context": [
+              {
+                "digest": "9005b2bc17a99e0462c0691a691ac9fdb25e6343123b3d05fc423b57672ece00",
+                "resource_ref": "message-1",
+                "version": 1
+              }
+            ],
+            "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+            "policy_revision": "f6442e9fb6c186bd0f42b20618533efcab45417459ac64013beb030fc1c6720a",
+            "prepared_at": 1789942024.8937666,
+            "prepared_reply": {
+              "mime_b64": "RnJvbTogcGlsb3RAZXhhbXBsZS50ZXN0DQpUbzogY2FtaWxsZUBleGFtcGxlLnRlc3QNClN1YmplY3Q6ID0/dXRmLTg/cT9SPUMzPUE5dW5pb24/PSBkZSBtYXJkaQ0KRGF0ZTogU3VuLCAyMCBTZXAgMjAyNiAyMjowNzowNCArMDAwMA0KTWVzc2FnZS1JRDogPDMxNDJhZmYyLWQ0ODEtNDJhZS1hMjc3LTk2ZmJhMmY1OTRiY0Btb3JhaW5lLmludmFsaWQ+DQpJbi1SZXBseS1UbzogPG1lZXRpbmdAZXhhbXBsZS50ZXN0Pg0KUmVmZXJlbmNlczogPG1lZXRpbmdAZXhhbXBsZS50ZXN0Pg0KQ29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PSJ1dGYtOCINCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IHF1b3RlZC1wcmludGFibGUNCk1JTUUtVmVyc2lvbjogMS4wDQoNCkJvbmpvdXIgQ2FtaWxsZSwgamUgY29uZmlybWUgbWFyZGkgPUMzPUEwIDEwIGggcG91ciB0cm9pcyBwZXJzb25uZXMuID1DMz04MCBtPQ0KYXJkaSAhDQo=",
+              "mime_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17",
+              "preview": {
+                "attachments": [],
+                "bcc": [],
+                "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+                "cc": [],
+                "from": "pilot@example.test",
+                "in_reply_to": "<meeting@example.test>",
+                "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+                "references": "<meeting@example.test>",
+                "subject": "Réunion de mardi",
+                "thread_id": "meeting-1",
+                "to": [
+                  "camille@example.test"
+                ]
+              }
+            },
+            "principal": "agent:pilot",
+            "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+            "review_expires_at": 1789942324.8937666,
+            "schema_version": 1,
+            "source_key": {
+              "account_id": "pilot@example.test",
+              "provider_message_id": "local-incoming-1"
+            }
+          },
+          "result": {
+            "delivery_status": "unverified",
+            "provider_message_id": "2650e195-57ab-4fb8-a0b5-40187aa1c4b0"
+          }
+        }
+      }
+    },
+    {
+      "sequence": 16,
+      "at": 1789942024.9460938,
+      "kind": "mcp.get_request",
+      "data": {
+        "arguments": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted",
+          "result": {
+            "delivery_status": "unverified",
+            "provider_message_id": "2650e195-57ab-4fb8-a0b5-40187aa1c4b0"
+          }
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"accepted\",\n  \"reason\": \"provider_accepted\",\n  \"result\": {\n    \"delivery_status\": \"unverified\",\n    \"provider_message_id\": \"2650e195-57ab-4fb8-a0b5-40187aa1c4b0\"\n  }\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 17,
+      "at": 1789942024.946174,
+      "kind": "assertion",
+      "data": {
+        "name": "broker_state",
+        "passed": true,
+        "observed": {
+          "expected": "accepted",
+          "actual": {
+            "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+            "state": "accepted",
+            "reason": "provider_accepted",
+            "result": {
+              "delivery_status": "unverified",
+              "provider_message_id": "2650e195-57ab-4fb8-a0b5-40187aa1c4b0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sequence": 18,
+      "at": 1789942024.9462204,
+      "kind": "assertion",
+      "data": {
+        "name": "delivery_status_not_overclaimed",
+        "passed": true,
+        "observed": {}
+      }
+    },
+    {
+      "sequence": 19,
+      "at": 1789942024.946342,
+      "kind": "assertion",
+      "data": {
+        "name": "exactly_one_attempt_and_effect",
+        "passed": true,
+        "observed": {
+          "attempts": 1,
+          "effects": 1
+        }
+      }
+    },
+    {
+      "sequence": 20,
+      "at": 1789942024.9463947,
+      "kind": "assertion",
+      "data": {
+        "name": "received_bytes_equal_reviewed_bytes",
+        "passed": true,
+        "observed": {
+          "reviewed_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17",
+          "delivered_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17"
+        }
+      }
+    },
+    {
+      "sequence": 21,
+      "at": 1789942024.947245,
+      "kind": "assertion",
+      "data": {
+        "name": "received_envelope_and_content",
+        "passed": true,
+        "observed": {}
+      }
+    },
+    {
+      "sequence": 22,
+      "at": 1789942024.9615734,
+      "kind": "mcp.propose_reply",
+      "data": {
+        "arguments": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "idempotency_key": "b6d5774a-0751-41a4-ac09-e0c845809ed3",
+          "reply_to_ref": "message-1",
+          "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted",
+          "result": {
+            "delivery_status": "unverified",
+            "provider_message_id": "2650e195-57ab-4fb8-a0b5-40187aa1c4b0"
+          }
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"accepted\",\n  \"reason\": \"provider_accepted\",\n  \"result\": {\n    \"delivery_status\": \"unverified\",\n    \"provider_message_id\": \"2650e195-57ab-4fb8-a0b5-40187aa1c4b0\"\n  }\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 23,
+      "at": 1789942024.9616525,
+      "kind": "assertion",
+      "data": {
+        "name": "replay_keeps_identity",
+        "passed": true,
+        "observed": {}
+      }
+    },
+    {
+      "sequence": 24,
+      "at": 1789942024.9727066,
+      "kind": "mcp.propose_reply",
+      "data": {
+        "arguments": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "idempotency_key": "b6d5774a-0751-41a4-ac09-e0c845809ed3",
+          "reply_to_ref": "message-1",
+          "body_text": "Contenu différent"
+        },
+        "is_error": true,
+        "result": null,
+        "content": [
+          "idempotency_conflict"
+        ]
+      }
+    },
+    {
+      "sequence": 25,
+      "at": 1789942024.9727669,
+      "kind": "assertion",
+      "data": {
+        "name": "mcp_refusal",
+        "passed": true,
+        "observed": {
+          "expected": "idempotency_conflict",
+          "actual": {
+            "is_error": true,
+            "result": null,
+            "content": [
+              "idempotency_conflict"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sequence": 26,
+      "at": 1789942024.972895,
+      "kind": "assertion",
+      "data": {
+        "name": "provider_counts",
+        "passed": true,
+        "observed": {
+          "expected": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "sequence": 27,
+      "at": 1789942024.9733787,
+      "kind": "human.revoke_grant",
+      "data": {
+        "result": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "state": "revoked"
+        }
+      }
+    },
+    {
+      "sequence": 28,
+      "at": 1789942024.9873302,
+      "kind": "mcp.get_request",
+      "data": {
+        "arguments": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted"
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"accepted\",\n  \"reason\": \"provider_accepted\"\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 29,
+      "at": 1789942025.0008354,
+      "kind": "mcp.get_request",
+      "data": {
+        "arguments": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted"
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"accepted\",\n  \"reason\": \"provider_accepted\"\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 30,
+      "at": 1789942025.0009024,
+      "kind": "assertion",
+      "data": {
+        "name": "broker_state",
+        "passed": true,
+        "observed": {
+          "expected": "accepted",
+          "actual": {
+            "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+            "state": "accepted",
+            "reason": "provider_accepted"
+          }
+        }
+      }
+    },
+    {
+      "sequence": 31,
+      "at": 1789942025.0123527,
+      "kind": "mcp.read_context",
+      "data": {
+        "arguments": {
+          "grant_id": "e1ff230d-d545-49bb-842d-1bf8e7896f0d",
+          "resource_ref": "message-1",
+          "version": 1
+        },
+        "is_error": true,
+        "result": null,
+        "content": [
+          "scope_denied"
+        ]
+      }
+    },
+    {
+      "sequence": 32,
+      "at": 1789942025.0124269,
+      "kind": "assertion",
+      "data": {
+        "name": "mcp_refusal",
+        "passed": true,
+        "observed": {
+          "expected": "scope_denied",
+          "actual": {
+            "is_error": true,
+            "result": null,
+            "content": [
+              "scope_denied"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sequence": 33,
+      "at": 1789942025.0287097,
+      "kind": "mcp.get_request",
+      "data": {
+        "arguments": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc"
+        },
+        "is_error": false,
+        "result": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted"
+        },
+        "content": [
+          "{\n  \"request_id\": \"3142aff2-d481-42ae-a277-96fba2f594bc\",\n  \"state\": \"accepted\",\n  \"reason\": \"provider_accepted\"\n}"
+        ]
+      }
+    },
+    {
+      "sequence": 34,
+      "at": 1789942025.0287764,
+      "kind": "assertion",
+      "data": {
+        "name": "terminal_agent_projection_redacted",
+        "passed": true,
+        "observed": {}
+      }
+    },
+    {
+      "sequence": 35,
+      "at": 1789942025.0289037,
+      "kind": "assertion",
+      "data": {
+        "name": "provider_counts",
+        "passed": true,
+        "observed": {
+          "expected": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "sequence": 36,
+      "at": 1789942025.5932174,
+      "kind": "process.stopped",
+      "data": {
+        "name": "broker",
+        "pid": 230606,
+        "returncode": 0
+      }
+    },
+    {
+      "sequence": 37,
+      "at": 1789942025.596506,
+      "kind": "process.stopped",
+      "data": {
+        "name": "provider",
+        "pid": 230604,
+        "returncode": -15
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "positive_context_read",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "name": "proposal_created",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "name": "broker_state",
+      "passed": true,
+      "observed": {
+        "expected": "pending",
+        "actual": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "pending",
+          "reason": "requires_approval",
+          "action_digest": "ef74f5ba93be6c70671fcd9c5d77b61d2422280cffbdc6155007adfb7ab56d99",
+          "review_expires_at": 1789942324.8937666,
+          "preview": {
+            "attachments": [],
+            "bcc": [],
+            "body_text": "Bonjour Camille, je confirme mardi à 10 h pour trois personnes. À mardi !\n",
+            "cc": [],
+            "from": "pilot@example.test",
+            "in_reply_to": "<meeting@example.test>",
+            "message_id": "<3142aff2-d481-42ae-a277-96fba2f594bc@moraine.invalid>",
+            "references": "<meeting@example.test>",
+            "subject": "Réunion de mardi",
+            "thread_id": "meeting-1",
+            "to": [
+              "camille@example.test"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "provider_counts",
+      "passed": true,
+      "observed": {
+        "expected": [
+          0,
+          0
+        ],
+        "actual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "broker_state",
+      "passed": true,
+      "observed": {
+        "expected": "accepted",
+        "actual": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted",
+          "result": {
+            "delivery_status": "unverified",
+            "provider_message_id": "2650e195-57ab-4fb8-a0b5-40187aa1c4b0"
+          }
+        }
+      }
+    },
+    {
+      "name": "delivery_status_not_overclaimed",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "name": "exactly_one_attempt_and_effect",
+      "passed": true,
+      "observed": {
+        "attempts": 1,
+        "effects": 1
+      }
+    },
+    {
+      "name": "received_bytes_equal_reviewed_bytes",
+      "passed": true,
+      "observed": {
+        "reviewed_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17",
+        "delivered_sha256": "8bdf61817104de2dc423d0e041e830e260e878568f5944e9fd333a2c09721f17"
+      }
+    },
+    {
+      "name": "received_envelope_and_content",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "name": "replay_keeps_identity",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "name": "mcp_refusal",
+      "passed": true,
+      "observed": {
+        "expected": "idempotency_conflict",
+        "actual": {
+          "is_error": true,
+          "result": null,
+          "content": [
+            "idempotency_conflict"
+          ]
+        }
+      }
+    },
+    {
+      "name": "provider_counts",
+      "passed": true,
+      "observed": {
+        "expected": [
+          1,
+          1
+        ],
+        "actual": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "broker_state",
+      "passed": true,
+      "observed": {
+        "expected": "accepted",
+        "actual": {
+          "request_id": "3142aff2-d481-42ae-a277-96fba2f594bc",
+          "state": "accepted",
+          "reason": "provider_accepted"
+        }
+      }
+    },
+    {
+      "name": "mcp_refusal",
+      "passed": true,
+      "observed": {
+        "expected": "scope_denied",
+        "actual": {
+          "is_error": true,
+          "result": null,
+          "content": [
+            "scope_denied"
+          ]
+        }
+      }
+    },
+    {
+      "name": "terminal_agent_projection_redacted",
+      "passed": true,
+      "observed": {}
+    },
+    {
+      "name": "provider_counts",
+      "passed": true,
+      "observed": {
+        "expected": [
+          1,
+          1
+        ],
+        "actual": [
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "error": null,
+  "closed": true,
+  "scope": "local_fixture_single_uid_no_systemd_no_ingestion"
+}

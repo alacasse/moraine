@@ -1,16 +1,22 @@
-# Pilote email MCP — étapes 1–2 et préparation Linux
+# Pilote email MCP — développement et usage local
 
-Implémentation locale sur **fournisseur simulé**, issue de [B](../../experiments/b_broker/README.md) et du [plan revu](../../docs/plans/codex-mcp-email-pilot.md). Elle permet de déléguer quelques textes, proposer une réponse via le SDK MCP officiel, approuver/refuser par un socket humain, puis consulter le résultat durable.
+Implémentation locale sur **fournisseur simulé**, issue de [B](../experiments/b-broker.md) et du [plan revu](../plans/codex-mcp-email-pilot.md). Elle permet de déléguer quelques textes, proposer une réponse via le SDK MCP officiel, approuver/refuser par un socket humain, puis consulter le résultat durable.
 
-Les exemples utilisent le même utilisateur Linux. Ils prouvent les contrôles applicatifs et le protocole, **pas l'isolation OS**. Aucun compte fournisseur, OAuth, envoi réel ou configuration Codex n'est installé. La séparation des utilisateurs et l'essai depuis Codex appartiennent à l'étape 3; Gmail aux étapes 4–5.
+Les exemples utilisent le même utilisateur Linux. Ils prouvent les contrôles applicatifs et le protocole, **pas l'isolation OS**. Aucun compte fournisseur, OAuth, envoi réel ou configuration Codex n'est installé. La séparation des utilisateurs et l'installation du serveur MCP dans Codex appartiennent à l'étape 3; Gmail aux étapes 4–5.
 
-Le [runbook Linux](RUNBOOK.md) prépare cette installation : socket détenu par le service, groupe de connexion distinct du contrôle `SO_PEERCRED`, surveillance d'OPA, unité systemd et sondes opt-in. Ces artefacts sont intégrés; leur exécution sous plusieurs identités et sous systemd reste à qualifier. Le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md) consigne les validations locales actuelles.
+Le [runbook Linux](linux-deployment.md) prépare cette installation : socket détenu par le service, groupe de connexion distinct du contrôle `SO_PEERCRED`, surveillance d'OPA, unité systemd et sondes opt-in. Ces artefacts sont intégrés; leur exécution sous plusieurs identités et sous systemd reste à qualifier. Le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md) consigne les validations locales actuelles.
+
+Le [laboratoire web local](local-lab.md) lance ces services, affiche le contexte
+MCP et la boîte reçue, et automatise neuf scénarios. L'assistant peut manipuler
+la console dans le navigateur depuis sa session existante, sans compte fournisseur
+ni nouvelle clé de modèle. Voir la [preuve actuelle](../../pilot-results/local-lab/20260920/REPORT.md).
 
 ## Préparer et tester
 
-Linux x86_64, Python 3.14 et `uv` sont nécessaires. Depuis ce dossier :
+Linux x86_64, Python 3.14 et `uv` sont nécessaires. Depuis la racine du dépôt :
 
 ```sh
+cd pilots/codex_email
 ./setup.sh
 ./test.sh -q
 ```
@@ -23,13 +29,14 @@ Les tests de socket et de cycle de vie observent aussi la conservation d'un endp
 
 ## Démonstration manuelle, données fictives seulement
 
+Les commandes suivantes s’exécutent depuis `pilots/codex_email/`.
 Créer un dossier nouveau (il ne doit pas déjà exister) :
 
 ```sh
 .venv/bin/python examples/prepare_demo.py /tmp/moraine-email-demo
 ```
 
-Dans un premier terminal, depuis ce dossier :
+Dans un premier terminal, depuis `pilots/codex_email/` :
 
 ```sh
 .venv/bin/python -m tests.fixtures.provider_server \
@@ -95,6 +102,6 @@ Lire tout le message et saisir `approve` ou `reject`. Le corps est présenté li
 
 `broker.py` possède le cycle et SQLite; `models.py` et `mime.py` les entrées et le contenu; `policy.py` supervise OPA; `adapters/simulated.py` fournit une unique tentative bornée. MCP et le canal humain ne possèdent pas les règles métier. L'oracle fournisseur est indépendant dans `tests/fixtures/provider_server.py`.
 
-Voir [INTERFACE.md](INTERFACE.md) pour le contrat de développement et [PROVENANCE.md](PROVENANCE.md) pour l'extraction et la traçabilité. Les preuves nouvelles vont dans `pilot-results/codex-email/`, jamais dans les répertoires expérimentaux historiques.
+Voir [INTERFACE.md](interface.md) pour le contrat de développement et [PROVENANCE.md](provenance.md) pour l'extraction et la traçabilité. Les preuves nouvelles vont dans `pilot-results/codex-email/`, jamais dans les répertoires expérimentaux historiques.
 
-Les preuves des lots parallèles et de leur intégration sont dans `pilot-results/parallel-workstreams/`. Le [contrat d'ingestion](../../docs/plans/email-ingestion-contract.md) reste proposé, sans nouvelle API de production. Le [banc de qualification](../../qualification/email_inspection/README.md) est indépendant du pilote et n'exécute aucun modèle.
+Les preuves des lots parallèles et de leur intégration sont dans `pilot-results/parallel-workstreams/`. Le [contrat d'ingestion](../plans/email-ingestion-contract.md) reste proposé, sans nouvelle API de production. Le [banc de qualification](../qualification/email-inspection.md) est indépendant du pilote et n'exécute aucun modèle.

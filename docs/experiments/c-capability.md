@@ -1,16 +1,19 @@
 # C: signed, attenuated Biscuit capabilities
 
-Experimental implementation of the [shared contract](../../docs/experiments/EXPERIMENT.md).
+Experimental implementation of the [shared contract](EXPERIMENT.md).
 It uses **biscuit-python 0.4.0** (the real Rust-backed `biscuit_auth` module),
 CPython 3.13, SQLite, stdlib HTTP and httpx. Nothing substitutes for Biscuit's
 signature chain, scoped Datalog evaluator or attenuation mechanism.
+
+Source and local dependency directories: `experiments/c_capability/`.
+Shell commands below start at the repository root.
 
 ## Run
 
 Prerequisite: `uv` on PATH; this run used uv 0.11.6. `uv.lock` pins all Python
 packages. First launch downloads the public CPython 3.13 runtime and packages;
 later launches use the local environment. `.venv`, `.python` and `.uv-cache`
-live here. No global install is needed.
+live in that source directory. No global install is needed.
 
 Start the root-owned synthetic provider first, then run:
 
@@ -32,8 +35,9 @@ Run distinguishing tests or the common campaign from the repository root:
 
 ```bash
 ./experiments/c_capability/test.sh -q
+campaign_dir=$(mktemp -d /tmp/moraine-exp-c.XXXXXX)
 python3 experiments/run_campaign.py --approach c \
-  --output experiments/c_capability/evidence/common-final
+  --output "$campaign_dir"
 ```
 
 Both commands exercise loopback sockets, which require the applicable sandbox
@@ -137,7 +141,7 @@ claim. Datalog resource limits are not an overall HTTP concurrency or denial
 of service defense. SQLite/state schema migration, signing-key rotation,
 distributed revocation and unknown-outcome reconciliation are not implemented.
 
-Evidence and deviations: [implementation note](../../docs/experiments/C-implementation.md).
+Evidence and deviations: [implementation note](C-implementation.md).
 API references: [Biscuit Python basic use](https://python.biscuitsec.org/basic-use),
 [safe Datalog parameters](https://python.biscuitsec.org/datalog),
 [scoping reference](https://doc.biscuitsec.org/reference/datalog),

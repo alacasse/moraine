@@ -2,6 +2,11 @@
 
 Date: 2026-09-20. Authorized by the user: three independent planning teams, followed by development teams, independent review, comparison, and lessons. This supersedes the earlier no-code constraint for these experiments only. All implementations are experimental, not production security products. No publication, real account credentials, email delivery, payment, or deployment to external infrastructure.
 
+Historical experiment contract. The workflow and permissions below describe
+that completed mission, not a new assignment. Its technical benchmark remains
+the reference for the three prototypes. See the [comparison](COMPARISON.md) for
+delivered results and [current status](../status.md) for subsequent work.
+
 ## Questions and distinct approaches
 
 1. **A, embedded module:** integrate an existing Python authorization library (prefer apparitor) and existing policy engine inside a trusted tool backend. Minimize the developer-facing interface; the benchmark HTTP server is a host example, not the product. Determine what lifecycle glue remains.
@@ -10,9 +15,9 @@ Date: 2026-09-20. Authorized by the user: three independent planning teams, foll
 
 Two domains: email delivery and order creation, plus selected document reads to test context disclosure. Plans may challenge their assigned approach but must implement an honest experiment or substantiate a concrete blocker. Do not replace a missing dependency with a fake implementation and claim equivalence.
 
-## Ownership and workflow
+## Original ownership and workflow
 
-Root owns this contract, `experiments/common/`, campaign runner, independent black-box tests, final comparison, and evidence records. Planners own only their plan under `docs/experiments/plans/`. Developers own one of `experiments/a_embedded/`, `experiments/b_broker/`, `experiments/c_capability/` and its implementation note. All teams share a directory: never revert another team's work. Do not edit AGENTS.md/CLAUDE.md, initialize Git, commit, push, or touch other repositories. No functional Git repository is currently available; review baselines will be file manifests and archived experiment snapshots.
+Root owns this contract, `experiments/common/`, campaign runner, independent black-box tests, final comparison, and evidence records. Planners own only their plan under `docs/experiments/plans/`. Developers own one of `experiments/a_embedded/`, `experiments/b_broker/`, `experiments/c_capability/` and its implementation note. All teams share a directory: never revert another team's work. Do not edit AGENTS.md/CLAUDE.md, initialize Git, commit, push, or touch other repositories. No functional Git repository was available during this original mission; its review baselines were file manifests and archived experiment snapshots.
 
 Each planner hands off: interface/invariants; dependency versions and acquisition path; architecture and trust assumptions; persistent state; execution/recovery model; proposed file ownership; local tests; risks and expected learning. Developers must run real dependencies, report deviations, provide one-command startup/tests, lock versions, and write what is inherited versus custom. Independent reviewers assess implementation/spec/security and maintainability/test confidence after development. Fix material findings and rerun relevant tests; retain pre-fix findings as evidence.
 

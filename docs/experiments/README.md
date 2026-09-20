@@ -2,20 +2,21 @@
 
 The user authorized three separately planned and implemented approaches, followed by independent review and comparison. The target is a generic open-source building block for developers. These experiments test engineering fit and bounded behavior; they do not establish market demand or production security.
 
+- Source and usage: [A — embedded](a-embedded.md), [B — OPA broker](b-broker.md), [C — Biscuit](c-capability.md).
 - [Common experiment contract](EXPERIMENT.md)
 - [Comparison, findings and lessons](COMPARISON.md)
 - [A: embedded module plan](plans/A-embedded.md)
 - [B: independent OPA broker plan](plans/B-broker.md)
 - [C: Biscuit capability plan](plans/C-capability.md)
-- [Shared test instrumentation](../../experiments/README.md)
+- [Shared test instrumentation](running.md)
 - Reviews of the frozen baseline: [A and campaign assertions](reviews/A-review.md), [B and provider oracle](reviews/B-review.md), [C](reviews/C-review.md). Correction status and final evidence are tracked in the comparison.
 - [Prior ecosystem investigation](../research/delegated-authority-investigation.md)
 
-Planning and implementation are assigned to different agents. The common provider and black-box campaign are maintained separately from all three implementations. Reviewers will receive the same specification and inspect both functional/security behavior and test/maintenance quality. Findings are retained even when fixed.
+In the original campaign, planning and implementation were assigned to different agents. The common provider and black-box campaign are maintained separately from all three implementations. Reviewers received the same specification and inspected both functional/security behavior and test/maintenance quality. Findings are retained even when fixed.
 
 All provider messages, documents, orders, identities and credentials are synthetic. Actual libraries/engines must be used. The side-effect oracle records downstream operations separately from authorization responses, including failure modes before acceptance and after acceptance without a response.
 
-No Git repository is usable in this workspace. Review evidence therefore uses file hashes, test reports and a frozen source archive; no commit or publication is implied.
+At the time of this experiment no usable Git baseline was available. Its evidence therefore uses file hashes, test reports and frozen source archives. The repository has since been initialized and the pilot extracted; see [current status](../status.md). Historical mandates below and in the linked contracts do not govern new work.
 
 ## Comparison questions fixed before results
 

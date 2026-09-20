@@ -1,6 +1,6 @@
 # A — Embedded delegated execution module
 
-Planning handoff, 2026-09-20. Governing contract: [EXPERIMENT.md](../EXPERIMENT.md). This is a proposed implementation, not an executed validation or an accepted product architecture. The documentation root is `docs`; no functioning Git repository or documentation-root override is available.
+Historical planning handoff, 2026-09-20. Governing contract: [EXPERIMENT.md](../EXPERIMENT.md). This records the original proposal, not an accepted product architecture; subsequent implementation and validation are in [A-implementation.md](../A-implementation.md). During planning, the documentation root was `docs` and no functioning Git repository or documentation-root override was available. The assignments below belong to that completed mission.
 
 ## Question and interface
 

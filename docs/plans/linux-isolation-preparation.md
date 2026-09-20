@@ -4,6 +4,11 @@ Base : `b63590cc02dbcb31859aeb683f4f71314beeb775`. Racine documentaire : `docs`.
 Code et documentation appartiennent au dépôt Moraine. Plan local du 20 septembre 2026,
 subordonné à `codex-mcp-email-pilot.md` §4/étape 3 et au découpage du coordinateur.
 
+Statut : code et artefacts livrés, intégrés et testés localement; installation
+multi-UID/systemd non qualifiée. Voir le [rapport d’intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md)
+et le [runbook actuel](../pilot/linux-deployment.md). Les responsabilités du lot
+ci-dessous décrivent son mandat initial.
+
 ## Contrat et frontières
 
 1. Le service conserve la propriété du socket. En mode séparé il utilise un groupe

@@ -11,7 +11,7 @@ The embedded `ExecutionGate` owns authorization, preparation, durable approval,
 idempotency and provider execution. `host.py` is a loopback fixture adapter;
 HTTP hosting is not the proposed reusable product seam. See the small embedded
 client example and startup instructions in
-[README.md](../../experiments/a_embedded/README.md).
+[README.md](a-embedded.md).
 
 From `/home/alacasse/projects/moraine/experiments/a_embedded`:
 

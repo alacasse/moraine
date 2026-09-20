@@ -1,9 +1,8 @@
 # Lot C — Qualification locale de l'inspection email
 
 Date : 2026-09-20. Base : `b63590cc02dbcb31859aeb683f4f71314beeb775`.
-Statut : plan confirmé prêt au développement par `/root/review_plan`,
-sans constat bloquant, avant création du code et du corpus.
-Implémentation livrée et contre-revues achevées; voir le
+Statut : implémentation livrée et intégrée, contre-revues achevées. Le plan avait
+été confirmé avant création du code et du corpus. Voir le
 [rapport du lot C](../../pilot-results/parallel-workstreams/C/REPORT.md).
 Autorité : [plan du pilote](codex-mcp-email-pilot.md), § 6, et mandat du lot C.
 Code et documentation appartiennent au dépôt Moraine; racine documentaire `docs`.

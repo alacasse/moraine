@@ -1,12 +1,13 @@
 # Embedded execution experiment
 
-This directory is a trusted Python backend module plus a benchmark HTTP host. It
+`experiments/a_embedded/` contains a trusted Python backend module plus a benchmark HTTP host. It
 uses actual apparitor 0.1.1 and Cedarpy 4.8.7. It is not a production credential
 vault, isolation boundary, aggregate budget system, or email provider integration.
 
-From this directory, install the hash-locked dependencies locally:
+From the repository root, enter the source directory and install locally:
 
 ```sh
+cd experiments/a_embedded
 ./setup.sh
 ./test.sh -q
 ```
@@ -28,12 +29,12 @@ The common benchmark starts the host with synthetic fixture tokens:
 The provider must already be running. Startup verifies provider connectivity and
 credentials, validates Cedar policies, and acquires exclusive state ownership
 before exposing `/health`. The HTTP interface is specified in
-[`EXPERIMENT.md`](../../docs/experiments/EXPERIMENT.md).
+[`EXPERIMENT.md`](EXPERIMENT.md).
 
-To embed the module, place this directory on the trusted backend's import path.
+To embed the module, place `experiments/a_embedded/` on the trusted backend's import path.
 The host constructs `Principal` **after authentication**. A model or request body
 must never select its principal, provider token, policy files, state directory,
-or current time. For example, from this directory:
+or current time. For example, from `experiments/a_embedded/`:
 
 ```python
 from pathlib import Path
@@ -75,5 +76,5 @@ The benchmark host and provider run under one OS user. Passing their HTTP tests
 does not contain code that can read that user's files, process arguments or
 memory, or call the provider through a bypass added by a trusted developer.
 
-See [`A-implementation.md`](../../docs/experiments/A-implementation.md) for measured
+See [`A-implementation.md`](A-implementation.md) for measured
 results, inherited versus custom responsibilities and deployment limitations.

@@ -1,0 +1,187 @@
+{
+  "date": "2026-09-20",
+  "scope": "Documentation reorganization only; original source/evidence bytes preserved.",
+  "archive": "pilot-results/documentation/20260920/source-before-docs.zip",
+  "archive_sha256": "bdaf8eddb77ea8c527404214e72a440d1a578337a14c06ef262e996f2c904ebd",
+  "archived_files_sha256": {
+    "README.md": "907b90aa2fe8668035ec3f776aab82f22dba608f0fe69136edf313be4b36d1c5",
+    "docs/experiments/A-implementation.md": "26c5e805be7c5d45374fe00b7dfae02f35b3b9ff5d08161bf29bb020cec67c0d",
+    "docs/experiments/B-implementation.md": "008876b9f8e6fe680c7cf7708ffb73f2884df18b9a643d5593735a1f0e69a06b",
+    "docs/experiments/C-implementation.md": "3609b3118ffa292ecb1d4b72574b2a3db29180e077b80c71c8d1083a5661d12e",
+    "docs/experiments/COMPARISON.md": "feb6c846ec21a24a4015b7a5132d803f3a55a2a0f9978b728f007ba667b49dfd",
+    "docs/experiments/EXPERIMENT.md": "67e86e299fd6cfce93de3df7530190b6901cf7e18aac85a56e59201f28cf5c68",
+    "docs/experiments/README.md": "199a28518f97c01b2d6905114d719fcd33f4a3191b08132688799a166438d6f0",
+    "docs/experiments/plans/A-embedded.md": "f1943fe1b094c37f6a3ef35b56ab7f1a2c2fe82d6c528660e3eddedf6b9b9b09",
+    "docs/experiments/plans/B-broker.md": "cf87a6634563b9b54521b7f4aa31d0dcc44a30c0262914229836164a479dbb20",
+    "docs/experiments/plans/C-capability.md": "773617e2e6ddbb75a6b8f42ea31f4fb74b06c1daa2c4f50b0a3c0d3db0f49163",
+    "docs/experiments/reviews/A-review.md": "05e1ef396548baa10739c260629bfa72bb8db2d2f6eb0df8176602529d6e79ff",
+    "docs/experiments/reviews/B-review.md": "5353dd4429ac57ce4c0a85d17b086f24148d0d181d816e81a9b277ac56e528ba",
+    "docs/experiments/reviews/C-review.md": "3ce04da20ea5631ea80e341817872c2c405e90a5e3f9266f51ce617b2a9af25f",
+    "docs/plans/codex-mcp-email-pilot.md": "edc96455bc874f4fa99bebf4eb841f66b0a8b0b36c780a27c140525563ef800f",
+    "docs/plans/email-ingestion-contract.md": "5e6e53e6d766914dc372c35376491261fd76de039973a78b4b40f38377b97f87",
+    "docs/plans/email-inspection-qualification.md": "d4e44df3799a63b2fb1b2418a3e0f2d51ec8532b8e5d13d6dfce106f04d5abee",
+    "docs/plans/linux-isolation-preparation.md": "a1dd06846c3d0f1f9c1c65f396c07dc4ea6c19e42574d5bca90847ef3b57944e",
+    "docs/plans/local-e2e-lab.md": "631643aea005112a41855538e13cf813caf248a369258acb89598285342c8235",
+    "docs/plans/parallel-workstreams.md": "573779b7767d63b0c5b208ea0a13a4938144c2069bf809b9a5a484718ab45334",
+    "docs/prompts/integrate-parallel-workstreams.md": "7736b8d873f9d39487ddafd04bc4ebbbe17dc39a1882dfad73101b9d69e44374",
+    "docs/prompts/plan-codex-mcp-email.md": "bb478b1beef2778873d0f8493fa6fde49431f2aec0c06f55a9c724fdd200c79f",
+    "docs/research/delegated-authority-investigation.md": "d6b332307591e7b0d2f0bd8f13a6a47970f98e2e9da4c28b6188228e9d5b1c8b",
+    "docs/research/delegation-standards-sources.md": "a283e187305e57e0136fb60d786ae6890dddd2b06949913db11a5628db69f0c3",
+    "docs/research/email-content-inspection-sources.md": "33918ce699f2cabbaba2e4ef6e07df814661d0c4433f8ff16703d227a1c45b42",
+    "docs/research/identity-mcp-approval-sources.md": "0a0e04467f1ad882393ad1ea4fc22e549993230fdce5f5577f82b0f531be69b8",
+    "docs/research/llm-guard-qualification.md": "cad309bd0c3828f0d05276441466452b31cddb5cc893361eccea28e125bc2227",
+    "docs/research/policy-overlap-sources.md": "dd165da1381e96cf5a720964926da934d89b333ed58c9a6f6f98ea40230361bf",
+    "experiments/README.md": "0bff1951a99352bb156b69cfbb4c19c979341e8a0d6e47cda312927e0385fbf2",
+    "experiments/a_embedded/README.md": "3c9f5f36439e141bd42af601b210e0ecf6e2d362fc43d875a2fad0f1817d081f",
+    "experiments/b_broker/README.md": "ec9e73039091267b39555cfc8bdaf727a4fe9b6dae9a8d51547db4a9490ed8bb",
+    "experiments/c_capability/README.md": "65b4db983b4e819301f3bac4994a6355f4c36d8e3996311524aef57ecf3140bd",
+    "pilots/codex_email/INTERFACE.md": "26a1e67e74167fb56bafff4ec05926672db4146d7be93cefc5c1029e0aebeefb",
+    "pilots/codex_email/PROVENANCE.md": "03ed10db4398d40b7672c02685f77d9c7c0373458d39c36dea44cce7879b798c",
+    "pilots/codex_email/README.md": "83c267560f1d9cd678f6b601157423453481bb08676ef31ff7b0d302117c245f",
+    "pilots/codex_email/RUNBOOK.md": "97212c98e909d3dd82503536e4700832fa7953aba05e7cfcde5045d2d4b77aec",
+    "pilots/codex_email/lab/README.md": "18792e84da151b634fc5ecc7de5d766f18e960c0231cd16994ecbe6caf34da91",
+    "pilots/codex_email/lab/__init__.py": "81ca0d5c630698051abef0ae639cdaa8aadff7676c147421b5f8425b9a2a9deb",
+    "pilots/codex_email/lab/__main__.py": "735da590119709b49b41efa81ee67b5edf487bcf78d93e3163bd8066b5b753c4",
+    "pilots/codex_email/lab/runtime.py": "ff42d409a7a50f945ff4e08015bacc7250104b7bccd84e960889133d4910c2c0",
+    "pilots/codex_email/lab/scenarios.py": "b2eccd7a19a7ae571f586b3307d176457939e90e6901b714855db540239f5454",
+    "pilots/codex_email/lab/server.py": "9a8a0909107aef218cfd0af3e785f0350c89a09c22616ef99869e4f094eb9dd5",
+    "pilots/codex_email/lab/static/app.js": "c4b64cba1642b2bcb14913a19166debb2f54a76f299ea9bc614719f4f33b1aa9",
+    "pilots/codex_email/lab/static/index.html": "6364334997c326449ab48e1b26eb1077a1d197bb1afc48c0d8dd060ad7de882d",
+    "pilots/codex_email/lab/static/style.css": "fc718684d650b875c86d932af200abff548b795556e2025d16c3f49c97cf80aa",
+    "pilots/codex_email/tests/fixtures/provider_server.py": "0fa2f8d8f55c768ed52af15d7d3364fadac5cfbd31673c436dceaa6de86be135",
+    "pilots/codex_email/tests/test_local_lab.py": "e69a7c01a41b2eccfbac461cb5372fc2cf9242ca16a0d216a236a6ec218a0352",
+    "qualification/email_inspection/README.md": "cf31fba148a41312bfa46fd3ee7d2f557eb0cb61ce5e6bb523b690d596c95204"
+  },
+  "moves": [
+    {
+      "old_path": "pilots/codex_email/README.md",
+      "new_path": "docs/pilot/README.md",
+      "old_sha256": "83c267560f1d9cd678f6b601157423453481bb08676ef31ff7b0d302117c245f",
+      "new_sha256": "224039443304a1a27c4fdc79d419b0d7acd4c9d4a627f9f86742d24eb430d28c"
+    },
+    {
+      "old_path": "pilots/codex_email/INTERFACE.md",
+      "new_path": "docs/pilot/interface.md",
+      "old_sha256": "26a1e67e74167fb56bafff4ec05926672db4146d7be93cefc5c1029e0aebeefb",
+      "new_sha256": "509c4def2aee296e03aa72d6e5ffa4d3c2e6b097a62644dfe6c5f1c28b9f43ed"
+    },
+    {
+      "old_path": "pilots/codex_email/PROVENANCE.md",
+      "new_path": "docs/pilot/provenance.md",
+      "old_sha256": "03ed10db4398d40b7672c02685f77d9c7c0373458d39c36dea44cce7879b798c",
+      "new_sha256": "32c7dc3984b0f3e5d934ddde3ba2c1183d03b239feaeb49d6aff57ba828daf41"
+    },
+    {
+      "old_path": "pilots/codex_email/RUNBOOK.md",
+      "new_path": "docs/pilot/linux-deployment.md",
+      "old_sha256": "97212c98e909d3dd82503536e4700832fa7953aba05e7cfcde5045d2d4b77aec",
+      "new_sha256": "4d333a84c257334ff7605ba6db2a05060efa42de55f133b3e360bc6b110a750d"
+    },
+    {
+      "old_path": "pilots/codex_email/lab/README.md",
+      "new_path": "docs/pilot/local-lab.md",
+      "old_sha256": "18792e84da151b634fc5ecc7de5d766f18e960c0231cd16994ecbe6caf34da91",
+      "new_sha256": "2f3216b1cf8c32deb39e5d41bfd5c802521690912e2d621f59662aa7e8d31312"
+    },
+    {
+      "old_path": "qualification/email_inspection/README.md",
+      "new_path": "docs/qualification/email-inspection.md",
+      "old_sha256": "cf31fba148a41312bfa46fd3ee7d2f557eb0cb61ce5e6bb523b690d596c95204",
+      "new_sha256": "846d524d1854c71434be0c24a010da37f624f43ae90ea5b45f405b71286a44fa"
+    },
+    {
+      "old_path": "experiments/README.md",
+      "new_path": "docs/experiments/running.md",
+      "old_sha256": "0bff1951a99352bb156b69cfbb4c19c979341e8a0d6e47cda312927e0385fbf2",
+      "new_sha256": "5583799723568e99051a10f6f9c7b636053fb1f403e869af41b691ebec4df882"
+    },
+    {
+      "old_path": "experiments/a_embedded/README.md",
+      "new_path": "docs/experiments/a-embedded.md",
+      "old_sha256": "3c9f5f36439e141bd42af601b210e0ecf6e2d362fc43d875a2fad0f1817d081f",
+      "new_sha256": "d17dc0f78cfaf255d04f1abe620008dc336534d226fbb47d1d28f8f3e3098190"
+    },
+    {
+      "old_path": "experiments/b_broker/README.md",
+      "new_path": "docs/experiments/b-broker.md",
+      "old_sha256": "ec9e73039091267b39555cfc8bdaf727a4fe9b6dae9a8d51547db4a9490ed8bb",
+      "new_sha256": "451bd64d2236f998f5ff358b4e642ff4cd5613b8848b03235e947ff295449ac2"
+    },
+    {
+      "old_path": "experiments/c_capability/README.md",
+      "new_path": "docs/experiments/c-capability.md",
+      "old_sha256": "65b4db983b4e819301f3bac4994a6355f4c36d8e3996311524aef57ecf3140bd",
+      "new_sha256": "71a5f6bd84be162b965832e3c4297c56168353e9bfd23a94a8ba0b207043b0bb"
+    }
+  ],
+  "active_documents_sha256": {
+    "AGENTS.md": "6fc1e4c81a32f9f1097fb3f5b1957adb97b6ff87b6e141c6447f1d6b4e482e7d",
+    "README.md": "283d1ed2fec4041a3e717587a535768ae224bb6bd33e6b483a1a73f4e597f41b",
+    "docs/README.md": "06846cbb0db2ed92ab249643fbd2a4d3248d85ca2cf5d4e26a0c5d3d38d8f1fb",
+    "docs/architecture.md": "85ecab5274ea4477e3343f7650d02da315ff9c9373f612257aba66c657c40ad9",
+    "docs/documentation.md": "7281daa70776f8c7ae87814105283ea1a5baa963107231d96fed563f2ddddb72",
+    "docs/experiments/A-implementation.md": "623f6e7224520bdb1794c9289c2b1aaabda71e019b103fd25e4318998735cc60",
+    "docs/experiments/B-implementation.md": "3e59273e0bc425e48d7a4b0d6ef244acc112a662c59933607f7cf4d57445c887",
+    "docs/experiments/C-implementation.md": "389cb7f4b2070298dc288eac8624821518fb06b0f03e60d6b38ab377d01a1593",
+    "docs/experiments/COMPARISON.md": "52e37f217f25bb2c0efad22fd9b3ee9f196dd1e5f05b28df8a027d813994d577",
+    "docs/experiments/EXPERIMENT.md": "67e86e299fd6cfce93de3df7530190b6901cf7e18aac85a56e59201f28cf5c68",
+    "docs/experiments/README.md": "a49eac8fdc6060ff9080c5524f53ca1db816bc5b9b012eb06883192546ac396b",
+    "docs/experiments/a-embedded.md": "d17dc0f78cfaf255d04f1abe620008dc336534d226fbb47d1d28f8f3e3098190",
+    "docs/experiments/b-broker.md": "451bd64d2236f998f5ff358b4e642ff4cd5613b8848b03235e947ff295449ac2",
+    "docs/experiments/c-capability.md": "71a5f6bd84be162b965832e3c4297c56168353e9bfd23a94a8ba0b207043b0bb",
+    "docs/experiments/plans/A-embedded.md": "f1943fe1b094c37f6a3ef35b56ab7f1a2c2fe82d6c528660e3eddedf6b9b9b09",
+    "docs/experiments/plans/B-broker.md": "cf87a6634563b9b54521b7f4aa31d0dcc44a30c0262914229836164a479dbb20",
+    "docs/experiments/plans/C-capability.md": "773617e2e6ddbb75a6b8f42ea31f4fb74b06c1daa2c4f50b0a3c0d3db0f49163",
+    "docs/experiments/reviews/A-review.md": "05e1ef396548baa10739c260629bfa72bb8db2d2f6eb0df8176602529d6e79ff",
+    "docs/experiments/reviews/B-review.md": "5353dd4429ac57ce4c0a85d17b086f24148d0d181d816e81a9b277ac56e528ba",
+    "docs/experiments/reviews/C-review.md": "3ce04da20ea5631ea80e341817872c2c405e90a5e3f9266f51ce617b2a9af25f",
+    "docs/experiments/running.md": "5583799723568e99051a10f6f9c7b636053fb1f403e869af41b691ebec4df882",
+    "docs/pilot/README.md": "224039443304a1a27c4fdc79d419b0d7acd4c9d4a627f9f86742d24eb430d28c",
+    "docs/pilot/interface.md": "509c4def2aee296e03aa72d6e5ffa4d3c2e6b097a62644dfe6c5f1c28b9f43ed",
+    "docs/pilot/linux-deployment.md": "4d333a84c257334ff7605ba6db2a05060efa42de55f133b3e360bc6b110a750d",
+    "docs/pilot/local-lab.md": "2f3216b1cf8c32deb39e5d41bfd5c802521690912e2d621f59662aa7e8d31312",
+    "docs/pilot/provenance.md": "32c7dc3984b0f3e5d934ddde3ba2c1183d03b239feaeb49d6aff57ba828daf41",
+    "docs/plans/codex-mcp-email-pilot.md": "0127f1030c0476773dd6e41886112953f10abd2aef17e912e5f5557dae629857",
+    "docs/plans/email-ingestion-contract.md": "24bd58467557c59df379fe074337dc78f7e181ae8b80ba5325507138b68d489c",
+    "docs/plans/email-inspection-qualification.md": "49e2e50c658fa01960d4eadc6526d586402cfc22ce6a5e270f8daf200137068b",
+    "docs/plans/linux-isolation-preparation.md": "15565489d2f16173cd8656aea01dbce41d44648c4bf894088e530ce3db3789fa",
+    "docs/plans/local-e2e-lab.md": "631643aea005112a41855538e13cf813caf248a369258acb89598285342c8235",
+    "docs/plans/parallel-workstreams.md": "840954308c8dba4664e2c52ed0642ee187075655074bc0fb4042fedc0293fffc",
+    "docs/prompts/integrate-parallel-workstreams.md": "7736b8d873f9d39487ddafd04bc4ebbbe17dc39a1882dfad73101b9d69e44374",
+    "docs/prompts/plan-codex-mcp-email.md": "0067191826738a93a922884921242507a7798704b15e1f8c8a9c5edd0d2f9ef0",
+    "docs/qualification/email-inspection.md": "846d524d1854c71434be0c24a010da37f624f43ae90ea5b45f405b71286a44fa",
+    "docs/research/delegated-authority-investigation.md": "69431301ace0be12539f9720b3ca91bb9884f874811258e22dfd4c5650880cf0",
+    "docs/research/delegation-standards-sources.md": "a283e187305e57e0136fb60d786ae6890dddd2b06949913db11a5628db69f0c3",
+    "docs/research/email-content-inspection-sources.md": "33918ce699f2cabbaba2e4ef6e07df814661d0c4433f8ff16703d227a1c45b42",
+    "docs/research/identity-mcp-approval-sources.md": "0a0e04467f1ad882393ad1ea4fc22e549993230fdce5f5577f82b0f531be69b8",
+    "docs/research/llm-guard-qualification.md": "cad309bd0c3828f0d05276441466452b31cddb5cc893361eccea28e125bc2227",
+    "docs/research/policy-overlap-sources.md": "dd165da1381e96cf5a720964926da934d89b333ed58c9a6f6f98ea40230361bf",
+    "docs/status.md": "7c3b642887c2f70e35a3cf459be7881142000f935d22484d99f57ce2597c7bc1"
+  },
+  "checks": {
+    "previous_lab_source_manifest_verified_from_archive": 14,
+    "previous_lab_evidence_manifest_unchanged": 34,
+    "preexisting_source_and_evidence_unchanged": 503,
+    "active_local_links": 286,
+    "active_local_anchors": 1,
+    "broken_links_or_anchors": 0,
+    "active_old_guide_references": 0,
+    "application_test_suites_rerun": false,
+    "guide_shell_blocks_syntax_checked": 25
+  },
+  "historical_links": "Unchanged historical reports may refer to original guide paths; resolve with docs/documentation.md or the captured original sources.",
+  "independent_review": {
+    "status": "closed_no_remaining_findings",
+    "resolved": [
+      "Use new campaign output directories instead of existing historical evidence",
+      "Preserve the accepted inspection layer and Prompt Guard role while identifying unaccepted or unqualified implementation choices"
+    ],
+    "verified": [
+      "archive hash and 47 files",
+      "10 guide moves",
+      "42 current documentation hashes",
+      "14 prior lab source hashes and 34 evidence hashes",
+      "10 archived application/test files unchanged"
+    ]
+  }
+}
