@@ -314,6 +314,8 @@ L'adaptateur simulé réside dans `adapters/simulated.py`; le serveur oracle ind
 
 ### Étape 3 — Séparation Linux et démonstration depuis Codex CLI (2–3 jours)
 
+**Préparation locale livrée :** [lot Linux](linux-isolation-preparation.md), [runbook](../../pilots/codex_email/RUNBOOK.md), unité systemd et sondes opt-in. Les tests locaux couvrent socket, décès d'OPA et reprise, sous un seul UID; ils ne clôturent pas cette étape. Installation, cgroup réel, identités distinctes et parcours Codex restent à exécuter. Voir le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md).
+
 **Objectif :** établir la propriété d'autorité avec les outils réels de l'agent, encore sur fournisseur simulé.
 
 **Fichiers :** `deploy/`, `tests/test_isolation.py`, `RUNBOOK.md`, exemple de configuration MCP sans secret. **Réutilisation :** supervision OPA/locks; adapter lancement, installation immutable et permissions. **Dépendances :** décision du § 10, administrateur disponible, inventaire des capacités Codex, autorisation d'installation/configuration ultérieure. Toute modification sous Codex home suit son propriétaire via `bin/codex-owner`; ne pas écrire à l'aveugle dans le runtime personnel.
@@ -323,6 +325,8 @@ L'adaptateur simulé réside dans `adapters/simulated.py`; le serveur oracle ind
 **Preuve :** inventaire expurgé des outils/UID/groupes/montages/sockets, résultats de sondes sous l'UID agent, transcript réel Codex et journal indépendant du fournisseur. Capturer version du CLI/SDK et configuration effective sans secrets. **Action humaine :** créer les utilisateurs/installations, authentifier Codex dans sa session dédiée, effectuer la revue hors de cette session.
 
 ### Étape 4 — Adaptateur Gmail, d'abord contre un transport contrôlé (2–3 jours)
+
+**Travaux préparatoires livrés :** le [contrat d'ingestion](email-ingestion-contract.md) est proposé et revu, sans acceptation de sa politique de publication. Le [banc de qualification](../../qualification/email_inspection/README.md) est utilisable sur données fictives et prédictions fournies; aucun modèle n'est exécuté ou qualifié. Leurs interfaces restent indépendantes et ne modifient pas le contrat actuel du pilote.
 
 **Objectif :** produire le MIME exact et les résultats prudents d'une API dépourvue de déduplication garantie.
 

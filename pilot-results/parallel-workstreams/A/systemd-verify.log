@@ -1,0 +1,7 @@
+Failed to turn off SO_PASSRIGHTS on user lookup socket, ignoring: Operation not permitted
+Failed to enable SO_PASSCRED on handoff timestamp socket: Operation not permitted
+
+Read-only verification outside sandbox, systemd-analyze 259.9:
+Command: systemd-analyze verify /tmp/moraine-email.service
+Exit: 1
+moraine-email.service: Command /opt/moraine-pilot/.venv/bin/python is not executable: No such file or directory

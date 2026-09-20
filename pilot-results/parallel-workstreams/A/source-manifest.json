@@ -1,0 +1,18 @@
+{
+  "base": "b63590cc02dbcb31859aeb683f4f71314beeb775",
+  "files": {
+    "docs/plans/linux-isolation-preparation.md": "a1dd06846c3d0f1f9c1c65f396c07dc4ea6c19e42574d5bca90847ef3b57944e",
+    "pilots/codex_email/RUNBOOK.md": "97212c98e909d3dd82503536e4700832fa7953aba05e7cfcde5045d2d4b77aec",
+    "pilots/codex_email/deploy/config.json": "09ad18fdf8661e47801efc3813aa2a75d833c99738d691096048d3e13bd06792",
+    "pilots/codex_email/deploy/moraine-email.service.in": "1347210dd62e4c070a83e1d67ea5ea2d3617bab5c8a2f79e16fb37580fcc7ebb",
+    "pilots/codex_email/deploy/probe_identity.py": "be7b9a809d747636e3286f760a5a7af13ccf5eea53e18155beee63b653d62829",
+    "pilots/codex_email/deploy/probe_supervision.py": "8cf26f6ab3e786c26e3b78e23fea8fe55e9709fa24ffdc6dea8b679062e2830f",
+    "pilots/codex_email/deploy/verify_install.py": "8884fadf2aa68f8ce104b56dcae2cbac36857d536eba4f4cfec19d189adf4a83",
+    "pilots/codex_email/src/moraine_email/human_server.py": "eac70ed0895f040e9b1fad993f883cc92108a51fd81d70c1944b4845c5a5c997",
+    "pilots/codex_email/src/moraine_email/policy.py": "cf7d606204d2f255e60d3d1cc530f2f3ff2fc474cbbfdebef3eb0df14b29356b",
+    "pilots/codex_email/src/moraine_email/server.py": "56f0d3b4f8c03253298a2929464d8b9748d0fb7ccf169664e40d548ec829316d",
+    "pilots/codex_email/tests/test_deployment_preparation.py": "9b2e109a1575e673a92e2025c595429485336c64e521b775ba23c725e8903d78",
+    "pilots/codex_email/tests/test_isolation_lifecycle.py": "f65594baba1f76a92d1f1e036e6da5c025bfd3b25305a98b2a77cfc34f810a20",
+    "pilots/codex_email/tests/test_socket_isolation.py": "2fc891f1619cc6efa03b7d84ac6ed205f54d3c0234ca43dea0c011297ffe9f70"
+  }
+}

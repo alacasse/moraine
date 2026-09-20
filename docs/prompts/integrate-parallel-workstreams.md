@@ -1,5 +1,11 @@
 # Mission : intégrer les trois lots Moraine
 
+**Mission exécutée et validée.** Ce prompt conserve le mandat d'intégration
+initial, alors sans commit final ni push. L'utilisateur a ensuite demandé
+« Commit et pousse tout ça », autorisant leur réalisation. Ne pas réappliquer
+les trois commits : consulter le [suivi courant](../plans/parallel-workstreams.md)
+et l'état Git. Les frontières ci-dessous décrivent la phase historique.
+
 Travaille directement dans `/home/alacasse/projects/moraine`.
 
 Intègre localement les livraisons A, B et C de leurs worktrees dans ce checkout,

@@ -1,0 +1,116 @@
+[
+  {
+    "name": "runtime-provenance",
+    "command": [
+      "/home/alacasse/projects/moraine/pilots/codex_email/.venv/bin/python",
+      "-c",
+      "from pathlib import Path\nimport sys, hashlib, importlib, subprocess\nroot=Path.cwd().resolve()\nprint('executable:',sys.executable);print('python:',sys.version)\nfor name in ['moraine_email','moraine_email.human_server','moraine_email.policy','moraine_email.server','tests.test_isolation_lifecycle']:\n    m=importlib.import_module(name);path=Path(m.__file__).resolve();print(name, path);assert path.is_relative_to(root)\nopa=root/'.tools/opa';expected='66fa66f3b730b2fb086003863428b382b2898d343adb4b5dfab5598b4d739eed'\nactual=hashlib.sha256(opa.read_bytes()).hexdigest();print('OPA SHA256:',actual);assert actual==expected\nsubprocess.run([str(opa),'version'],check=True)\n"
+    ],
+    "cwd": "/home/alacasse/projects/moraine/pilots/codex_email",
+    "environment_overrides": {
+      "PYTHONPATH": "src:."
+    },
+    "started_utc": "2026-09-20T21:23:52.416124+00:00",
+    "returncode": 0,
+    "log": "runtime-provenance.log"
+  },
+  {
+    "name": "pilot-suite",
+    "command": [
+      "./test.sh",
+      "-q",
+      "--basetemp=/tmp/moraine-integration-20260920-k2uhefkp/pytest"
+    ],
+    "cwd": "/home/alacasse/projects/moraine/pilots/codex_email",
+    "environment_overrides": {
+      "PYTHONPATH": "src:."
+    },
+    "started_utc": "2026-09-20T21:23:52.927467+00:00",
+    "returncode": 0,
+    "log": "pilot-suite.log"
+  },
+  {
+    "name": "qualification-tests",
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "qualification/email_inspection/tests",
+      "-v"
+    ],
+    "cwd": "/home/alacasse/projects/moraine",
+    "environment_overrides": {},
+    "started_utc": "2026-09-20T21:24:16.781402+00:00",
+    "returncode": 0,
+    "log": "qualification-tests.log"
+  },
+  {
+    "name": "matrix-probe",
+    "command": [
+      "python3",
+      "pilot-results/parallel-workstreams/C/review-matrix-probe.py"
+    ],
+    "cwd": "/home/alacasse/projects/moraine",
+    "environment_overrides": {},
+    "started_utc": "2026-09-20T21:24:17.097157+00:00",
+    "returncode": 0,
+    "log": "matrix-probe.log"
+  },
+  {
+    "name": "artificial-evaluation",
+    "command": [
+      "python3",
+      "qualification/email_inspection/evaluate.py",
+      "--corpus",
+      "qualification/email_inspection/corpus.json",
+      "--predictions",
+      "qualification/email_inspection/examples/artificial-predictions.json",
+      "--output",
+      "/tmp/moraine-integration-20260920-k2uhefkp/artificial-report.json"
+    ],
+    "cwd": "/home/alacasse/projects/moraine",
+    "environment_overrides": {},
+    "started_utc": "2026-09-20T21:24:18.936681+00:00",
+    "returncode": 0,
+    "log": "artificial-evaluation.log"
+  },
+  {
+    "name": "artificial-report-comparison",
+    "command": [
+      "cmp",
+      "qualification/email_inspection/examples/artificial-report.json",
+      "/tmp/moraine-integration-20260920-k2uhefkp/artificial-report.json"
+    ],
+    "cwd": "/home/alacasse/projects/moraine",
+    "environment_overrides": {},
+    "started_utc": "2026-09-20T21:24:18.983170+00:00",
+    "returncode": 0,
+    "log": "artificial-report-comparison.log"
+  },
+  {
+    "name": "integrity-checks",
+    "command": [
+      "python3",
+      "pilot-results/parallel-workstreams/integration-20260920/verify-integrity.py"
+    ],
+    "cwd": "/home/alacasse/projects/moraine",
+    "environment_overrides": {},
+    "recorded_utc": "2026-09-20T21:26:14.829954+00:00",
+    "returncode": 0,
+    "log": "integrity-checks.log"
+  },
+  {
+    "name": "integrity-checks-final",
+    "command": [
+      "python3",
+      "pilot-results/parallel-workstreams/integration-20260920/verify-integrity.py"
+    ],
+    "cwd": "/home/alacasse/projects/moraine",
+    "environment_overrides": {},
+    "recorded_utc": "2026-09-20T21:27:50.221553+00:00",
+    "returncode": 0,
+    "log": "integrity-checks.log"
+  }
+]

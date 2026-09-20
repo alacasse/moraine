@@ -1,0 +1,17 @@
+{
+  "algorithm": "sha256",
+  "base": "b63590cc02dbcb31859aeb683f4f71314beeb775",
+  "files": {
+    "docs/plans/email-inspection-qualification.md": "d4e44df3799a63b2fb1b2418a3e0f2d51ec8532b8e5d13d6dfce106f04d5abee",
+    "pilot-results/parallel-workstreams/C/REPORT.md": "2262c6fc10f2cdebe1f9f417601850fa51dfc031dd8274cfd5ee688ceb012531",
+    "pilot-results/parallel-workstreams/C/review-matrix-probe.log": "35a0a3cd99bcd8ab66bd6b17c663175d6a225a23cde82205b6111e0f833b3607",
+    "pilot-results/parallel-workstreams/C/review-matrix-probe.py": "212967e153e0ddf017ae1b2bcc548f0c794eeec58525124ecb5a664b3b80673e",
+    "pilot-results/parallel-workstreams/C/tests.log": "b35fc2e405eb02560c13d6c98b48bf64260e9731383943b52b4a22e2d92174e3",
+    "qualification/email_inspection/README.md": "cf31fba148a41312bfa46fd3ee7d2f557eb0cb61ce5e6bb523b690d596c95204",
+    "qualification/email_inspection/corpus.json": "4779ceae9dd6e396e73cc93e08f3366f137194f39f9c021d267621d1087d777f",
+    "qualification/email_inspection/evaluate.py": "3dc5ef5ea0009e927468e488691e2dba113afc519c2019cd02a0e29d870126c2",
+    "qualification/email_inspection/examples/artificial-predictions.json": "9c96ac4edd49c98aac5cf11ede33cee9747bf7c16ee65260ea15c71a9e90fcf9",
+    "qualification/email_inspection/examples/artificial-report.json": "2c0bb5767dacfa75fd37373a350c6cb15e23102eb91793343e9393f9d438be65",
+    "qualification/email_inspection/tests/test_evaluate.py": "936ff6c3f0b9ab40d60041189f99906a564ed88f7901f6178b0e6ccd139a3df4"
+  }
+}

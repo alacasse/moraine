@@ -3,8 +3,12 @@
 Date : 20 septembre 2026. Coordinateur : tâche « Évaluer les prochaines étapes ».
 Base examinée : `b63590cc02dbcb31859aeb683f4f71314beeb775`.
 Statut : les trois lots sont livrés et committés sur leurs branches dédiées,
-après revues et corrections. Intégration locale autorisée, validation combinée à réaliser. A : 96 tests; C : 13 tests et sonde indépendante de 13 824 cas.
+après revues et corrections. Les trois lots sont intégrés dans le checkout
+principal; validation combinée et revues consignées dans le
+rapport d’intégration. A : 96 tests; C : 13 tests et sonde indépendante de 13 824 cas.
 B reste un contrat proposé et revu, sans acceptation produit.
+Après cette validation, l'utilisateur a demandé « Commit et pousse tout ça » :
+commit d'intégration et publication de `master` et des branches A/B/C autorisés.
 
 ## Mandat et frontières
 
@@ -20,9 +24,10 @@ de configuration Codex, connexion de comptes, téléchargement/exécution de
 modèles, appels payants et envois réels restent hors de ces lots. Le mandat
 initial ne demandait aucun commit. Le 20 septembre, l'utilisateur a autorisé
 les branches et commits sources A/B/C, un commit de coordination séparé, puis
-l'intégration locale et ses validations, laissée sans commit final. Aucun push
-ou publication n'est demandé. Les fichiers d'instructions publics et les
-expériences historiques restent inchangés.
+l'intégration locale et ses validations, d'abord laissée sans commit final.
+La demande ultérieure de commit et de push autorise leur publication sur
+`origin`; elle n'accepte pas le contrat produit B. Les fichiers d'instructions
+publics et les expériences historiques restent inchangés.
 
 ## Lots indépendants
 
@@ -118,9 +123,9 @@ pour transmettre les instructions de coordination.
 
 | Lot | Tâche / worktree | État | Prochain jalon |
 |---|---|---|---|
-| A | `01a0c099-13e4-7001-81e1-9c0bc950f736` — `/home/alacasse/.codex/worktrees/cc8a/moraine` | Livré; 96 tests, deux revues closes | Intégration locale puis qualification système distincte |
-| B | `01a0c099-2753-72f2-944c-95b2f24812e8` — `/home/alacasse/.codex/worktrees/49ae/moraine` | Livré; deux revues clôturées, sans constat restant | Décision produit, puis intégration documentaire distincte |
-| C | `01a0c099-3e47-7210-8668-ad7114dcd4f4` — `/home/alacasse/.codex/worktrees/d918/moraine` | Livré; 13 tests, deux revues closes; réception confirmée | Intégration locale puis qualification d'un détecteur distincte |
+| A | `01a0c099-13e4-7001-81e1-9c0bc950f736` — `/home/alacasse/.codex/worktrees/cc8a/moraine` | Commit source conservé; intégré localement | Qualification système distincte |
+| B | `01a0c099-2753-72f2-944c-95b2f24812e8` — `/home/alacasse/.codex/worktrees/49ae/moraine` | Proposition committée et intégrée, non acceptée | Décision produit avant implémentation |
+| C | `01a0c099-3e47-7210-8668-ad7114dcd4f4` — `/home/alacasse/.codex/worktrees/d918/moraine` | Commit source conservé; intégré localement | Qualification d’un détecteur distincte |
 
 Les mandats exacts et identifiants de création sont conservés dans
 [`dispatch.json`](../../pilot-results/parallel-workstreams/dispatch.json).
@@ -141,8 +146,8 @@ Le coordinateur a lu les rapports et les journaux finaux et vérifié les
 13 empreintes du manifest A et les 11 du manifest C : aucune différence.
 Les ensembles de fichiers modifiés/ajoutés des trois lots ne se chevauchent pas.
 Les résultats ont ensuite été committés dans leurs worktrees respectifs, sans
-modification des fichiers livrés. Leur import dans le checkout cible reste un
-jalon distinct; les SHA ci-dessous remplacent les HEAD détachées initiales.
+modification des fichiers livrés. Leur import dans le checkout cible a été réalisé
+sans commit final; les SHA ci-dessous remplacent les HEAD détachées initiales.
 
 A livre permissions/socket, surveillance OPA, préparation du déploiement,
 runbook et sondes. Deux reviewers non auteurs ont clôturé leurs constats;
@@ -189,11 +194,22 @@ Chaque worktree source est propre; les preuves de livraison restent inchangées.
 | C | `codex/email-inspection-qualification` | `cbfd364f392d93f640a78eb9c314b341d86aa428` |
 
 Le [prompt d’intégration](../prompts/integrate-parallel-workstreams.md)
-référence ces SHA. La coordination est committée séparément avant import.
-L’import utilise `git cherry-pick --no-commit` et reste non committé après
-validation. La revue du plan par `review_workstream_authority` est close sans
+référence ces SHA. La coordination a été committée séparément avant import
+(`342e2762400e612fa94f33fca25f0f16947e1aa0`).
+L’import par `git cherry-pick --no-commit` a conservé les 46 fichiers et leurs
+modes sans conflit. L’intégration a été validée avant son commit. La revue
+du plan par `review_workstream_authority` est close sans
 constat bloquant; le prompt exige `git diff HEAD` pour inclure l’index et les
 fichiers non suivis sont inventoriés séparément.
+
+Les commandes, résultats combinés, limites et revues actuelles sont conservés
+dans le [rapport d’intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md).
+Les validations combinées réussissent et les deux contre-revues indépendantes
+sont closes sans constat restant. Le rapport décrit l'état avant commit;
+la [trace de préparation à la publication](../../pilot-results/parallel-workstreams/integration-20260920/publication.json)
+consigne l'autorisation ultérieure et les seuls ajustements documentaires.
+Les rapports A/B/C restent les preuves historiques de leurs livraisons, avec
+leurs anciens états Git; aucune empreinte historique n’a été réécrite.
 
 ## Références
 

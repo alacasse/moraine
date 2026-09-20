@@ -1,8 +1,10 @@
-# Pilote email MCP — étapes 1 et 2
+# Pilote email MCP — étapes 1–2 et préparation Linux
 
 Implémentation locale sur **fournisseur simulé**, issue de [B](../../experiments/b_broker/README.md) et du [plan revu](../../docs/plans/codex-mcp-email-pilot.md). Elle permet de déléguer quelques textes, proposer une réponse via le SDK MCP officiel, approuver/refuser par un socket humain, puis consulter le résultat durable.
 
 Les exemples utilisent le même utilisateur Linux. Ils prouvent les contrôles applicatifs et le protocole, **pas l'isolation OS**. Aucun compte fournisseur, OAuth, envoi réel ou configuration Codex n'est installé. La séparation des utilisateurs et l'essai depuis Codex appartiennent à l'étape 3; Gmail aux étapes 4–5.
+
+Le [runbook Linux](RUNBOOK.md) prépare cette installation : socket détenu par le service, groupe de connexion distinct du contrôle `SO_PEERCRED`, surveillance d'OPA, unité systemd et sondes opt-in. Ces artefacts sont intégrés; leur exécution sous plusieurs identités et sous systemd reste à qualifier. Le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md) consigne les validations locales actuelles.
 
 ## Préparer et tester
 
@@ -16,6 +18,8 @@ Linux x86_64, Python 3.14 et `uv` sont nécessaires. Depuis ce dossier :
 Le setup acquiert OPA 1.9.0 vérifié SHA-256 et les dépendances verrouillées dans ce seul dossier. Il ne télécharge pas Python et n'utilise aucun compte. Les tests nécessitent des sockets Unix et TCP loopback. L'environnement `.venv`, le cache et le binaire sont ignorés par Git; les locks et sources sont versionnables. Le SDK utilisé est `mcp==1.30.0`, branche 1.x maintenue; aucune dépendance implicite à l'API 2.x.
 
 `tests/test_process_workflow.py` lance réellement fournisseur, broker/OPA et client MCP officiel dans des processus distincts. Il ferme la session, redémarre le broker, approuve par socket humain, vérifie les bytes MIME chez le fournisseur, puis répète la demande et révoque. Les autres suites testent notamment erreurs OPA, nonce/digest, concurrence, replay, délais SQLite/IO, panne du commit après effet, barrière `unknown` et refus de nouvelles divulgations.
+
+Les tests de socket et de cycle de vie observent aussi la conservation d'un endpoint actif, la reprise d'un socket obsolète, l'arrêt du broker après décès d'OPA et la survie d'OPA au SIGKILL direct du broker sans superviseur. Le nettoyage ultérieur par le harness est distinct de ces observations; aucun crash pendant un envoi ni comportement systemd réel n'est démontré.
 
 ## Démonstration manuelle, données fictives seulement
 
@@ -85,10 +89,12 @@ Lire tout le message et saisir `approve` ou `reject`. Le corps est présenté li
 - Le MIME est produit une seule fois, contrôlé par aller-retour, persisté puis envoyé sans reconstruction. L'approbation/refus et le traitement d'incertitude sont audités. OPA réel vérifie la politique; aucune permission de secours n'existe en cas de panne.
 - Un unique broker détient la base. Les opérations sont sérialisées; une révocation peut attendre derrière un appel déjà parti. L'adaptateur a un budget total de quatre secondes, y compris en-têtes et corps, sans retry. Les garanties d'échéance concernent le dernier contrôle local, pas l'heure d'acceptation distante.
 - Un résultat `unknown` ou une intention non résolue bloque toutes les autres demandes pour le même compte/message, même sous un nouveau grant. Le redémarrage ne renvoie rien. `resolve-unknown` exige un acte humain explicite avertissant du risque de doublon et ne transforme pas le résultat passé en échec certain. Si le stockage échoue après tentative, la réponse reste incertaine et les dispatchs sont suspendus jusqu'à reprise.
-- Les preuves de test ne sont pas une certification, et la simulation n'offre **aucune déduplication** qui cacherait un double envoi. Le vrai fournisseur, ses scopes, sa normalisation et ses erreurs restent à intégrer. SIGKILL ou panne de machine requièrent encore une supervision de groupe et un nettoyage contrôlé du socket avant redémarrage; ne jamais effacer un socket pouvant appartenir à un service actif.
+- Les preuves de test ne sont pas une certification, et la simulation n'offre **aucune déduplication** qui cacherait un double envoi. Le vrai fournisseur, ses scopes, sa normalisation et ses erreurs restent à intégrer. Un SIGKILL exige une supervision du groupe broker/OPA, encore non installée. Le serveur récupère un socket obsolète sous verrou et refuse un endpoint actif; ne jamais supprimer manuellement un socket ou son verrou tant qu'un processus pourrait l'utiliser. La reprise après panne machine reste à qualifier.
 
 ## Structure
 
 `broker.py` possède le cycle et SQLite; `models.py` et `mime.py` les entrées et le contenu; `policy.py` supervise OPA; `adapters/simulated.py` fournit une unique tentative bornée. MCP et le canal humain ne possèdent pas les règles métier. L'oracle fournisseur est indépendant dans `tests/fixtures/provider_server.py`.
 
 Voir [INTERFACE.md](INTERFACE.md) pour le contrat de développement et [PROVENANCE.md](PROVENANCE.md) pour l'extraction et la traçabilité. Les preuves nouvelles vont dans `pilot-results/codex-email/`, jamais dans les répertoires expérimentaux historiques.
+
+Les preuves des lots parallèles et de leur intégration sont dans `pilot-results/parallel-workstreams/`. Le [contrat d'ingestion](../../docs/plans/email-ingestion-contract.md) reste proposé, sans nouvelle API de production. Le [banc de qualification](../../qualification/email_inspection/README.md) est indépendant du pilote et n'exécute aucun modèle.

@@ -8,9 +8,10 @@ Le pilote actuel prépare une réponse email en texte simple. L'agent consulte u
 
 - Broker, quatre outils MCP, canal humain Unix et sérialisation MIME implémentés.
 - Fournisseur simulé indépendant, sans déduplication, avec journal des tentatives et effets.
-- 64 tests réussis dans la validation locale enregistrée, dont un parcours en processus séparés avec le SDK MCP officiel et OPA réel.
+- 96 tests du pilote réussis dans la validation intégrée, contre 64 dans la validation initiale des étapes 1–2. La préparation Linux ajoute les permissions du socket, la surveillance d'OPA, la reprise et des artefacts de déploiement; voir le [rapport d'intégration](pilot-results/parallel-workstreams/integration-20260920/REPORT.md).
 - Isolation entre utilisateurs Linux, intégration Codex réelle, OAuth/Gmail et livraison réelle encore à réaliser. Les essais actuels utilisent un seul utilisateur Linux et des données fictives.
 - Couche d'inspection et d'assainissement du contenu entrant prévue, avec Prompt Guard comme l'une de ses briques de détection. Intégration, autres bibliothèques et éventuel inspecteur génératif restent à qualifier; aucune implémentation ni immunité aux injections n'est présumée.
+- Contrat d'ingestion proposé et revu, encore non accepté. Banc indépendant disponible sur 24 cas fictifs français/anglais et prédictions fournies : 13 tests réussis et 13 824 combinaisons vérifiées; aucun modèle exécuté ou qualifié.
 
 ## Démarrer
 
@@ -24,6 +25,10 @@ Le [guide du pilote](pilots/codex_email/README.md) décrit les prérequis, l'ins
 ## Documentation et preuves
 
 - [Plan du pilote](docs/plans/codex-mcp-email-pilot.md)
+- [Préparation Linux et sondes d'installation](pilots/codex_email/RUNBOOK.md)
+- [Contrat d'ingestion proposé](docs/plans/email-ingestion-contract.md)
+- [Banc de qualification hors modèle](qualification/email_inspection/README.md)
+- [Coordination des lots et commits sources](docs/plans/parallel-workstreams.md)
 - [Pistes pour l'inspection et l'assainissement des emails](docs/research/email-content-inspection-sources.md)
 - [Rapport de développement et validation](pilot-results/codex-email/20260920-steps-1-2/REPORT.md)
 - [Provenance de l'implémentation](pilots/codex_email/PROVENANCE.md)

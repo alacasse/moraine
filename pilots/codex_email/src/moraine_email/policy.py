@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import stat
 from pathlib import Path
 import secrets
 import subprocess
@@ -21,7 +23,7 @@ class PolicyFailure(Exception):
 
 
 class OPA:
-    def __init__(self, binary: Path, policy_dir: Path | None = None):
+    def __init__(self, binary: Path, policy_dir: Path | None = None, *, runtime_dir: Path | None = None):
         self.binary = Path(binary).resolve(strict=True)
         with self.binary.open("rb") as binary_file:
             if hashlib.file_digest(binary_file, "sha256").hexdigest() != OPA_SHA256:
@@ -33,7 +35,13 @@ class OPA:
                                  capture_output=True, timeout=10, check=False)
         if checked.returncode:
             raise PolicyFailure("policy_invalid")
-        self.directory = tempfile.TemporaryDirectory(prefix="moraine-pilot-opa-")
+        if runtime_dir is not None:
+            runtime_dir = Path(runtime_dir)
+            info = runtime_dir.lstat()
+            if (not stat.S_ISDIR(info.st_mode) or info.st_mode & 0o077
+                    or info.st_uid != os.geteuid()):
+                raise ValueError("OPA runtime directory must be private and owned by the service UID")
+        self.directory = tempfile.TemporaryDirectory(prefix="opa-", dir=runtime_dir)
         self.socket = str(Path(self.directory.name) / "opa.sock")
         self.token = secrets.token_urlsafe(48)
         auth = Path(self.directory.name) / "auth.json"

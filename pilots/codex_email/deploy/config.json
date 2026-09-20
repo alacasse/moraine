@@ -1,0 +1,5 @@
+{
+  "agent": "agent:pilot",
+  "owner": "human:owner",
+  "account": "pilot@example.test"
+}

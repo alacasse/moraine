@@ -1,0 +1,13 @@
+{
+  "broker_sigkill": true,
+  "opa_survived_without_supervisor": true,
+  "broker_pid": 163260,
+  "opa_pid": 163270,
+  "unauthenticated_opa_http_status": 401,
+  "systemd_exercised": false,
+  "dispatch_in_progress": false,
+  "opa_absent_after_harness_cleanup": true,
+  "cleanup_mechanism": "harness killpg(SIGKILL), not systemd",
+  "restarted_opa_pid": 163294,
+  "restarted_opa_absent_after_graceful_stop": true
+}

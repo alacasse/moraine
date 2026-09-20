@@ -1,0 +1,33 @@
+{
+  "authorization": "User request: Commit et pousse tout ça. Source branch publication and final integration commit authorized; B remains a proposed contract.",
+  "validated_manifest": "pilot-results/parallel-workstreams/integration-20260920/source-manifest.json",
+  "validated_manifest_sha256": "75e1a6d3aab1654865f75c08477ef305e6219d30ef7e4dd0fbf0bdb283696f45",
+  "pre_commit_head": "342e2762400e612fa94f33fca25f0f16947e1aa0",
+  "changes_after_validation": {
+    "docs/plans/parallel-workstreams.md": {
+      "validated_sha256": "e97d2f5dbc2a734788c2c0d1c6747a0b47f576ccf73975cb1053faadbf9c596a",
+      "publication_sha256": "573779b7767d63b0c5b208ea0a13a4938144c2069bf809b9a5a484718ab45334",
+      "mode": "100644"
+    },
+    "docs/prompts/integrate-parallel-workstreams.md": {
+      "validated_sha256": "6674ab8a86608fee36ac1ff0107bdebc36741d9771f3fb2d6599751c893961a8",
+      "publication_sha256": "7736b8d873f9d39487ddafd04bc4ebbbe17dc39a1882dfad73101b9d69e44374",
+      "mode": "100644"
+    }
+  },
+  "changes_reason": "Only current coordination status and historical prompt annotation updated for commit/push authorization. Prior integration report, logs and manifest preserved.",
+  "validation": "All 69 reviewed hashes/modes matched before these updates; other 67 files remain exact. Production and tests unchanged; validated suites not rerun.",
+  "whitespace_exception": "runtime-provenance.log:4 retains one trailing space from verbatim OPA Build Hostname output.",
+  "publication_target": "origin https://github.com/alacasse/moraine.git",
+  "refs_to_publish": [
+    "master",
+    "codex/linux-isolation-preparation",
+    "codex/proposed-ingestion-contract",
+    "codex/email-inspection-qualification"
+  ],
+  "remote_state_before_push": {
+    "master": "b63590cc02dbcb31859aeb683f4f71314beeb775",
+    "source_branches": "absent"
+  },
+  "status": "Prepared for final integration commit and push; successful publication is verified against remote refs after execution."
+}

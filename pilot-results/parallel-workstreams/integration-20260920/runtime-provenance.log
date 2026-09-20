@@ -1,0 +1,16 @@
+Version: 1.9.0
+Build Commit: c49e670294e45bb3fd76b9e945cf821478a4bbfc
+Build Timestamp: 2025-09-26T08:53:51Z
+Build Hostname: 
+Go Version: go1.25.1
+Platform: linux/amd64
+Rego Version: v1
+WebAssembly: unavailable
+executable: /home/alacasse/projects/moraine/pilots/codex_email/.venv/bin/python
+python: 3.14.7 (main, Aug 10 2026, 00:00:00) [GCC 16.1.1 20260515 (Red Hat 16.1.1-2)]
+moraine_email /home/alacasse/projects/moraine/pilots/codex_email/src/moraine_email/__init__.py
+moraine_email.human_server /home/alacasse/projects/moraine/pilots/codex_email/src/moraine_email/human_server.py
+moraine_email.policy /home/alacasse/projects/moraine/pilots/codex_email/src/moraine_email/policy.py
+moraine_email.server /home/alacasse/projects/moraine/pilots/codex_email/src/moraine_email/server.py
+tests.test_isolation_lifecycle /home/alacasse/projects/moraine/pilots/codex_email/tests/test_isolation_lifecycle.py
+OPA SHA256: 66fa66f3b730b2fb086003863428b382b2898d343adb4b5dfab5598b4d739eed

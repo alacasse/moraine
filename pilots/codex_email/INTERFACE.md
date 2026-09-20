@@ -1,6 +1,6 @@
 # Local simulated pilot implementation contract
 
-Scope: plan steps 1–2 only. No Gmail/OAuth, system installation, real account, Codex configuration or real send. Preserve `experiments/` unchanged. This file fixes the collaboration interface; README will document the delivered executable interface.
+Scope: plan steps 1–2 plus local Linux deployment preparation. No Gmail/OAuth, system installation, real account, Codex configuration or real send. Preserve `experiments/` unchanged. The original worker assignments below describe the steps 1–2 implementation; subsequent ownership is recorded in [parallel workstreams](../../docs/plans/parallel-workstreams.md). See [RUNBOOK.md](RUNBOOK.md) for the prepared deployment and its unvalidated system boundaries.
 
 ## Ownership
 
@@ -46,10 +46,12 @@ Snapshot envelope: schema version, request_id, principal, account_id, grant_id, 
 
 `provider.send_prepared(prepared: dict, execution_id: str)` returns `{state: 'accepted'|'failed'|'unknown', reason: str, result: dict}`. Network exceptions must conservatively become unknown in broker. Adapter is synchronous, bounded, no retries, loopback synthetic provider only, result contains no secrets. The independent provider records attempts, MIME bytes and effects separately and has NO deduplication. Modes: normal, reject_before, accept_then_disconnect. Test-only control never exposed by MCP.
 
-Core owns the exact OPA facts shape. Policy constructor to provide `OPA(binary: Path, policy_dir: Path | None = None)`, `.revision`, `.decide(facts)` and `.close()`. Copy OPA checksum lock from B; coordinator supplies a verified local copy of the binary without changing B.
+Core owns the exact OPA facts shape. Policy provides `OPA(binary: Path, policy_dir: Path | None = None, *, runtime_dir: Path | None = None)`, `.revision`, `.decide(facts)` and `.close()`. A configured runtime directory must be private and service-owned. The OPA checksum lock copied from experiment B remains unchanged.
 
 ## Transports
 
 Official MCP Python SDK, Streamable HTTP, loopback bearer auth. Exactly list_context, read_context, propose_reply, get_request. Reject unknown input keys at protocol boundary; do not let SDK signature filtering silently discard authority fields. Bind authenticated agent from trusted configuration. Return safe errors, no exception content. Use bounded request bodies and Origin validation; no human routes on HTTP.
 
 Human socket uses SO_PEERCRED and configured allowed UID, no claimed human field. Strict operation whitelist maps to broker methods; bounded newline JSON protocol, duplicate JSON keys rejected, no interpolation. CLI interactive review displays exact snapshot inertly and sends matching digest+nonce; explicit refusal supported. Fixtures may use current UID but must never claim OS isolation. Main launcher accepts paths to token/config files (not token values), state dir, OPA binary, simulated provider URL/token file, human UID/socket and loopback port; no test hooks in production interface.
+
+The launcher also accepts optional `--human-socket-gid` and `--opa-runtime-dir`. The human socket stays service-owned, with mode 0600 by default or 0660 for a group held by the service; the group permits connection, while SO_PEERCRED still authorizes the exact human UID. A stable lock protects endpoint creation and stale-socket recovery. The launcher watches OPA termination and retires the broker on failure; systemd group cleanup after a broker SIGKILL remains a separate installation qualification.

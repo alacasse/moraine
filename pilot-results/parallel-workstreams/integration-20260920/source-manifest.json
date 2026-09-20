@@ -1,0 +1,301 @@
+{
+  "algorithm": "sha256",
+  "base": "b63590cc02dbcb31859aeb683f4f71314beeb775",
+  "coordination_commit": "342e2762400e612fa94f33fca25f0f16947e1aa0",
+  "source_commits": {
+    "A": {
+      "branch": "codex/linux-isolation-preparation",
+      "commit": "77b8b321dde3979941d23bb99653fd276d1070da",
+      "worktree": "/home/alacasse/.codex/worktrees/cc8a/moraine"
+    },
+    "B": {
+      "branch": "codex/proposed-ingestion-contract",
+      "commit": "559e26712a0cb7751e5785b4255e3dc0d3b57a0b",
+      "worktree": "/home/alacasse/.codex/worktrees/49ae/moraine"
+    },
+    "C": {
+      "branch": "codex/email-inspection-qualification",
+      "commit": "cbfd364f392d93f640a78eb9c314b341d86aa428",
+      "worktree": "/home/alacasse/.codex/worktrees/d918/moraine"
+    }
+  },
+  "scope": "Imported files, changed shared documents, committed handoff and dispatch, and all integration evidence. Only this manifest is excluded from its own hashes.",
+  "files": {
+    "README.md": {
+      "sha256": "cf9750674599ea1e8a295b8a96ce7359114847d5e6cb2a88857b78267f8151c9",
+      "mode": "100644"
+    },
+    "docs/plans/codex-mcp-email-pilot.md": {
+      "sha256": "edc96455bc874f4fa99bebf4eb841f66b0a8b0b36c780a27c140525563ef800f",
+      "mode": "100644"
+    },
+    "docs/plans/email-ingestion-contract.md": {
+      "sha256": "5e6e53e6d766914dc372c35376491261fd76de039973a78b4b40f38377b97f87",
+      "mode": "100644"
+    },
+    "docs/plans/email-inspection-qualification.md": {
+      "sha256": "d4e44df3799a63b2fb1b2418a3e0f2d51ec8532b8e5d13d6dfce106f04d5abee",
+      "mode": "100644"
+    },
+    "docs/plans/linux-isolation-preparation.md": {
+      "sha256": "a1dd06846c3d0f1f9c1c65f396c07dc4ea6c19e42574d5bca90847ef3b57944e",
+      "mode": "100644"
+    },
+    "docs/plans/parallel-workstreams.md": {
+      "sha256": "e97d2f5dbc2a734788c2c0d1c6747a0b47f576ccf73975cb1053faadbf9c596a",
+      "mode": "100644"
+    },
+    "docs/prompts/integrate-parallel-workstreams.md": {
+      "sha256": "6674ab8a86608fee36ac1ff0107bdebc36741d9771f3fb2d6599751c893961a8",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/REPORT.md": {
+      "sha256": "d65bd4c46b0f83d21c2ad44bf0326091b3fe4f7d372916d8b3b3f7e86ff875e2",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/final-process-evidence/test_broker_sigkill_observes_u0-crash.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/final-process-evidence/test_broker_sigkill_observes_u0-restart.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/final-process-evidence/test_broker_sigkill_observes_u0-sigkill-observation.json": {
+      "sha256": "c60ec1f7620aafe1dec22d6f4313b911026c31010f0286a3e1bbc3999efbd6a2",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/final-process-evidence/test_opa_death_retires_broker_0-opa-failed.log": {
+      "sha256": "c04da2d3aac0027532b54c7b1645f17ab7f4ac27742b874bcafeda14af93e811",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/final-process-evidence/test_opa_death_retires_broker_0-opa-recovery.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/full-suite-1.log": {
+      "sha256": "5145f8d0b95f1f6631b886180a35ffbb98dc48e405fee629857989922ebdb098",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/full-suite-2.log": {
+      "sha256": "77f18cf7b0c0e80ec2f7b8c0ffb2b521a5d362bb9c6055b0189e01e48ddf697a",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/full-suite-before-oracle-fix.log": {
+      "sha256": "aa8f69b11268a6f0b6c967d65d3b170289b14ca7bbbafb7db6ff3d7b1f72f8b8",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/full-suite-final.log": {
+      "sha256": "34ef4531f91bae04204b6809148909c62561e0b1e666fdf08b9a052e3d52ab8e",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/source-manifest.json": {
+      "sha256": "b8fbf09015b4d702e8e8f304fbf300d4b64d83d0dc042a2da9645bbbe6cfaaea",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/systemd-verify.log": {
+      "sha256": "393fe0a26a6d7cbd0f48f07bbca2fd384124d7b601be1593f889dd2591a8453a",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/test_broker_sigkill_observes_u0-crash.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/test_broker_sigkill_observes_u0-restart.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/test_broker_sigkill_observes_u0-sigkill-observation.json": {
+      "sha256": "bbb09c12480ffad53fab6288db3bb6d88dcd689db5a1a00d203a94d84311162d",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/test_opa_death_retires_broker_0-opa-failed.log": {
+      "sha256": "c04da2d3aac0027532b54c7b1645f17ab7f4ac27742b874bcafeda14af93e811",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/A/test_opa_death_retires_broker_0-opa-recovery.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/B/REPORT.md": {
+      "sha256": "7697bddc733f076bb0367e4f5b1baf4d3d8eb8afe8aeea2e56b1ca3620dbc53a",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/B/validation.txt": {
+      "sha256": "050a57a8564e37c32bc898d9fd130b96939e9653dc7bcbd29ca959fa88bd9a3e",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/B/work-plan.md": {
+      "sha256": "8f12e6763695c1b800449151191a2233db0f13cd42334c7bd7a63c57ff62576a",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/C/REPORT.md": {
+      "sha256": "2262c6fc10f2cdebe1f9f417601850fa51dfc031dd8274cfd5ee688ceb012531",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/C/review-matrix-probe.log": {
+      "sha256": "35a0a3cd99bcd8ab66bd6b17c663175d6a225a23cde82205b6111e0f833b3607",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/C/review-matrix-probe.py": {
+      "sha256": "212967e153e0ddf017ae1b2bcc548f0c794eeec58525124ecb5a664b3b80673e",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/C/source-manifest.json": {
+      "sha256": "c9f6b35e865218219618c6bb0b0de5b57e7607589517e0accc212e6afa5da40d",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/C/tests.log": {
+      "sha256": "b35fc2e405eb02560c13d6c98b48bf64260e9731383943b52b4a22e2d92174e3",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/dispatch.json": {
+      "sha256": "18d02b10b37d938ab9593b557819326e2bdf680dad92b771cc82b2b64a920207",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/REPORT.md": {
+      "sha256": "8b58b9de976f88bcee273b7ffc4924b7397ff37c766341924b61c4e1bd684006",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/artificial-evaluation.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/artificial-report-comparison.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/commands.json": {
+      "sha256": "a2e7cb52c9bf63d090789dca9320acae84989a5332439d4b28c261d99505b726",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/import-inventory.json": {
+      "sha256": "c041186c3f4cfaa309a84af7facbc9d5e1358d21412fbcbdd3c9916f53b8cd29",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/integrity-checks.log": {
+      "sha256": "39bb8467e013ac6af1ff62a29d5f9b8ae56610e74a4c3727e1e5e2ae4ac46e66",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/matrix-probe.log": {
+      "sha256": "35a0a3cd99bcd8ab66bd6b17c663175d6a225a23cde82205b6111e0f833b3607",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/pilot-suite.log": {
+      "sha256": "e2e7ad29a0f0404e15f1ee8b1ff6d26696456e9d7546c3737d982838e5315127",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/process-evidence/test_broker_sigkill_observes_u0-crash.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/process-evidence/test_broker_sigkill_observes_u0-restart.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/process-evidence/test_broker_sigkill_observes_u0-sigkill-observation.json": {
+      "sha256": "ceb69f08e639b2135fd213efd6eb6fd8362bf5008779f7297e2a8b9336cd58af",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/process-evidence/test_opa_death_retires_broker_0-opa-failed.log": {
+      "sha256": "c04da2d3aac0027532b54c7b1645f17ab7f4ac27742b874bcafeda14af93e811",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/process-evidence/test_opa_death_retires_broker_0-opa-recovery.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/qualification-tests.log": {
+      "sha256": "d2163f5c1f81b40768df659137c278069bf9aae9b59fb121002f1269f8657516",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/runtime-provenance.log": {
+      "sha256": "fe6cf1aada74c2bf26c5658122364ae701fd135d3a3329309777c63d0bfc26bf",
+      "mode": "100644"
+    },
+    "pilot-results/parallel-workstreams/integration-20260920/verify-integrity.py": {
+      "sha256": "655e9501eba1b4ab1f4bb4deb390d2b64755f2bc0794e4d142512115a372fbda",
+      "mode": "100644"
+    },
+    "pilots/codex_email/INTERFACE.md": {
+      "sha256": "26a1e67e74167fb56bafff4ec05926672db4146d7be93cefc5c1029e0aebeefb",
+      "mode": "100644"
+    },
+    "pilots/codex_email/README.md": {
+      "sha256": "a88ded98f06c2993fcfd9d762aab637a820af657b65b134fbb107d1c0f6d4b7b",
+      "mode": "100644"
+    },
+    "pilots/codex_email/RUNBOOK.md": {
+      "sha256": "97212c98e909d3dd82503536e4700832fa7953aba05e7cfcde5045d2d4b77aec",
+      "mode": "100644"
+    },
+    "pilots/codex_email/deploy/config.json": {
+      "sha256": "09ad18fdf8661e47801efc3813aa2a75d833c99738d691096048d3e13bd06792",
+      "mode": "100644"
+    },
+    "pilots/codex_email/deploy/moraine-email.service.in": {
+      "sha256": "1347210dd62e4c070a83e1d67ea5ea2d3617bab5c8a2f79e16fb37580fcc7ebb",
+      "mode": "100644"
+    },
+    "pilots/codex_email/deploy/probe_identity.py": {
+      "sha256": "be7b9a809d747636e3286f760a5a7af13ccf5eea53e18155beee63b653d62829",
+      "mode": "100644"
+    },
+    "pilots/codex_email/deploy/probe_supervision.py": {
+      "sha256": "8cf26f6ab3e786c26e3b78e23fea8fe55e9709fa24ffdc6dea8b679062e2830f",
+      "mode": "100644"
+    },
+    "pilots/codex_email/deploy/verify_install.py": {
+      "sha256": "8884fadf2aa68f8ce104b56dcae2cbac36857d536eba4f4cfec19d189adf4a83",
+      "mode": "100644"
+    },
+    "pilots/codex_email/src/moraine_email/human_server.py": {
+      "sha256": "eac70ed0895f040e9b1fad993f883cc92108a51fd81d70c1944b4845c5a5c997",
+      "mode": "100644"
+    },
+    "pilots/codex_email/src/moraine_email/policy.py": {
+      "sha256": "cf7d606204d2f255e60d3d1cc530f2f3ff2fc474cbbfdebef3eb0df14b29356b",
+      "mode": "100644"
+    },
+    "pilots/codex_email/src/moraine_email/server.py": {
+      "sha256": "56f0d3b4f8c03253298a2929464d8b9748d0fb7ccf169664e40d548ec829316d",
+      "mode": "100644"
+    },
+    "pilots/codex_email/tests/test_deployment_preparation.py": {
+      "sha256": "9b2e109a1575e673a92e2025c595429485336c64e521b775ba23c725e8903d78",
+      "mode": "100644"
+    },
+    "pilots/codex_email/tests/test_isolation_lifecycle.py": {
+      "sha256": "f65594baba1f76a92d1f1e036e6da5c025bfd3b25305a98b2a77cfc34f810a20",
+      "mode": "100644"
+    },
+    "pilots/codex_email/tests/test_socket_isolation.py": {
+      "sha256": "2fc891f1619cc6efa03b7d84ac6ed205f54d3c0234ca43dea0c011297ffe9f70",
+      "mode": "100644"
+    },
+    "qualification/email_inspection/README.md": {
+      "sha256": "cf31fba148a41312bfa46fd3ee7d2f557eb0cb61ce5e6bb523b690d596c95204",
+      "mode": "100644"
+    },
+    "qualification/email_inspection/corpus.json": {
+      "sha256": "4779ceae9dd6e396e73cc93e08f3366f137194f39f9c021d267621d1087d777f",
+      "mode": "100644"
+    },
+    "qualification/email_inspection/evaluate.py": {
+      "sha256": "3dc5ef5ea0009e927468e488691e2dba113afc519c2019cd02a0e29d870126c2",
+      "mode": "100644"
+    },
+    "qualification/email_inspection/examples/artificial-predictions.json": {
+      "sha256": "9c96ac4edd49c98aac5cf11ede33cee9747bf7c16ee65260ea15c71a9e90fcf9",
+      "mode": "100644"
+    },
+    "qualification/email_inspection/examples/artificial-report.json": {
+      "sha256": "2c0bb5767dacfa75fd37373a350c6cb15e23102eb91793343e9393f9d438be65",
+      "mode": "100644"
+    },
+    "qualification/email_inspection/tests/test_evaluate.py": {
+      "sha256": "936ff6c3f0b9ab40d60041189f99906a564ed88f7901f6178b0e6ccd139a3df4",
+      "mode": "100644"
+    }
+  }
+}

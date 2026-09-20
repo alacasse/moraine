@@ -1,0 +1,6 @@
+PASS all 46 imported file contents and Git modes still match source commits; historical A/B/C evidence untouched
+PASS 239 pre-existing files outside allowed changes match base bytes/modes, including historical experiments, evidence and dependency locks
+PASS 4 commits have original parent and one Codex trailer; source branches/worktrees preserved and clean; target HEAD remains coordination commit; no unresolved conflict
+PASS git diff HEAD --check and git diff --cached --check
+PASS 91 local Markdown link destinations exist (fragment anchors not checked); checked imported and new untracked files
+PASS source/docs/JSON whitespace; raw log formatting retained: pilot-results/parallel-workstreams/integration-20260920/runtime-provenance.log:4 (verbatim command output)
