@@ -8,6 +8,8 @@ Conserver **B, broker indépendant avec OPA et SQLite**, et lui ajouter une faç
 
 Premier usage : préparer une réponse utile à un message sélectionné, à un seul correspondant autorisé, en texte simple UTF-8, sans pièce jointe sortante. L'humain voit le message exact, approuve ou refuse; Codex consulte ensuite le résultat. Toutes les réponses nécessitent une approbation. Pas de boîte principale, d'envoi automatique, de recherche libre dans la messagerie ou de framework de connecteurs.
 
+**Cadrage retenu le 20 septembre 2026 :** prévoir une couche d'inspection et d'assainissement entre la récupération du contenu sélectionné et sa publication à l'agent (§ 6), avec Prompt Guard comme l'une de ses briques de détection. L'implémentation, la variante/version de Prompt Guard, les autres bibliothèques et l'emploi éventuel d'un inspecteur génératif restent à qualifier. Les validations enregistrées des étapes 1–2 ne couvrent pas cette nouvelle couche.
+
 **Critère de réussite réel :** depuis Codex, une réponse préparée à partir de 1 à 5 messages sélectionnés atteint un correspondant de test consentant; son adresse et son contenu décodé correspondent au snapshot approuvé. Une répétition de soumission/approbation et un redémarrage n'ajoutent aucun envoi. Un refus humain et une tentative de lecture hors sélection produisent respectivement zéro effet et zéro lecture protégée. L'humain distingue une acceptation par Gmail d'une livraison constatée. Ces observations seront des preuves de pilote, pas une certification.
 
 La séparation Linux a été acceptée par l'utilisateur (§ 10), qui demande également des subagents et des reviewers. Gmail, la sélection explicite et les limites ci-dessous restent des hypothèses de travail.
@@ -31,7 +33,7 @@ La préférence historique pour A auprès de développeurs Python ne contredit p
 | Étape | Lecture et demande de l'agent | Décision humaine | Exécution effective |
 |---|---|---|---|
 | Préparer la boîte | Aucun accès fournisseur | Choisir une boîte dédiée et un correspondant de test; n'y placer que du contenu acceptable pour le pilote | Configuration OAuth hors Codex, après autorisation de l'étape réelle |
-| Choisir le contexte | Rien tant que la délégation n'existe pas | Dans `moraine-human`, sélectionner 1 à 5 messages, éventuellement une note texte locale; choisir le message auquel répondre, l'adresse exacte permise et une échéance | Le service inventorie pour l'humain, importe seulement les corps sélectionnés et fige les versions; aucun fil entier implicitement inclus |
+| Choisir le contexte | Rien tant que la délégation n'existe pas | Dans `moraine-human`, sélectionner 1 à 5 messages, éventuellement une note texte locale; choisir le message auquel répondre, l'adresse exacte permise et une échéance | Le service inventorie pour l'humain, importe seulement les corps sélectionnés, applique la future inspection/assainissement et fige les versions publiables; aucun fil entier implicitement inclus |
 | Déléguer | Recevoir un `grant_id`, qui n'est pas un secret ni une autorisation autonome | Confirmer agent, boîte, liste fermée de ressources, destinataire et durée | Le service crée la délégation liée à l'identité agent authentifiée; validité proposée : 30 minutes |
 | Demander une réponse | Lister la sélection puis lire ses seuls textes; demander une réponse à `reply_to_ref` | Donner l'objectif rédactionnel dans Codex | Codex prépare un corps; le service contrôle et normalise, puis conserve le message exact |
 | Soumettre | `propose_reply` retourne immédiatement après préparation un `request_id`, une empreinte et `pending` | Aucun consentement déduit du prompt | Aucune tentative d'envoi; pas d'appel MCP suspendu pendant la revue |
@@ -62,6 +64,7 @@ flowchart LR
     O[OPA sur socket Unix privé]
     D[(SQLite et snapshots)]
     E[Adaptateur Gmail]
+    I[Ingestion : inspection et assainissement à concevoir]
     S[Secrets OAuth protégés]
     H[Socket Unix de gestion humaine]
     M --> B
@@ -69,6 +72,8 @@ flowchart LR
     B --> O
     B --> D
     B --> E
+    E -->|Contenu sélectionné| I
+    I -->|Version publiable selon la politique| D
     E --- S
   end
   subgraph Human[Session Linux du propriétaire hors Codex]
@@ -83,6 +88,8 @@ flowchart LR
 ```
 
 Les noms Linux sont proposés, pas créés. Trois domaines de confiance : agent non privilégié, service détenteur des droits fournisseur, humain habilité à les déléguer. Le noyau, l'administrateur de la machine et le binaire déployé du service restent fiables dans ce modèle.
+
+Le module d'ingestion représente ici le contrôle de publication du contenu. L'éventuel inspecteur IA n'est pas assimilé au service privilégié dans ce schéma : son exécution, son isolation et l'usage de ses résultats restent à concevoir (§ 6).
 
 | Élément | Propriétaire et accès proposés | Protection à vérifier |
 |---|---|---|
@@ -177,6 +184,38 @@ Limites proposées : 5 messages et 1 note, 32 Kio de texte par ressource, 128 Ki
 
 L'autorisation est vérifiée avant chaque accès pertinent : inventaire humain authentifié; chargement sélectionné sous l'autorité de cette sélection; lecture agent d'un snapshot; répétition; projection d'une demande. Si une échéance est franchie pendant une lecture, ne pas restituer ensuite son contenu à l'agent. Le contenu lu est de la donnée non fiable, jamais une extension de délégation. Une fois communiqué à OpenAI/Codex, il n'est plus révocable par Moraine.
 
+### Inspection et assainissement du contenu entrant — cadrage retenu
+
+**Une couche complète, composée de plusieurs briques, dont Prompt Guard.** Tout contenu externe destiné au contexte de l'agent doit passer par cette couche avant sa publication. Le connecteur récupère uniquement les données autorisées et traite les particularités du fournisseur; le module d'ingestion valide, prépare et inspecte ce qui sera exposé. Cette répartition n'impose pas deux services. Les notes importées et les métadonnées textuelles exposées à l'agent doivent également être couvertes pour éviter un passage non inspecté par le sujet, le titre ou le nom affiché.
+
+Prompt Guard occupe le rôle de détecteur d'injection à l'intérieur de ce module. La couche reste responsable du décodage, de l'assainissement technique, de la combinaison des constats, de l'application de la politique de publication et de la traçabilité. Un score Prompt Guard constitue une entrée de cette politique; il ne décide pas seul de la publication et n'accorde aucun pouvoir à l'agent. Son emploi n'implique pas une réécriture de l'email.
+
+Le reste de Moraine utilisera l'interface du module d'ingestion; le choix du modèle, son découpage en segments et ses seuils seront des détails internes à qualifier. Aucun contrat de code ni framework de plugins n'est défini à ce stade. Prompt Guard 2 86M reste le premier candidat de version à évaluer; l'ajout d'un inspecteur génératif constitue une question distincte, encore ouverte.
+
+Parcours visé : **sélection autorisée → récupération → validation/décodage bornés → assainissement technique et inspection → décision de publication → snapshot versionné → lecture autorisée par l'agent**. L'inspection peut nécessiter l'examen de la source et du texte extrait pour repérer ce que la transformation masquerait; l'ordre détaillé reste à définir. Un résultat d'inspection n'accorde aucun droit de lecture supplémentaire. Caches, replays et lectures de snapshots doivent conserver le lien avec la version effectivement inspectée.
+
+| Responsabilité | Résultat attendu | Limite à conserver |
+|---|---|---|
+| Validation et assainissement techniques | Décodage MIME/Unicode contrôlé, limites de taille et de complexité, rejet des formats ambigus ou non pris en charge, rendu inerte des contrôles | Aucune exécution de contenu ni ouverture automatique de lien ou ressource distante; le pilote reste limité au texte simple, sans ajout implicite de HTML ou pièces jointes |
+| Inspection du contenu | Prompt Guard fournit un signal de détection; des règles ou d'autres analyses peuvent le compléter pour relever manipulation, obfuscation et demandes hors périmètre | Variante, seuils, couverture et compléments à qualifier; absence de signal ne signifie pas absence d'injection |
+| Décision de publication | Appliquer une politique explicite : publier la version préparée, demander une revue ou refuser | La politique et les contrôles d'autorisation restent hors du contenu et de l'inspecteur IA; un avis favorable ne rend pas le texte fiable |
+| Traçabilité et fidélité | Relier source/version, texte extrait, texte publié, transformations, constats et versions des règles/outils utilisés | Aucune suppression ou réécriture silencieuse du sens; conservation des originaux et rapports à cadrer dans le stockage protégé, sans corps d'email dans les journaux généraux |
+
+L'assainissement technique ne supprime pas le risque d'une instruction malveillante exprimée en texte ordinaire. Distinguer une demande légitime de l'expéditeur, une citation et une tentative de détourner l'agent nécessite une évaluation contextualisée; retirer toute phrase impérative détruirait l'usage. Les [sources et pistes de qualification](../research/email-content-inspection-sources.md) distinguent parsing, détection et analyse générative. Aucune solution citée n'a été testée sur Moraine.
+
+**Hypothèse complémentaire d'un inspecteur génératif.** Un modèle avec des instructions dédiées pourrait améliorer la détection contextuelle ou expliquer une anomalie. Ce bénéfice reste à mesurer en complément du classifieur Prompt Guard. Il lit lui aussi du contenu hostile : ses instructions ne garantissent pas qu'il restera fidèle à sa tâche. Il peut produire un faux avis favorable, supprimer une information utile ou transmettre l'injection dans une explication, un résumé ou une réécriture. Ajouter cet inspecteur ajoute donc une surface d'attaque et éventuellement un destinataire des données; l'absence de risque supplémentaire n'est pas établie.
+
+Conditions proposées pour évaluer cette piste :
+
+- Privilégier d'abord un appel de classification/analyse sans outils; justifier une boucle d'agent seulement si un besoin mesuré l'exige. Aucun accès autonome à la boîte, aux fichiers, au shell, au réseau de navigation ou aux secrets fournisseur; aucun pouvoir de délégation, d'approbation ou d'envoi.
+- Limiter l'entrée au contenu autorisé nécessaire, isoler les messages/sessions et ne pas lui donner de mémoire partagée contenant d'autres emails. Cadrer hébergement, confidentialité et rétention avant toute transmission à un modèle externe; les secrets d'accès au modèle appartiennent au code appelant, pas à son contexte.
+- Borner et valider sa sortie structurée. Cette validation vérifie une forme, pas la vérité du verdict. Ses textes libres et éventuelles réécritures restent non fiables; ils ne deviennent ni instructions pour l'agent principal, ni champs d'autorité, ni remplacement silencieux de l'original.
+- Conserver hors du modèle la politique de publication, les droits et l'approbation humaine. Si une inspection requise échoue, expire ou rend une sortie invalide, ne pas publier automatiquement le contenu brut en secours. La conduite précise — refus ou revue — et les seuils restent à décider.
+
+**Décisions encore ouvertes :** variante/version de Prompt Guard et modalités d'intégration; bibliothèques d'assainissement à réutiliser; règles et analyses complémentaires; exécution locale ou hébergée; transformations permises; traitement des alertes et désaccords; représentation des résultats et conservation; budget de latence/coût; moment de réinspection après changement de règles. Le rôle de Prompt Guard est retenu; aucun format de contrat, fournisseur d'exécution ou seuil n'est arrêté ici.
+
+**Qualification attendue avant intégration :** corpus fictif français/anglais mêlant messages ordinaires, citations légitimes, injections directes/obfusquées et entrées malformées; mesure des faux positifs, faux négatifs, changements de sens, coût et latence. Vérifier aussi limites de contexte/troncature, panne du détecteur, révocation pendant analyse, restitution d'une ancienne version et tentative de contamination de la sortie de l'inspecteur. Un avis favorable volontairement erroné doit laisser intacts les contrôles de lecture, destinataire et approbation. Rapporter les attaques manquées; aucun taux observé sur ce corpus ne vaut garantie générale.
+
 ### Préparation et snapshot
 
 Contrat privé de l'adaptateur, avec des noms indicatifs à figer à l'étape 1 :
@@ -190,6 +229,8 @@ Contrat privé de l'adaptateur, avec des noms indicatifs à figer à l'étape 1 
 | `inspect_outcome_for_human` | Intention et corrélation déjà connues | Investigation bornée, en lecture seule et à l'initiative humaine; ne déclenche pas d'envoi |
 
 Le broker possède l'authentification, les grants, la politique, les transactions et la décision d'appeler. L'adaptateur possède les règles Gmail, le MIME, les credentials et l'interprétation des réponses. MCP transporte des demandes; il ne connaît ni endpoint fournisseur arbitraire ni secret et ne sert pas de framework d'adaptateurs.
+
+Le contrat d'ingestion devra compléter `capture_selected` et la publication des snapshots avec l'inspection/assainissement décrite ci-dessus. Il n'est pas encore défini; l'inspecteur éventuel ne reçoit pas les credentials que possède l'adaptateur.
 
 Périmètre sortant précis : `From` fixé à la boîte; un unique `To` ASCII choisi explicitement par l'humain lors de la délégation; `Cc=[]`, `Bcc=[]`, aucune pièce jointe, aucune enveloppe ou en-tête libre. Le destinataire doit correspondre à l'adresse de réponse choisie pour le message (Reply-To unique, sinon From unique); les cas ambigus demandent une nouvelle sélection humaine, pas une inférence du modèle. L'adresse du message ne confère aucune autorité par elle-même.
 
@@ -237,6 +278,7 @@ Toutes les extractions vont dans le pilote; **aucune modification des fichiers e
 | [bootstrap.py](../../experiments/b_broker/bootstrap.py), [run.sh](../../experiments/b_broker/run.sh), locks | Versions vérifiées et dépendances figées | Préparer les artefacts avant service, ne pas télécharger/chmod le code en runtime; secrets hors argv, unités de supervision, nettoyage du groupe OPA |
 | [tests Python](../../experiments/b_broker/tests/test_broker.py), politiques de test, [runner commun](../../experiments/run_campaign.py) | Scénarios de panne OPA, temps/SQLite, concurrence, replay/reprise et oracle d'effets | Porter les assertions pertinentes sans façade de compatibilité au vieux benchmark; ajouter MIME réel, redivulgation, MCP, refus, séparation Linux et fournisseur sans déduplication |
 | Aucune source actuelle | — | Façade MCP, client humain, sélection Gmail, OAuth, déploiement séparé, traces indépendantes du parcours Codex |
+| Nouvelle exigence d'ingestion (§ 6) | Validations techniques existantes à inventorier | Module d'inspection et d'assainissement comprenant Prompt Guard, traçabilité des transformations, qualification de l'intégration et des autres briques; aucun développement réalisé |
 
 Les versions de départ effectivement établies sont OPA 1.9.0, Python 3.14, HTTPX 0.28.1, pytest 9.0.2; les conserver initialement dans l'extraction. Verrouiller séparément SDK MCP et bibliothèques OAuth lors de l'étape correspondante, après contrôle de compatibilité Python 3.14. Aucun numéro de version non vérifié n'est prescrit pour ces ajouts.
 
@@ -284,6 +326,8 @@ L'adaptateur simulé réside dans `adapters/simulated.py`; le serveur oracle ind
 
 **Objectif :** produire le MIME exact et les résultats prudents d'une API dépourvue de déduplication garantie.
 
+**Ajout de périmètre à qualifier :** concevoir l'ingestion du § 6 et comparer les options avant son implémentation. Intégrer ensuite son contrôle de publication et ses preuves au parcours de sélection; un simple raccordement Gmail ne suffira plus à couvrir cette exigence. L'estimation initiale de cette étape n'inclut pas ce travail supplémentaire, encore non chiffré.
+
 **Fichiers :** `src/moraine_email/{selection.py,adapters/gmail.py,oauth.py}`, `tests/{test_gmail_contract.py,test_provider_faults.py}`; compléter les fixtures Gmail de `tests/test_mime_snapshot.py` sans changer le contrat MIME accepté aux étapes 1–2. **Réutilisation :** MIME, snapshots/intention/reprise, remplacer les appels fournisseur de fixture. **Dépendances :** défaut Gmail confirmé avant connexion réelle; bibliothèque OAuth figée et absence de retry caché démontrée.
 
 **Acceptation hors réseau réel :** fixture MIME représentative et hostile; rejet des adresses ambiguës/en-têtes injectés, Cc/Bcc/pièces jointes et HTML-only; sélection fermée; changement de message source après préparation sans changement d'envoi; égalité bytes soumis/bytes approuvés. Simuler 400/401, quota, 5xx, succès invalide, acceptation suivie de déconnexion, crash avant/après commit; vérifier une seule tentative et `unknown` conservé. Retard OAuth/stockage : aucun accès après échéance. Une nouvelle clé après `unknown` reste bloquée sans traitement humain.
@@ -317,11 +361,14 @@ Après la boucle réelle réussie, proposer cinq tâches utiles sur quelques jou
 | Révocation et appel en vol | Ordre durable de révocation/dispatch observé, budget d'IO borné; ne pas confondre révocation demandée et acceptée; étapes 1 et 4 |
 | Crash, stockage défaillant, OPA indisponible | Pannes avant intention, après intention, après effet et au commit résultat; résultat conservateur sans renvoi; étapes 1 et 4 |
 | Contournement par outils Codex | Sondes fichier/processus/socket, appel HTTP direct, inventaire navigateur/connecteurs réellement accessibles; étape 3 |
+| Injection dans le contexte ou contamination de l'inspecteur | Corpus bénin/hostile, fidélité des transformations, erreurs de détection et panne sans passage brut; avis favorable erroné sans extension des droits; qualification puis intégration à l'étape 4 (§ 6) |
 | Qualité de la preuve | Oracle et changements sensibles revus séparément; preuves avant/après gardées, échecs non masqués par HTTP; étape 5 |
 
 ## 9. Effort, exploitation et exclusions
 
 Ordre de grandeur : **10 à 15 jours de développement et revue**, puis 0,5 à 1 jour de synthèse et quelques jours calendaires d'usage. Les fourchettes par étape incluent leur validation, pas les délais d'accès aux comptes. Une démo intégrée simulée demande environ 6 à 9 jours en incluant la séparation Linux; ajouter le fournisseur et la revue conduit au premier usage réel. Ce n'est pas une mesure tirée des durées du benchmark : elles comportent des attentes volontaires.
+
+Cette estimation précède l'ajout de l'inspection et de l'assainissement. Leur recherche, conception, intégration et qualification restent à chiffrer; le total ci-dessus ne couvre donc pas tout le périmètre désormais visé.
 
 Principaux écarts possibles : compatibilité SDK avec Python 3.14, droits administrateur locaux, impossibilité d'isoler les connecteurs du compte Codex, création/consentement OAuth et restrictions du compte, qualité MIME des premiers messages, défauts trouvés en revue. Une VM ou une UI web humaine augmenterait le périmètre. L'attente d'une validation externe peut dépasser le temps de code; ne pas la promettre résolue par ce plan.
 
@@ -337,11 +384,14 @@ Un futur adaptateur commande peut seulement éprouver le contrat sur papier : de
 
 **Décision acceptée par l'utilisateur : le premier pilote réel utilisera Codex CLI sous une identité Linux dédiée, avec approbation dans la session humaine séparée.** Cela rend testable la séparation annoncée et évite de confondre une confirmation du modèle avec un pouvoir humain. L'utilisateur demande l'utilisation de subagents et de reviewers indépendants, puis autorise explicitement l'initialisation du dépôt, le commit de l'existant et le lancement du développement local des étapes 1–2. Installation système et envoi réel restent hors de cette autorisation.
 
+**Cadrage documentaire accepté le 20 septembre 2026 :** inclure une couche d'inspection et d'assainissement des emails avant leur remise à l'agent, avec Prompt Guard comme l'une de ses briques logicielles. Le choix de sa variante/version et de son intégration, des autres bibliothèques et d'un éventuel inspecteur génératif reste ouvert. Cette décision fixe le rôle de Prompt Guard dans l'ensemble; elle ne constitue ni une qualification technique ni un lancement de l'implémentation ou d'un modèle.
+
 | Incertitude restante | Hypothèse pour avancer | Information/confirmation indispensable avant |
 |---|---|---|
 | Fournisseur et compte | Gmail API, boîte dédiée sans données sensibles | Étape 5 : type de compte, droit d'enregistrement OAuth, propriétaire de la boîte; Gmail par défaut, Graph seulement si motif concret |
 | Machine et accès système | Linux x86_64, Python 3.14, administrateur disponible | Étape 3 : machine cible, identités et absence de ponts host/client |
 | Contenu et correspondant | 1–5 messages texte et un destinataire de test | Étape 5 : adresses exactes, consentement du correspondant, données acceptables pour le traitement par Codex/OpenAI |
+| Inspection et assainissement | Couche retenue avec Prompt Guard comme brique de détection; autres briques à qualifier | Avant intégration : variante/version, contrat, politique de publication, outils, confidentialité, critères et coût de qualification du § 6 |
 | Ergonomie | Terminal humain, revue 5 minutes, grant 30 minutes | Essai simulé de l'étape 2; ajuster uniquement avec observation explicite |
 | Conservation | Sept jours pour le contenu, reçus/tombstones jusqu'à clôture | Avant stockage réel : accord du propriétaire et emplacement protégé |
 | Exécution future | Étapes 1–2 locales autorisées après commit de l'existant | Autorisation ultérieure pour installation système, configuration Codex/comptes et envoi réel |
