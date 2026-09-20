@@ -1,0 +1,26 @@
+{
+  "common": {
+    "a": {
+      "passed": 30,
+      "failed": 0
+    },
+    "b": {
+      "passed": 30,
+      "failed": 0
+    },
+    "c": {
+      "passed": 30,
+      "failed": 0
+    }
+  },
+  "local": {
+    "a_python": 40,
+    "b_python": 17,
+    "b_rego": 12,
+    "c_python": 41,
+    "provider": 5
+  },
+  "tested_source_mismatches": [],
+  "documentation_missing_links": [],
+  "final_manifest": "experiments/results/final-source/manifest.json"
+}

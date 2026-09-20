@@ -1,0 +1,20 @@
+{
+  "docs/experiments/A-implementation.md": "901aa82379ff1062a0f6ff294be8852955bdddaeb089aa4be3ab92ffd8d92217",
+  "experiments/a_embedded/README.md": "06a6c022df78a29643a77e8d1899eac844a19d22bf0ea1936add64982a61f56c",
+  "experiments/a_embedded/gate.py": "f93a65e02484870e857c8d953f4c67bb0f83246312de25d55c306f3c64ff59f0",
+  "experiments/a_embedded/host.py": "a5e55979dd4f1e77644ebc39484093f7e119a410795981aac134921d64566e48",
+  "experiments/a_embedded/models.py": "e52b4a0314bda2d590ec0f2123e2856532693d321fac8de7bf905eebe1745147",
+  "experiments/a_embedded/policy.cedar": "2e26ec558f635aa3069be54b7d4c9e6fa6eb4332ed134146ad4a00598fb4f2e3",
+  "experiments/a_embedded/policy.py": "483fa06bafe4d7a59903d76f80e7c986780c50cf22dbc8a14f600d5fa3260183",
+  "experiments/a_embedded/provider.py": "7e80c71a6346471d11800d50dedd2b992219709243b2b712149ea857826a57b8",
+  "experiments/a_embedded/requirements.in": "c18a9c9d9c7caccc5ceb2de5eb02f2598e99943d3c41402b40566db6e91bec63",
+  "experiments/a_embedded/requirements.lock": "773a35e2408e116041d6b2208e8180b14ead3f499aa91e7abef1d8e779f8af47",
+  "experiments/a_embedded/run.sh": "a1dd2ce62a360e4a5539178fdc8383feb20bc8b132990737f6e7012fe7bdf1a2",
+  "experiments/a_embedded/schema.json": "fbc41275d67a3d6b1186ae4f147ed8fd09bfc73f733f0e8f73d2e6176474fa57",
+  "experiments/a_embedded/setup.sh": "293b39691eb7d01e3b854cf8636a046c234924f987dfe32215bfe2f24b6f95af",
+  "experiments/a_embedded/test.sh": "d65095e4b86f5e117495bc15c87057da2c56557fde8c1f62d470bef1f0ec89f8",
+  "experiments/a_embedded/tests/conftest.py": "bc89ab4e3e34a17e7a1bd2963c6ee059ae21b17f342954740e2d86afab487b47",
+  "experiments/a_embedded/tests/test_gate.py": "e0f5b58de43433584c700b57cb698134852a565c4f5a226b8579a0b16e549eeb",
+  "experiments/a_embedded/tests/test_host.py": "259848db3f24d3b9430974f4158b69709e5a008580f2e7baafab5ed8c3e8ce60",
+  "experiments/a_embedded/tests/test_policy.py": "5e681349bcec13c4e41725088480fc2aefdc033c2946a6529d716e60f2fc04d6"
+}

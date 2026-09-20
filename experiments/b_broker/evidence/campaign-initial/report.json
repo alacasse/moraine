@@ -1,0 +1,525 @@
+{
+  "started_at": "20260920T182209Z",
+  "scope": "synthetic HTTP/process comparison; no OS isolation proof",
+  "source_manifest": {
+    "experiments/README.md": "6878539e875d432284ca1a50065e7e3b0cdba3a12255a9c52c2da44fdbd44b55",
+    "experiments/run_campaign.py": "c9f4bc5a95018fa5a4bf16d17a177e5a46207ce77799e3a16fe9d5abe7332436",
+    "experiments/a_embedded/gate.py": "88adacec83d269fab34fe923bf4e2d64bd5e7111e78718d5dbb971e469832e82",
+    "experiments/a_embedded/host.py": "2c209a7582a2f2aa765fd248c0f9498345ce5f29fb36e1e1e685264ed12de9ed",
+    "experiments/a_embedded/models.py": "e52b4a0314bda2d590ec0f2123e2856532693d321fac8de7bf905eebe1745147",
+    "experiments/a_embedded/policy.cedar": "2e26ec558f635aa3069be54b7d4c9e6fa6eb4332ed134146ad4a00598fb4f2e3",
+    "experiments/a_embedded/policy.py": "483fa06bafe4d7a59903d76f80e7c986780c50cf22dbc8a14f600d5fa3260183",
+    "experiments/a_embedded/provider.py": "7e80c71a6346471d11800d50dedd2b992219709243b2b712149ea857826a57b8",
+    "experiments/a_embedded/requirements.lock": "773a35e2408e116041d6b2208e8180b14ead3f499aa91e7abef1d8e779f8af47",
+    "experiments/a_embedded/run.sh": "a1dd2ce62a360e4a5539178fdc8383feb20bc8b132990737f6e7012fe7bdf1a2",
+    "experiments/a_embedded/schema.json": "fbc41275d67a3d6b1186ae4f147ed8fd09bfc73f733f0e8f73d2e6176474fa57",
+    "experiments/a_embedded/setup.sh": "293b39691eb7d01e3b854cf8636a046c234924f987dfe32215bfe2f24b6f95af",
+    "experiments/a_embedded/test.sh": "d65095e4b86f5e117495bc15c87057da2c56557fde8c1f62d470bef1f0ec89f8",
+    "experiments/b_broker/bootstrap.py": "c4e24a0fc6dba63d43686c326e719924b51771057a1ac5cd653a1aebcc0c946d",
+    "experiments/b_broker/broker.py": "16fb4fd3da5a37e38fa8105a3141c23e75b18a6f29c23466f559a721af59c0be",
+    "experiments/b_broker/dependencies.lock.json": "2069eaade9433ad6611aab83c6ddd9ffbff041d691761ab138a959cd6da3c4b9",
+    "experiments/b_broker/opa.py": "136808763b58a89b02f36c3c335c831c065ff56737e88afea99b18fbd5e756e0",
+    "experiments/b_broker/pyproject.toml": "37f0fae06fd11781a91a379004ef44794b6b1a1d724c78baeef60a5f109aa755",
+    "experiments/b_broker/run.sh": "7941800d5e6ab5a3168b297dd273b3ee2bef59a433596e1784ef65cbdac0345c",
+    "experiments/b_broker/test.sh": "db5f1711bb69310ac9a7f1ce039418fcbe8541e9a235da8511958686c280442d",
+    "experiments/b_broker/uv.lock": "cbe96b4ed72ca0246ee24cdadd8122f8d2203b5b48473be0ca61ccdbbb6e4461",
+    "experiments/b_broker/policy/broker.rego": "1600c8e3f848bb14ff8029a9e9ae5c4de70159aba57304ded08442e7f513c616",
+    "experiments/b_broker/policy/system_authz.rego": "e2b30aad7ed314a6c9df28f9eadb70f9c5773d6b5cf750ba4c4cc75e9f3a2d66",
+    "experiments/c_capability/actions.py": "735daf74e5b20d232084d6dda785744b32f4d4707eb8c28c0068d5e1d762a9ee",
+    "experiments/c_capability/attenuate.py": "24b12ca45dcc5fc002697409facf69081758e5fbaf9c434b4e0e0aa934e3656e",
+    "experiments/c_capability/capabilities.py": "0146f7eb3583d3ecef9b10570410a3cc09d77b81ba89e08ef99bb279c57bae1d",
+    "experiments/c_capability/pyproject.toml": "0ef0729cdc032e5c3bd2667608b3e849997bf7f5a0074488983b12cbcf927ebf",
+    "experiments/c_capability/uv.lock": "003f9e8da4ac626c9c162554b3602158a4e4783f5bceaa042933284b1aad9205",
+    "experiments/common/provider.py": "4004435069507a67824ba1c77a1758924dfc025dc0888324596a4784bffde0c0",
+    "experiments/common/test_provider.py": "df3de565bc332c4f521a35cbb8e82bb4b9819768d6725375f347145dc5215169",
+    "docs/experiments/EXPERIMENT.md": "67e86e299fd6cfce93de3df7530190b6901cf7e18aac85a56e59201f28cf5c68"
+  },
+  "approaches": {
+    "b": {
+      "cases": [
+        {
+          "name": "attachment_denied_before_read",
+          "passed": true,
+          "seconds": 0.0049
+        },
+        {
+          "name": "auto_order",
+          "passed": true,
+          "seconds": 0.0065
+        },
+        {
+          "name": "concurrent_approval_once",
+          "passed": true,
+          "seconds": 0.011
+        },
+        {
+          "name": "concurrent_submission_once",
+          "passed": true,
+          "seconds": 0.0091
+        },
+        {
+          "name": "cross_agent_and_account",
+          "passed": true,
+          "seconds": 0.0097
+        },
+        {
+          "name": "direct_provider_access",
+          "passed": true,
+          "seconds": 0.0054
+        },
+        {
+          "name": "document_read_allow",
+          "passed": true,
+          "seconds": 0.0055
+        },
+        {
+          "name": "document_read_denied_before_disclosure",
+          "passed": true,
+          "seconds": 0.0032
+        },
+        {
+          "name": "email_approval_exact_snapshot",
+          "passed": true,
+          "seconds": 0.0082
+        },
+        {
+          "name": "expiration_pending",
+          "passed": true,
+          "seconds": 1.1429
+        },
+        {
+          "name": "generated_order_boundary_matrix",
+          "passed": true,
+          "seconds": 0.1603
+        },
+        {
+          "name": "grant_creation_authority",
+          "passed": true,
+          "seconds": 0.0029
+        },
+        {
+          "name": "hard_denial_cannot_be_approved",
+          "passed": true,
+          "seconds": 0.0039
+        },
+        {
+          "name": "idempotency_cross_grant_binding",
+          "passed": true,
+          "seconds": 0.007
+        },
+        {
+          "name": "idempotency_same_and_changed_action",
+          "passed": true,
+          "seconds": 0.0075
+        },
+        {
+          "name": "identity_and_approval_spoofing",
+          "passed": true,
+          "seconds": 0.0064
+        },
+        {
+          "name": "missing_authentication",
+          "passed": true,
+          "seconds": 0.0073
+        },
+        {
+          "name": "order_constraints",
+          "passed": true,
+          "seconds": 0.012
+        },
+        {
+          "name": "order_requires_review",
+          "passed": true,
+          "seconds": 0.0067
+        },
+        {
+          "name": "policy_claims_in_document_are_data",
+          "passed": true,
+          "seconds": 0.008
+        },
+        {
+          "name": "provider_ambiguous_completion",
+          "passed": true,
+          "seconds": 0.416
+        },
+        {
+          "name": "provider_rejection",
+          "passed": true,
+          "seconds": 0.0075
+        },
+        {
+          "name": "provider_unavailable",
+          "passed": true,
+          "seconds": 0.1099
+        },
+        {
+          "name": "recipient_checks_all_fields",
+          "passed": true,
+          "seconds": 0.0091
+        },
+        {
+          "name": "response_secret_separation",
+          "passed": true,
+          "seconds": 0.0045
+        },
+        {
+          "name": "restart_pending_and_replay",
+          "passed": true,
+          "seconds": 0.8276
+        },
+        {
+          "name": "revocation_pending",
+          "passed": true,
+          "seconds": 0.0083
+        },
+        {
+          "name": "snapshot_survives_document_change",
+          "passed": true,
+          "seconds": 0.0096
+        },
+        {
+          "name": "unknown_action_and_stale_attachment",
+          "passed": true,
+          "seconds": 0.0054
+        },
+        {
+          "name": "wrong_digest_and_replacement",
+          "passed": true,
+          "seconds": 0.0073
+        }
+      ],
+      "startup_seconds": 1.8202,
+      "observed_effects": [
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-5873aee6fcc58f57a140",
+          "execution_id": "bfa1019f-8d2d-4322-86b4-b95d529d357e"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "attachments": [
+              {
+                "content": "Public fixture note",
+                "id": "public-note",
+                "version": 1
+              }
+            ],
+            "bcc": [],
+            "body": "Hello from fixture",
+            "cc": [],
+            "subject": "Fixture question",
+            "to": [
+              "trusted@example.test"
+            ],
+            "type": "email.send"
+          },
+          "effect_id": "effect-4c9a5f9c27080cb3ef38",
+          "execution_id": "81e2b056-e54b-4b82-bbbd-311be33c60a6"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-2a75d17ff9435ff00668",
+          "execution_id": "640ad9ae-5331-4cbb-be45-bda85867fc17"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "attachments": [
+              {
+                "content": "Public fixture note",
+                "id": "public-note",
+                "version": 1
+              }
+            ],
+            "bcc": [],
+            "body": "Hello from fixture",
+            "cc": [],
+            "subject": "Fixture question",
+            "to": [
+              "trusted@example.test"
+            ],
+            "type": "email.send"
+          },
+          "effect_id": "effect-da73ff45723d5f577aa8",
+          "execution_id": "35336bb1-4c6d-4a95-933b-dd0b7e78f374"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 1,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-33c01535b775d98b1852",
+          "execution_id": "047a6211-c9e2-4c64-b9d2-259f242a049d"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 999,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-03021518872a5e862979",
+          "execution_id": "504a7534-2a49-41e4-af13-861b29b14101"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 1000,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-c80afc5b109a32b0920b",
+          "execution_id": "fa8dce1a-d610-413e-886e-1a7680124f72"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 999,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-bdfe46df7741c155d859",
+          "execution_id": "022ca512-5ca3-48d8-bcd6-857aa4e1fb87"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 1000,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-92d07d603e1b32471616",
+          "execution_id": "445b7ca4-dc54-40d8-8f48-c51feb6b7979"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 1,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 2,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-f95c0b2ae55cca82ad49",
+          "execution_id": "b947d7c9-9462-4262-84e1-8889df5e71ce"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-930ce77732d3c827bf50",
+          "execution_id": "6f1c8b06-4369-42f6-a61f-0349a58b9ae7"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-b9b359f7c343cdb82d86",
+          "execution_id": "42827a3e-3eeb-40a7-8620-c1fd77831f01"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 2500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-e0323ef961ff57c6a8a4",
+          "execution_id": "094a5b60-6d10-44fd-824d-3694ab6985c0"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "amount_minor": 500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-d31b3d38c525a4908c4a",
+          "execution_id": "02bbf977-eec9-4c5e-ac5d-68a1bfb1a0d7"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "attachments": [
+              {
+                "content": "Public fixture note",
+                "id": "public-note",
+                "version": 1
+              }
+            ],
+            "bcc": [],
+            "body": "Hello from fixture",
+            "cc": [],
+            "subject": "Fixture question",
+            "to": [
+              "trusted@example.test"
+            ],
+            "type": "email.send"
+          },
+          "effect_id": "effect-8f151efd4e7b4de12e22",
+          "execution_id": "30c87e3b-31a0-494a-b09f-ac0c5ae4f5d0"
+        },
+        {
+          "action": {
+            "account": "alice",
+            "attachments": [
+              {
+                "content": "Public fixture note",
+                "id": "public-note",
+                "version": 1
+              }
+            ],
+            "bcc": [],
+            "body": "Hello from fixture",
+            "cc": [],
+            "subject": "Fixture question",
+            "to": [
+              "trusted@example.test"
+            ],
+            "type": "email.send"
+          },
+          "effect_id": "effect-13d46df9a1727d420f0f",
+          "execution_id": "2d4af65f-ecda-4942-8193-7b5564446217"
+        }
+      ],
+      "observed_reads": [
+        {
+          "document_id": "public-note",
+          "sequence": 1
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 2
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 3
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 4
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 5
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 6
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 7
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 8
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 9
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 10
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 11
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 12
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 13
+        },
+        {
+          "document_id": "public-note",
+          "sequence": 14
+        }
+      ],
+      "passed": 30,
+      "failed": 0,
+      "seconds": 3.7115
+    }
+  }
+}

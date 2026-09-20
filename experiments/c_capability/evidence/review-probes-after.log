@@ -1,0 +1,46 @@
+{
+  "unicode": {
+    "observed": {
+      "status": 400,
+      "body": {
+        "error": "invalid_string"
+      }
+    },
+    "subsequent_health": 200,
+    "effects": 0,
+    "reads": 0
+  },
+  "expiry_during_preparation": {
+    "expiry": 1789929290,
+    "read_started_at": [
+      1789929288.0453358
+    ],
+    "reads_after_expiry": 0,
+    "result": {
+      "request_id": "request-49cba901148a46519269221329a3cfcd",
+      "state": "denied",
+      "reason": "capability_denied"
+    },
+    "provider_reads": [
+      {
+        "sequence": 1,
+        "document_id": "public-note"
+      }
+    ]
+  },
+  "expiry_during_reservation": {
+    "expiry": 1789929293,
+    "approval_started_at": 1789929290.5584533,
+    "sqlite_lock_released_at": 1789929293.2000668,
+    "approval_waited_for_sqlite": true,
+    "effect_started_at": [],
+    "effects_after_expiry": 0,
+    "result": {
+      "request_id": "request-302f6a055f964b0d9d3053291f02a152",
+      "state": "denied",
+      "reason": "capability_denied",
+      "action_digest": "9c91fc45e6906b9eb0dc49d0baf440509a2ac7c7f8d8743c5952b13a25ac86d8"
+    },
+    "provider_effect_count": 0
+  }
+}

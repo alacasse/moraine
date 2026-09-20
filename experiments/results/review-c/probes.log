@@ -1,0 +1,83 @@
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48502)
+Traceback (most recent call last):
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/server.py", line 103, in do_POST
+    self.reply(200, executor.submit(actor, body))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/executor.py", line 188, in submit
+    submission_hash = digest(submission)
+  File "/home/alacasse/projects/moraine/experiments/c_capability/actions.py", line 21, in digest
+    return hashlib.sha256(canonical(value).encode()).hexdigest()
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^
+UnicodeEncodeError: 'utf-8' codec can't encode character '\ud800' in position 121: surrogates not allowed
+----------------------------------------
+{
+  "unicode": {
+    "observed": {
+      "connection_error": "RemoteProtocolError"
+    },
+    "subsequent_health": 200,
+    "effects": 0,
+    "reads": 0
+  },
+  "expiry_during_preparation": {
+    "expiry": 1789929074,
+    "read_started_at": [
+      1789929072.5798566,
+      1789929074.2014832
+    ],
+    "reads_after_expiry": 1,
+    "result": {
+      "request_id": "request-2a68a2deac2e40359524d31a09aa3e91",
+      "state": "denied",
+      "reason": "capability_denied",
+      "action_digest": "5300d8555567afa8e6de5375f6d86a70c858469ec00a676270e6318840f3d4a8"
+    },
+    "provider_reads": [
+      {
+        "sequence": 1,
+        "document_id": "public-note"
+      },
+      {
+        "sequence": 2,
+        "document_id": "public-note"
+      }
+    ]
+  },
+  "expiry_during_reservation": {
+    "expiry": 1789929077,
+    "approval_started_at": 1789929074.7103353,
+    "sqlite_lock_released_at": 1789929077.2000358,
+    "approval_waited_for_sqlite": true,
+    "effect_started_at": [
+      1789929077.2426183
+    ],
+    "effects_after_expiry": 1,
+    "result": {
+      "request_id": "request-b85ee7efad6c4d1793c4234550c17979",
+      "state": "executed",
+      "reason": "provider_confirmed",
+      "action_digest": "9c91fc45e6906b9eb0dc49d0baf440509a2ac7c7f8d8743c5952b13a25ac86d8",
+      "result": {
+        "effect_id": "effect-bbd9bd2a79bdef211e4b",
+        "execution_id": "execution-0c921ca87b81478fbcd9550d791d0593"
+      }
+    },
+    "provider_effect_count": 1
+  }
+}

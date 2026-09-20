@@ -1,0 +1,25 @@
+..............F....................                                      [100%]
+=================================== FAILURES ===================================
+__________________ test_datalog_iteration_budget_fails_closed __________________
+
+issued = (<builtins.KeyPair object at 0x7fd846954530>, Biscuit {
+    symbols: ["cap:grant", "grant-test", "cap:actor", "agent:a...              check if req:action($action), cap:action($action)
+            ]
+        }
+    blocks: [
+        
+    ]
+})
+order = {'account': 'alice', 'amount_minor': 500, 'currency': 'CAD', 'merchant': 'shop.test', ...}
+
+    def test_datalog_iteration_budget_fails_closed(issued, order):
+        _, parent = issued
+>       token = parent.append(BlockBuilder("loop(0); loop($next) <- loop($n), $next = $n + 1; check if true;"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       biscuit_auth.DataLogError: error generating Datalog: datalog parsing error: ParseErrors { errors: [ParseError { input: "loop($next) <- loop($n), $next", message: Some("the rule contains variables that are not bound by predicates in the rule's body: $next") }] }
+
+tests/test_capabilities.py:126: DataLogError
+- generated xml file: /home/alacasse/projects/moraine/experiments/c_capability/evidence/custom-initial.xml -
+=========================== short test summary info ============================
+FAILED tests/test_capabilities.py::test_datalog_iteration_budget_fails_closed
+1 failed, 34 passed in 14.20s

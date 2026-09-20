@@ -1,0 +1,12 @@
+[project]
+name = "moraine-b-broker"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+dependencies = ["httpx==0.28.1"]
+
+[dependency-groups]
+dev = ["pytest==9.0.2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

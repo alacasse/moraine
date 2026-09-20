@@ -1,0 +1,1185 @@
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+==================================== ERRORS ====================================
+__ ERROR at setup of test_policy_thresholds_reach_actual_provider[1-executed] __
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_policy_thresholds_reach_a0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_policy_thresholds_reach_actual_provider[1000-executed] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_policy_thresholds_reach_a1')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_policy_thresholds_reach_actual_provider[1001-pending] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_policy_thresholds_reach_a2')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_policy_thresholds_reach_actual_provider[5000-pending] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_policy_thresholds_reach_a3')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_policy_thresholds_reach_actual_provider[5001-denied] __
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_policy_thresholds_reach_a4')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_exact_email_snapshot_persists_across_restart_and_provider_change _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_exact_email_snapshot_pers0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_________ ERROR at setup of test_revocation_is_durable_and_not_cached __________
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_revocation_is_durable_and0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_______ ERROR at setup of test_denied_read_and_bcc_never_reach_provider ________
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_denied_read_and_bcc_never0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_strict_numeric_input_before_policy_or_provider[True] __
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_strict_numeric_input_befo0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_strict_numeric_input_before_policy_or_provider[500.0] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_strict_numeric_input_befo1')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+__ ERROR at setup of test_strict_numeric_input_before_policy_or_provider[500] __
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_strict_numeric_input_befo2')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+__ ERROR at setup of test_strict_numeric_input_before_policy_or_provider[-1] ___
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_strict_numeric_input_befo3')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+___ ERROR at setup of test_strict_numeric_input_before_policy_or_provider[0] ___
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_strict_numeric_input_befo4')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_strict_numeric_input_before_policy_or_provider[9223372036854775808] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_strict_numeric_input_befo5')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+____ ERROR at setup of test_actor_binding_and_idempotency_payload_conflict _____
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_actor_binding_and_idempot0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+___ ERROR at setup of test_expiry_after_attachment_preparation_blocks_review ___
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_expiry_after_attachment_p0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+___________ ERROR at setup of test_approval_maximum_age_is_enforced ____________
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_approval_maximum_age_is_e0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+__________ ERROR at setup of test_concurrent_approvals_dispatch_once ___________
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_concurrent_approvals_disp0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_provider_outcomes_are_durable_without_blind_retry[reject_before-failed-0] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_provider_outcomes_are_dur0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_provider_outcomes_are_durable_without_blind_retry[accept_then_disconnect-unknown-1] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_provider_outcomes_are_dur1')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_interrupted_dispatch_recovers_unknown_and_never_reexecutes _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_interrupted_dispatch_reco0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+____ ERROR at setup of test_pending_request_rechecks_new_policy_on_restart _____
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_pending_request_rechecks_0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+____ ERROR at setup of test_second_gate_cannot_share_a_live_state_directory ____
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_second_gate_cannot_share_0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+____ ERROR at setup of test_malformed_json_is_rejected_without_crashing[[]] ____
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_malformed_json_is_rejecte0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_malformed_json_is_rejected_without_crashing[{"agent":"agent:alice","agent":"human:alice"}] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_malformed_json_is_rejecte1')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_malformed_json_is_rejected_without_crashing[{"amount":NaN}] _
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_malformed_json_is_rejecte2')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_ ERROR at setup of test_malformed_json_is_rejected_without_crashing[{broken] __
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_malformed_json_is_rejecte3')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+___ ERROR at setup of test_malformed_json_is_rejected_without_crashing[null] ___
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_malformed_json_is_rejecte4')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+______ ERROR at setup of test_duplicate_authorization_headers_are_refused ______
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_duplicate_authorization_h0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_____ ERROR at setup of test_body_identity_and_policy_claims_are_rejected ______
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_body_identity_and_policy_0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+___ ERROR at setup of test_malformed_policy_fails_before_health_is_available ___
+
+tmp_path = PosixPath('/home/alacasse/projects/moraine/experiments/results/review-a/pytest-tmp/test_malformed_policy_fails_be0')
+
+    @pytest.fixture
+    def provider_service(tmp_path):
+>       server = fixture_provider.Provider(0, tmp_path / "downstream", "synthetic-provider-secret")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/conftest.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../common/provider.py:43: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+=========================== short test summary info ============================
+ERROR tests/test_gate.py::test_policy_thresholds_reach_actual_provider[1-executed]
+ERROR tests/test_gate.py::test_policy_thresholds_reach_actual_provider[1000-executed]
+ERROR tests/test_gate.py::test_policy_thresholds_reach_actual_provider[1001-pending]
+ERROR tests/test_gate.py::test_policy_thresholds_reach_actual_provider[5000-pending]
+ERROR tests/test_gate.py::test_policy_thresholds_reach_actual_provider[5001-denied]
+ERROR tests/test_gate.py::test_exact_email_snapshot_persists_across_restart_and_provider_change
+ERROR tests/test_gate.py::test_revocation_is_durable_and_not_cached - Permiss...
+ERROR tests/test_gate.py::test_denied_read_and_bcc_never_reach_provider - Per...
+ERROR tests/test_gate.py::test_strict_numeric_input_before_policy_or_provider[True]
+ERROR tests/test_gate.py::test_strict_numeric_input_before_policy_or_provider[500.0]
+ERROR tests/test_gate.py::test_strict_numeric_input_before_policy_or_provider[500]
+ERROR tests/test_gate.py::test_strict_numeric_input_before_policy_or_provider[-1]
+ERROR tests/test_gate.py::test_strict_numeric_input_before_policy_or_provider[0]
+ERROR tests/test_gate.py::test_strict_numeric_input_before_policy_or_provider[9223372036854775808]
+ERROR tests/test_gate.py::test_actor_binding_and_idempotency_payload_conflict
+ERROR tests/test_gate.py::test_expiry_after_attachment_preparation_blocks_review
+ERROR tests/test_gate.py::test_approval_maximum_age_is_enforced - PermissionE...
+ERROR tests/test_gate.py::test_concurrent_approvals_dispatch_once - Permissio...
+ERROR tests/test_gate.py::test_provider_outcomes_are_durable_without_blind_retry[reject_before-failed-0]
+ERROR tests/test_gate.py::test_provider_outcomes_are_durable_without_blind_retry[accept_then_disconnect-unknown-1]
+ERROR tests/test_gate.py::test_interrupted_dispatch_recovers_unknown_and_never_reexecutes
+ERROR tests/test_gate.py::test_pending_request_rechecks_new_policy_on_restart
+ERROR tests/test_gate.py::test_second_gate_cannot_share_a_live_state_directory
+ERROR tests/test_host.py::test_malformed_json_is_rejected_without_crashing[[]]
+ERROR tests/test_host.py::test_malformed_json_is_rejected_without_crashing[{"agent":"agent:alice","agent":"human:alice"}]
+ERROR tests/test_host.py::test_malformed_json_is_rejected_without_crashing[{"amount":NaN}]
+ERROR tests/test_host.py::test_malformed_json_is_rejected_without_crashing[{broken]
+ERROR tests/test_host.py::test_malformed_json_is_rejected_without_crashing[null]
+ERROR tests/test_host.py::test_duplicate_authorization_headers_are_refused - ...
+ERROR tests/test_host.py::test_body_identity_and_policy_claims_are_rejected
+ERROR tests/test_host.py::test_malformed_policy_fails_before_health_is_available
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/usr/lib64/python3.14/selectors.py:452: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+31 errors in 49.95s

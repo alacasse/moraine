@@ -1,0 +1,21 @@
+{
+  "docs/experiments/B-implementation.md": true,
+  "experiments/b_broker/README.md": true,
+  "experiments/b_broker/bootstrap.py": true,
+  "experiments/b_broker/broker.py": true,
+  "experiments/b_broker/dependencies.lock.json": true,
+  "experiments/b_broker/opa.py": true,
+  "experiments/b_broker/policy/broker.rego": true,
+  "experiments/b_broker/policy/broker_test.rego": true,
+  "experiments/b_broker/policy/system_authz.rego": true,
+  "experiments/b_broker/pyproject.toml": true,
+  "experiments/b_broker/run.sh": true,
+  "experiments/b_broker/test.sh": true,
+  "experiments/b_broker/tests/fixtures/conflict.rego": true,
+  "experiments/b_broker/tests/fixtures/invalid.rego": true,
+  "experiments/b_broker/tests/fixtures/malformed.rego": true,
+  "experiments/b_broker/tests/fixtures/runtime_error.rego": true,
+  "experiments/b_broker/tests/fixtures/undefined.rego": true,
+  "experiments/b_broker/tests/test_broker.py": true,
+  "experiments/b_broker/uv.lock": true
+}

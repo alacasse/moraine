@@ -1,0 +1,287 @@
+{
+  "": {
+    "entityTypes": {
+      "Agent": {
+        "shape": {
+          "type": "Record",
+          "attributes": {}
+        }
+      },
+      "Account": {
+        "shape": {
+          "type": "Record",
+          "attributes": {}
+        }
+      }
+    },
+    "actions": {
+      "email.send": {
+        "appliesTo": {
+          "principalTypes": [
+            "Agent"
+          ],
+          "resourceTypes": [
+            "Account"
+          ],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "expires_at": {
+                "type": "Long"
+              },
+              "now": {
+                "type": "Long"
+              },
+              "hard_limit_minor": {
+                "type": "Long"
+              },
+              "quantity": {
+                "type": "Long"
+              },
+              "amount_minor": {
+                "type": "Long"
+              },
+              "revoked": {
+                "type": "Boolean"
+              },
+              "recurring": {
+                "type": "Boolean"
+              },
+              "allowed_currency": {
+                "type": "String"
+              },
+              "merchant": {
+                "type": "String"
+              },
+              "currency": {
+                "type": "String"
+              },
+              "shipping_address_id": {
+                "type": "String"
+              },
+              "document_id": {
+                "type": "String"
+              },
+              "allowed_recipients": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "allowed_documents": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "allowed_merchants": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "recipients": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "attachment_ids": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "grant_agent": {
+                "type": "Entity",
+                "name": "Agent"
+              },
+              "grant_account": {
+                "type": "Entity",
+                "name": "Account"
+              }
+            }
+          }
+        }
+      },
+      "order.create": {
+        "appliesTo": {
+          "principalTypes": [
+            "Agent"
+          ],
+          "resourceTypes": [
+            "Account"
+          ],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "expires_at": {
+                "type": "Long"
+              },
+              "now": {
+                "type": "Long"
+              },
+              "hard_limit_minor": {
+                "type": "Long"
+              },
+              "quantity": {
+                "type": "Long"
+              },
+              "amount_minor": {
+                "type": "Long"
+              },
+              "revoked": {
+                "type": "Boolean"
+              },
+              "recurring": {
+                "type": "Boolean"
+              },
+              "allowed_currency": {
+                "type": "String"
+              },
+              "merchant": {
+                "type": "String"
+              },
+              "currency": {
+                "type": "String"
+              },
+              "shipping_address_id": {
+                "type": "String"
+              },
+              "document_id": {
+                "type": "String"
+              },
+              "allowed_recipients": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "allowed_documents": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "allowed_merchants": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "recipients": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "attachment_ids": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "grant_agent": {
+                "type": "Entity",
+                "name": "Agent"
+              },
+              "grant_account": {
+                "type": "Entity",
+                "name": "Account"
+              }
+            }
+          }
+        }
+      },
+      "document.read": {
+        "appliesTo": {
+          "principalTypes": [
+            "Agent"
+          ],
+          "resourceTypes": [
+            "Account"
+          ],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "expires_at": {
+                "type": "Long"
+              },
+              "now": {
+                "type": "Long"
+              },
+              "hard_limit_minor": {
+                "type": "Long"
+              },
+              "quantity": {
+                "type": "Long"
+              },
+              "amount_minor": {
+                "type": "Long"
+              },
+              "revoked": {
+                "type": "Boolean"
+              },
+              "recurring": {
+                "type": "Boolean"
+              },
+              "allowed_currency": {
+                "type": "String"
+              },
+              "merchant": {
+                "type": "String"
+              },
+              "currency": {
+                "type": "String"
+              },
+              "shipping_address_id": {
+                "type": "String"
+              },
+              "document_id": {
+                "type": "String"
+              },
+              "allowed_recipients": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "allowed_documents": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "allowed_merchants": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "recipients": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "attachment_ids": {
+                "type": "Set",
+                "element": {
+                  "type": "String"
+                }
+              },
+              "grant_agent": {
+                "type": "Entity",
+                "name": "Agent"
+              },
+              "grant_account": {
+                "type": "Entity",
+                "name": "Account"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

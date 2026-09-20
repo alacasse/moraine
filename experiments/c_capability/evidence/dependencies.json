@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-09-20T18:26:04.236996+00:00",
+  "python": "3.13.13",
+  "platform": "Linux-7.2.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "packages": {
+    "biscuit-python": "0.4.0",
+    "httpx": "0.28.1",
+    "pytest": "8.4.2"
+  },
+  "biscuit_wheel_sha256": "abe3ef892cee2c757d1428d927fd44aa41503c27e53a55acbf9e71719631723e",
+  "rust_dependency_versions_source": "Planning inspection of pinned release Cargo.lock: biscuit-auth 6.0.0 and pyo3 0.24.1; not exposed as runtime version by Python binding."
+}

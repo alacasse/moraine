@@ -1,0 +1,145 @@
+{
+  "expiry_during_intent_lock": {
+    "expires_at": 1789929002,
+    "unlocked_at": 1789929002.1566458,
+    "effects_before_unlock": [],
+    "response": [
+      200,
+      {
+        "action_digest": "154379eace1b828baea3da7510ee17c18170e78b9318378c686da38552189520",
+        "reason": "completed",
+        "request_id": "dc57052f-58c1-4def-b3c1-ff23baeafd2a",
+        "result": {
+          "effect_id": "effect-030f41263c7ee0ed5418",
+          "execution_id": "0d256e6c-7e9f-4b46-bf09-eed90a2d64a6"
+        },
+        "review_expires_at": 1789929002.0,
+        "snapshot": {
+          "account": "alice",
+          "grant_id": "3d09a2c2-a9ca-40ca-aef1-52007595c8e5",
+          "policy_revision": "024ad6f670251fffdd46c8f4b1f2de70018d3f92116b497f7dba3fddbe818bcb",
+          "prepared_action": {
+            "account": "alice",
+            "attachments": [
+              {
+                "content": "Public fixture note",
+                "id": "public-note",
+                "version": 1
+              }
+            ],
+            "bcc": [],
+            "body": "Hello from fixture",
+            "cc": [],
+            "subject": "Fixture question",
+            "to": [
+              "trusted@example.test"
+            ],
+            "type": "email.send"
+          },
+          "prepared_at": 1789928999.0359437,
+          "principal": "agent:alice",
+          "request_id": "dc57052f-58c1-4def-b3c1-ff23baeafd2a",
+          "review_expires_at": 1789929002,
+          "version": 1
+        },
+        "state": "executed"
+      }
+    ],
+    "effects_after_unlock": [
+      {
+        "action": {
+          "account": "alice",
+          "attachments": [
+            {
+              "content": "Public fixture note",
+              "id": "public-note",
+              "version": 1
+            }
+          ],
+          "bcc": [],
+          "body": "Hello from fixture",
+          "cc": [],
+          "subject": "Fixture question",
+          "to": [
+            "trusted@example.test"
+          ],
+          "type": "email.send"
+        },
+        "effect_id": "effect-030f41263c7ee0ed5418",
+        "execution_id": "0d256e6c-7e9f-4b46-bf09-eed90a2d64a6"
+      }
+    ]
+  },
+  "expiry_after_intent": {
+    "expires_at": 1789929004,
+    "resumed_at": 1789929004.156114,
+    "effects_before_resume": [],
+    "response": [
+      200,
+      {
+        "action_digest": "91af9077f1617f07ab35320ebd599f13e0ce8d399f482dedc42c9322c608a464",
+        "reason": "completed",
+        "request_id": "3c9760d9-15f1-4c29-a58f-01321a0c47b9",
+        "result": {
+          "effect_id": "effect-7eba16e41d2139ba8f4e",
+          "execution_id": "b29c1193-f3ff-48cc-babc-1945ff8495e4"
+        },
+        "review_expires_at": 1789929004.0,
+        "snapshot": {
+          "account": "alice",
+          "grant_id": "70c0e828-56ee-4b6f-a009-66c5ec531d51",
+          "policy_revision": "024ad6f670251fffdd46c8f4b1f2de70018d3f92116b497f7dba3fddbe818bcb",
+          "prepared_action": {
+            "account": "alice",
+            "amount_minor": 500,
+            "currency": "CAD",
+            "merchant": "shop.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "prepared_at": 1789929002.7983623,
+          "principal": "agent:alice",
+          "request_id": "3c9760d9-15f1-4c29-a58f-01321a0c47b9",
+          "review_expires_at": 1789929004,
+          "version": 1
+        },
+        "state": "executed"
+      }
+    ],
+    "effects_after_resume": [
+      {
+        "action": {
+          "account": "alice",
+          "amount_minor": 500,
+          "currency": "CAD",
+          "merchant": "shop.test",
+          "quantity": 1,
+          "recurring": false,
+          "shipping_address_id": "home",
+          "sku": "paper",
+          "type": "order.create"
+        },
+        "effect_id": "effect-7eba16e41d2139ba8f4e",
+        "execution_id": "b29c1193-f3ff-48cc-babc-1945ff8495e4"
+      }
+    ]
+  },
+  "rejected_control_mutates_mode": {
+    "rejected_control_response": [
+      400,
+      {
+        "error": "invalid_document"
+      }
+    ],
+    "next_effect_response": [
+      503,
+      {
+        "error": "synthetic_provider_rejection"
+      }
+    ],
+    "effects": []
+  }
+}

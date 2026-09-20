@@ -1,0 +1,20 @@
+policy/broker_test.rego:
+data.broker_test.test_default_deny: PASS (1.164287ms)
+data.broker_test.test_attachment_scope: PASS (2.125523ms)
+data.broker_test.test_empty_recipients: PASS (1.945902ms)
+data.broker_test.test_read_scope: PASS (3.023838ms)
+data.broker_test.test_approved_execute: PASS (3.737413ms)
+data.broker_test.test_email_review: PASS (3.652702ms)
+data.broker_test.test_each_recipient_field: PASS (4.186296ms)
+data.broker_test.test_bindings_and_grant_lifetime: PASS (4.614988ms)
+data.broker_test.test_snapshot_binding_and_age: PASS (6.403139ms)
+data.broker_test.test_order_boundaries: PASS (7.918607ms)
+data.broker_test.test_consent_binding_and_age: PASS (9.274616ms)
+data.broker_test.test_order_scope_and_types: PASS (8.985464ms)
+--------------------------------------------------------------------------------
+PASS: 12/12
+.............                                                            [100%]
+13 passed in 18.77s
+real 19.15
+user 4.16
+sys 1.93

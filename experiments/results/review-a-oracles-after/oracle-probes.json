@@ -1,0 +1,103 @@
+{
+  "purpose": "Controlled mutation testing of campaign oracles; not defects in frozen A",
+  "mutations": {
+    "agent-can-create-grant": {
+      "cases": [
+        {
+          "name": "grant_creation_authority",
+          "passed": false,
+          "error": "(201, {'grant_id': 'aa2ee4af-4755-498d-ab50-ac1991b50fea'})",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 232, in case\n    run()\n    ~~~^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 366, in test_grant_creation_authority\n    require(response[0] in (401, 403), response)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 63, in require\n    raise AssertionError(detail)\nAssertionError: (201, {'grant_id': 'aa2ee4af-4755-498d-ab50-ac1991b50fea'})\n",
+          "seconds": 0.0015
+        },
+        {
+          "name": "provider_ambiguous_completion",
+          "passed": true,
+          "seconds": 0.2205
+        },
+        {
+          "name": "provider_rejection",
+          "passed": true,
+          "seconds": 0.0097
+        },
+        {
+          "name": "provider_unavailable",
+          "passed": true,
+          "seconds": 0.1108
+        }
+      ],
+      "passed": 3,
+      "failed": 1,
+      "additional_probe": {
+        "grant_created_with_agent_credential": [
+          201,
+          {
+            "grant_id": "d23beffc-017f-49c1-850d-a5ba0927c1f5"
+          }
+        ],
+        "effect_from_self_issued_authority": {
+          "action": {
+            "account": "alice",
+            "amount_minor": 4999,
+            "currency": "CAD",
+            "merchant": "attacker.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-41ee287b445f318d22b7",
+          "execution_id": "323931eb-de46-4613-ae14-741350aab8f2"
+        }
+      }
+    },
+    "false-executed-on-failure": {
+      "cases": [
+        {
+          "name": "grant_creation_authority",
+          "passed": true,
+          "seconds": 0.0036
+        },
+        {
+          "name": "provider_ambiguous_completion",
+          "passed": true,
+          "seconds": 0.2203
+        },
+        {
+          "name": "provider_rejection",
+          "passed": false,
+          "error": "(502, {'reason': 'completed', 'request_id': 'f1720356-5e08-48f1-baac-a9bb096cd755', 'state': 'executed'})",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 232, in case\n    run()\n    ~~~^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 448, in test_provider_rejection\n    require(response[1].get(\"state\") in (\"failed\", \"unknown\"), response)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 63, in require\n    raise AssertionError(detail)\nAssertionError: (502, {'reason': 'completed', 'request_id': 'f1720356-5e08-48f1-baac-a9bb096cd755', 'state': 'executed'})\n",
+          "seconds": 0.0092
+        },
+        {
+          "name": "provider_unavailable",
+          "passed": false,
+          "error": "(502, {'reason': 'completed', 'request_id': 'a75e6819-a3d9-48eb-a150-7522ee530139', 'state': 'executed'})",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 232, in case\n    run()\n    ~~~^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 469, in test_provider_unavailable\n    require(response[1].get(\"state\") in (\"failed\", \"unknown\"), response)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 63, in require\n    raise AssertionError(detail)\nAssertionError: (502, {'reason': 'completed', 'request_id': 'a75e6819-a3d9-48eb-a150-7522ee530139', 'state': 'executed'})\n",
+          "seconds": 0.1104
+        }
+      ],
+      "passed": 2,
+      "failed": 2,
+      "additional_probe": {
+        "false_success_response": [
+          502,
+          {
+            "reason": "completed",
+            "request_id": "e4326d2c-7d3a-461d-91b4-dbba5fb704f8",
+            "state": "executed"
+          }
+        ],
+        "effect_delta": 0
+      }
+    }
+  },
+  "frozen_source_mismatches": [
+    "docs/experiments/A-implementation.md",
+    "experiments/a_embedded/README.md",
+    "experiments/a_embedded/gate.py",
+    "experiments/a_embedded/tests/test_gate.py"
+  ]
+}

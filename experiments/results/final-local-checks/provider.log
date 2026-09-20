@@ -1,0 +1,10 @@
+test_document_changes_and_reads_are_observable (test_provider.ProviderOracleTests.test_document_changes_and_reads_are_observable) ... ok
+test_idempotency_concurrent_and_payload_binding (test_provider.ProviderOracleTests.test_idempotency_concurrent_and_payload_binding) ... ok
+test_invalid_control_changes_neither_mode_nor_document (test_provider.ProviderOracleTests.test_invalid_control_changes_neither_mode_nor_document) ... ok
+test_no_credential_no_effect_or_read (test_provider.ProviderOracleTests.test_no_credential_no_effect_or_read) ... ok
+test_reject_and_accept_disconnect_have_different_effects (test_provider.ProviderOracleTests.test_reject_and_accept_disconnect_have_different_effects) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.543s
+
+OK

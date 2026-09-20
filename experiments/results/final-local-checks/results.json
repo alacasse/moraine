@@ -1,0 +1,40 @@
+{
+  "provider": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "experiments/common",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 2.617
+  },
+  "b_regressions": {
+    "command": [
+      "experiments/b_broker/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "experiments/b_broker/tests",
+      "-k",
+      "expiry and not consent"
+    ],
+    "exit_code": 0,
+    "seconds": 12.548
+  },
+  "c_regressions": {
+    "command": [
+      "bash",
+      "experiments/c_capability/test.sh",
+      "-q",
+      "tests/test_review_regressions.py"
+    ],
+    "exit_code": 0,
+    "seconds": 13.761
+  }
+}

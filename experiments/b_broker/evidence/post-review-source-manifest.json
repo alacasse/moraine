@@ -1,0 +1,21 @@
+{
+  "docs/experiments/B-implementation.md": "008876b9f8e6fe680c7cf7708ffb73f2884df18b9a643d5593735a1f0e69a06b",
+  "experiments/b_broker/README.md": "ec9e73039091267b39555cfc8bdaf727a4fe9b6dae9a8d51547db4a9490ed8bb",
+  "experiments/b_broker/bootstrap.py": "c4e24a0fc6dba63d43686c326e719924b51771057a1ac5cd653a1aebcc0c946d",
+  "experiments/b_broker/broker.py": "83a5e2986ba4681ca78fee0d9679355022617966c66cd5d3bf4da5fc2c7ea292",
+  "experiments/b_broker/dependencies.lock.json": "2069eaade9433ad6611aab83c6ddd9ffbff041d691761ab138a959cd6da3c4b9",
+  "experiments/b_broker/opa.py": "136808763b58a89b02f36c3c335c831c065ff56737e88afea99b18fbd5e756e0",
+  "experiments/b_broker/policy/broker.rego": "1600c8e3f848bb14ff8029a9e9ae5c4de70159aba57304ded08442e7f513c616",
+  "experiments/b_broker/policy/broker_test.rego": "d4decc9b203c37e88805997c5b17260825bc2fb7a637193e5bd8ea5cc093c260",
+  "experiments/b_broker/policy/system_authz.rego": "e2b30aad7ed314a6c9df28f9eadb70f9c5773d6b5cf750ba4c4cc75e9f3a2d66",
+  "experiments/b_broker/pyproject.toml": "37f0fae06fd11781a91a379004ef44794b6b1a1d724c78baeef60a5f109aa755",
+  "experiments/b_broker/run.sh": "d340c6196b58f4d901fb5a60be16f0f5051fc6523bc4ed5d2db8da85c993bfca",
+  "experiments/b_broker/test.sh": "db5f1711bb69310ac9a7f1ce039418fcbe8541e9a235da8511958686c280442d",
+  "experiments/b_broker/tests/fixtures/conflict.rego": "0c014bac929029cb406f70496e69e9424e90407394838f535cf787c72d5ddd9a",
+  "experiments/b_broker/tests/fixtures/invalid.rego": "4c1d092f130b26ff6d062e3d3e915b07346e80890a50b410e8da25e01c1a4e9e",
+  "experiments/b_broker/tests/fixtures/malformed.rego": "e6c6a2e58c6bdaad8bd30f705877688102214ca2dc365043a346bd6033d989c9",
+  "experiments/b_broker/tests/fixtures/runtime_error.rego": "33b9d9a88cf0c7fbd0f1f02ead8c046aa12d6a1fa66d2dc13a57d8baa92970af",
+  "experiments/b_broker/tests/fixtures/undefined.rego": "0b6b74d154c1a4428aae10f50ad7697049977615dcf697df34d8eb4b352dbb77",
+  "experiments/b_broker/tests/test_broker.py": "1047976c25fed29a6f4f25b1f1798473074b4add756667564b49380ee4259e76",
+  "experiments/b_broker/uv.lock": "cbe96b4ed72ca0246ee24cdadd8122f8d2203b5b48473be0ca61ccdbbb6e4461"
+}

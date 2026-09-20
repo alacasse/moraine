@@ -1,0 +1,235 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+________ test_expiry_between_attachments_prevents_second_provider_read _________
+
+tmp_path = PosixPath('/tmp/pytest-of-alacasse/pytest-11/test_expiry_between_attachment0')
+provider_service = ('http://127.0.0.1:43709', 'synthetic-provider-secret')
+
+    def test_expiry_between_attachments_prevents_second_provider_read(tmp_path, provider_service):
+        async def scenario():
+            async with opened(tmp_path, provider_service) as gate:
+                expiry = int(time.time()) + 2
+                grant = await gate.create_grant(HUMAN, grant_spec(expires_at=expiry))
+                fetch = gate.provider.document
+                started = []
+    
+                async def delayed_first_document(identifier):
+                    started.append(time.time())
+                    result = await fetch(identifier)
+                    if len(started) == 1:
+                        await asyncio.sleep(max(0, expiry - time.time() + 0.05))
+                    return result
+    
+                gate.provider.document = delayed_first_document
+                proposal = email(attachments=[{"id": "public-note", "version": 1}] * 2)
+                outcome = await gate.submit(ALICE, grant["grant_id"], "two-reads", proposal)
+                reads = (await gate.provider.client.get("/reads")).json()["reads"]
+                assert (outcome["state"], len(reads), len(started)) == ("denied", 1, 1)
+                assert await effects(gate) == []
+>       asyncio.run(scenario())
+
+tests/test_gate.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib64/python3.14/asyncio/runners.py:205: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib64/python3.14/asyncio/runners.py:128: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib64/python3.14/asyncio/base_events.py:720: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def scenario():
+        async with opened(tmp_path, provider_service) as gate:
+            expiry = int(time.time()) + 2
+            grant = await gate.create_grant(HUMAN, grant_spec(expires_at=expiry))
+            fetch = gate.provider.document
+            started = []
+    
+            async def delayed_first_document(identifier):
+                started.append(time.time())
+                result = await fetch(identifier)
+                if len(started) == 1:
+                    await asyncio.sleep(max(0, expiry - time.time() + 0.05))
+                return result
+    
+            gate.provider.document = delayed_first_document
+            proposal = email(attachments=[{"id": "public-note", "version": 1}] * 2)
+            outcome = await gate.submit(ALICE, grant["grant_id"], "two-reads", proposal)
+            reads = (await gate.provider.client.get("/reads")).json()["reads"]
+>           assert (outcome["state"], len(reads), len(started)) == ("denied", 1, 1)
+E           AssertionError: assert ('denied', 2, 2) == ('denied', 1, 1)
+E             
+E             At index 1 diff: 2 != 1
+E             Use -v to get more diff
+
+tests/test_gate.py:179: AssertionError
+______ test_expiry_while_sqlite_waits_prevents_dispatch_and_replay[grant] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-alacasse/pytest-11/test_expiry_while_sqlite_waits0')
+provider_service = ('http://127.0.0.1:38671', 'synthetic-provider-secret')
+deadline = 'grant'
+
+    @pytest.mark.parametrize("deadline", ["grant", "review"])
+    def test_expiry_while_sqlite_waits_prevents_dispatch_and_replay(tmp_path, provider_service, deadline):
+        async def scenario():
+            async with opened(tmp_path, provider_service) as gate:
+                if deadline == "review":
+                    gate.REVIEW_MAX_AGE = 2
+                changes = {"expires_at": int(time.time()) + 2} if deadline == "grant" else {}
+                grant = await gate.create_grant(HUMAN, grant_spec(**changes))
+                proposal = email()
+                pending = await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal)
+                snapshot = await gate.inspect(HUMAN, pending["request_id"])
+                blocker = sqlite3.connect(tmp_path / "gate/gate.sqlite3", check_same_thread=False)
+                blocker.execute("BEGIN IMMEDIATE")
+    
+                def release_after_deadline():
+                    time.sleep(max(0, snapshot["review_deadline"] - time.time() + 0.1))
+                    blocker.commit()
+    
+                release = threading.Thread(target=release_after_deadline)
+                release.start()
+                try:
+                    outcome = await gate.approve(HUMAN, pending["request_id"], pending["action_digest"])
+                finally:
+                    release.join(timeout=5)
+                    blocker.close()
+                assert (outcome["state"], await effects(gate)) == ("denied", [])
+                assert (await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal))["state"] == "denied"
+            async with opened(tmp_path, provider_service) as gate:
+                assert (await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal))["state"] == "denied"
+                assert await effects(gate) == []
+>       asyncio.run(scenario())
+
+tests/test_gate.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib64/python3.14/asyncio/runners.py:205: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib64/python3.14/asyncio/runners.py:128: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib64/python3.14/asyncio/base_events.py:720: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def scenario():
+        async with opened(tmp_path, provider_service) as gate:
+            if deadline == "review":
+                gate.REVIEW_MAX_AGE = 2
+            changes = {"expires_at": int(time.time()) + 2} if deadline == "grant" else {}
+            grant = await gate.create_grant(HUMAN, grant_spec(**changes))
+            proposal = email()
+            pending = await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal)
+            snapshot = await gate.inspect(HUMAN, pending["request_id"])
+            blocker = sqlite3.connect(tmp_path / "gate/gate.sqlite3", check_same_thread=False)
+            blocker.execute("BEGIN IMMEDIATE")
+    
+            def release_after_deadline():
+                time.sleep(max(0, snapshot["review_deadline"] - time.time() + 0.1))
+                blocker.commit()
+    
+            release = threading.Thread(target=release_after_deadline)
+            release.start()
+            try:
+                outcome = await gate.approve(HUMAN, pending["request_id"], pending["action_digest"])
+            finally:
+                release.join(timeout=5)
+                blocker.close()
+>           assert (outcome["state"], await effects(gate)) == ("denied", [])
+E           AssertionError: assert ('executed', ...22c9f6cc59'}]) == ('denied', [])
+E             
+E             At index 0 diff: 'executed' != 'denied'
+E             Use -v to get more diff
+
+tests/test_gate.py:209: AssertionError
+_____ test_expiry_while_sqlite_waits_prevents_dispatch_and_replay[review] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-alacasse/pytest-11/test_expiry_while_sqlite_waits1')
+provider_service = ('http://127.0.0.1:45927', 'synthetic-provider-secret')
+deadline = 'review'
+
+    @pytest.mark.parametrize("deadline", ["grant", "review"])
+    def test_expiry_while_sqlite_waits_prevents_dispatch_and_replay(tmp_path, provider_service, deadline):
+        async def scenario():
+            async with opened(tmp_path, provider_service) as gate:
+                if deadline == "review":
+                    gate.REVIEW_MAX_AGE = 2
+                changes = {"expires_at": int(time.time()) + 2} if deadline == "grant" else {}
+                grant = await gate.create_grant(HUMAN, grant_spec(**changes))
+                proposal = email()
+                pending = await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal)
+                snapshot = await gate.inspect(HUMAN, pending["request_id"])
+                blocker = sqlite3.connect(tmp_path / "gate/gate.sqlite3", check_same_thread=False)
+                blocker.execute("BEGIN IMMEDIATE")
+    
+                def release_after_deadline():
+                    time.sleep(max(0, snapshot["review_deadline"] - time.time() + 0.1))
+                    blocker.commit()
+    
+                release = threading.Thread(target=release_after_deadline)
+                release.start()
+                try:
+                    outcome = await gate.approve(HUMAN, pending["request_id"], pending["action_digest"])
+                finally:
+                    release.join(timeout=5)
+                    blocker.close()
+                assert (outcome["state"], await effects(gate)) == ("denied", [])
+                assert (await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal))["state"] == "denied"
+            async with opened(tmp_path, provider_service) as gate:
+                assert (await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal))["state"] == "denied"
+                assert await effects(gate) == []
+>       asyncio.run(scenario())
+
+tests/test_gate.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib64/python3.14/asyncio/runners.py:205: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/usr/lib64/python3.14/asyncio/runners.py:128: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib64/python3.14/asyncio/base_events.py:720: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def scenario():
+        async with opened(tmp_path, provider_service) as gate:
+            if deadline == "review":
+                gate.REVIEW_MAX_AGE = 2
+            changes = {"expires_at": int(time.time()) + 2} if deadline == "grant" else {}
+            grant = await gate.create_grant(HUMAN, grant_spec(**changes))
+            proposal = email()
+            pending = await gate.submit(ALICE, grant["grant_id"], "storage-wait", proposal)
+            snapshot = await gate.inspect(HUMAN, pending["request_id"])
+            blocker = sqlite3.connect(tmp_path / "gate/gate.sqlite3", check_same_thread=False)
+            blocker.execute("BEGIN IMMEDIATE")
+    
+            def release_after_deadline():
+                time.sleep(max(0, snapshot["review_deadline"] - time.time() + 0.1))
+                blocker.commit()
+    
+            release = threading.Thread(target=release_after_deadline)
+            release.start()
+            try:
+                outcome = await gate.approve(HUMAN, pending["request_id"], pending["action_digest"])
+            finally:
+                release.join(timeout=5)
+                blocker.close()
+>           assert (outcome["state"], await effects(gate)) == ("denied", [])
+E           AssertionError: assert ('executed', ...7a3d6ff857'}]) == ('denied', [])
+E             
+E             At index 0 diff: 'executed' != 'denied'
+E             Use -v to get more diff
+
+tests/test_gate.py:209: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gate.py::test_expiry_between_attachments_prevents_second_provider_read
+FAILED tests/test_gate.py::test_expiry_while_sqlite_waits_prevents_dispatch_and_replay[grant]
+FAILED tests/test_gate.py::test_expiry_while_sqlite_waits_prevents_dispatch_and_replay[review]
+3 failed, 37 deselected in 5.99s

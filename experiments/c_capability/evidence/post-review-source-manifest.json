@@ -1,0 +1,19 @@
+{
+  "docs/experiments/C-implementation.md": "3609b3118ffa292ecb1d4b72574b2a3db29180e077b80c71c8d1083a5661d12e",
+  "experiments/c_capability/.gitignore": "b28a08046cdb3e57dc3f3faff5f9f18187e5e76db9fc3e1c3adaecc519af1d4c",
+  "experiments/c_capability/README.md": "65b4db983b4e819301f3bac4994a6355f4c36d8e3996311524aef57ecf3140bd",
+  "experiments/c_capability/actions.py": "25d1866049c57ede6423b07325333ddc7af8355ce39830bdec1ba1b1d5741b34",
+  "experiments/c_capability/attenuate.py": "24b12ca45dcc5fc002697409facf69081758e5fbaf9c434b4e0e0aa934e3656e",
+  "experiments/c_capability/capabilities.py": "0146f7eb3583d3ecef9b10570410a3cc09d77b81ba89e08ef99bb279c57bae1d",
+  "experiments/c_capability/executor.py": "6bef91416604a9dd3a91d4dfa65a45b4d94ed28325d66d94e1a405a738d76545",
+  "experiments/c_capability/pyproject.toml": "0ef0729cdc032e5c3bd2667608b3e849997bf7f5a0074488983b12cbcf927ebf",
+  "experiments/c_capability/run.sh": "bf3ff70bab78c78197a1e4d3853b573a03b73a431b2b7958030d33d758f9a699",
+  "experiments/c_capability/server.py": "9fa1aea5b59866fbe6a4197c42f77c907f0b424bafb8843e4e844009a53b32cc",
+  "experiments/c_capability/test.sh": "f07f8ac2208d074693af95391817c044ca1cefaa54a008b81770ebca0b8d18ef",
+  "experiments/c_capability/tests/conftest.py": "669406682c714ce378ad7a07152e080eadd265d47f53e857ae7e08ff443cc8c7",
+  "experiments/c_capability/tests/test_capabilities.py": "105e664470fad853094f1f20a559d30ac925b0ac06f350dc06b25649a82031da",
+  "experiments/c_capability/tests/test_http.py": "1b3a9c5fb4cb2a98ae848e15cea96139b04c71f4edcc5926a0d3987e5b58714b",
+  "experiments/c_capability/tests/test_lifecycle.py": "aceac4253a98c4b3fafc9a413e5dd62397fa31566cb85a9543ae036177f5d74d",
+  "experiments/c_capability/tests/test_review_regressions.py": "a6e02fa6d32956c5db3f3aa6b4794a211b08aa8c09d687f60d8699b2e5c045f8",
+  "experiments/c_capability/uv.lock": "003f9e8da4ac626c9c162554b3602158a4e4783f5bceaa042933284b1aad9205"
+}

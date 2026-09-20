@@ -1,0 +1,565 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_expiry_while_sqlite_reservation_waits_prevents_provider_io[approved_order] _
+
+executor = <executor.Executor object at 0x7ff23b538830>
+provider = ('http://127.0.0.1:41953', 'synthetic-provider', <capability_test_provider.Provider object at 0x7ff23b67b0e0>)
+grant_data = {'account': 'alice', 'agent': 'agent:alice', 'auto_limit_minor': 1000, 'currency': 'CAD', ...}
+order = {'account': 'alice', 'amount_minor': 500, 'currency': 'CAD', 'merchant': 'shop.test', ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ff23af6d480>
+operation = 'approved_order'
+
+    @pytest.mark.parametrize("operation", ["approved_order", "automatic_order", "document_read"])
+    def test_expiry_while_sqlite_reservation_waits_prevents_provider_io(
+            executor, provider, grant_data, order, monkeypatch, operation):
+        expiry = int(time.time()) + 3
+        grant = executor.create_grant("human:alice", {
+            **grant_data, "expires_at": expiry,
+            "auto_limit_minor": 0 if operation == "approved_order" else 1000,
+        })
+        action = ({"type": "document.read", "account": "alice", "document_id": "public-note"}
+                  if operation == "document_read" else order)
+        body = submission(grant, action)
+        if operation == "approved_order":
+            pending = executor.submit("agent:alice", body)
+            assert pending["state"] == "pending"
+            perform = lambda: executor.approve("human:alice", pending["request_id"],
+                                              {"action_digest": pending["action_digest"]})
+        else:
+            perform = lambda: executor.submit("agent:alice", body)
+    
+        # Observe the actual reservation attempt, without replacing its real SQLite IO.
+        reservation_started = threading.Event()
+        observed_at = []
+        original_save = executor.save
+    
+        def observe_save(record):
+            if record["state"] == "dispatching":
+                observed_at.append(time.time())
+                reservation_started.set()
+            return original_save(record)
+    
+        monkeypatch.setattr(executor, "save", observe_save)
+        blocker = sqlite3.connect(executor.database, isolation_level=None)
+        blocker.execute("BEGIN IMMEDIATE")
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            future = pool.submit(perform)
+            try:
+                assert reservation_started.wait(timeout=1.5), "dispatch must reach the real locked write"
+                assert observed_at[0] < expiry
+                assert not future.done()
+                time.sleep(max(0, expiry - time.time() + 0.1))
+                assert not future.done(), "SQLite must hold the reservation past expiry"
+            finally:
+                blocker.execute("COMMIT")
+                blocker.close()
+            result = future.result(timeout=5)
+    
+>       assert result["state"] == "denied" and result["reason"] == "capability_denied"
+E       AssertionError: assert ('executed' == 'denied'
+E         
+E         - denied
+E         + executed)
+
+tests/test_review_regressions.py:72: AssertionError
+_ test_expiry_while_sqlite_reservation_waits_prevents_provider_io[automatic_order] _
+
+executor = <executor.Executor object at 0x7ff23b53e990>
+provider = ('http://127.0.0.1:44287', 'synthetic-provider', <capability_test_provider.Provider object at 0x7ff23b67be00>)
+grant_data = {'account': 'alice', 'agent': 'agent:alice', 'auto_limit_minor': 1000, 'currency': 'CAD', ...}
+order = {'account': 'alice', 'amount_minor': 500, 'currency': 'CAD', 'merchant': 'shop.test', ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ff23b4c9a70>
+operation = 'automatic_order'
+
+    @pytest.mark.parametrize("operation", ["approved_order", "automatic_order", "document_read"])
+    def test_expiry_while_sqlite_reservation_waits_prevents_provider_io(
+            executor, provider, grant_data, order, monkeypatch, operation):
+        expiry = int(time.time()) + 3
+        grant = executor.create_grant("human:alice", {
+            **grant_data, "expires_at": expiry,
+            "auto_limit_minor": 0 if operation == "approved_order" else 1000,
+        })
+        action = ({"type": "document.read", "account": "alice", "document_id": "public-note"}
+                  if operation == "document_read" else order)
+        body = submission(grant, action)
+        if operation == "approved_order":
+            pending = executor.submit("agent:alice", body)
+            assert pending["state"] == "pending"
+            perform = lambda: executor.approve("human:alice", pending["request_id"],
+                                              {"action_digest": pending["action_digest"]})
+        else:
+            perform = lambda: executor.submit("agent:alice", body)
+    
+        # Observe the actual reservation attempt, without replacing its real SQLite IO.
+        reservation_started = threading.Event()
+        observed_at = []
+        original_save = executor.save
+    
+        def observe_save(record):
+            if record["state"] == "dispatching":
+                observed_at.append(time.time())
+                reservation_started.set()
+            return original_save(record)
+    
+        monkeypatch.setattr(executor, "save", observe_save)
+        blocker = sqlite3.connect(executor.database, isolation_level=None)
+        blocker.execute("BEGIN IMMEDIATE")
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            future = pool.submit(perform)
+            try:
+                assert reservation_started.wait(timeout=1.5), "dispatch must reach the real locked write"
+                assert observed_at[0] < expiry
+                assert not future.done()
+                time.sleep(max(0, expiry - time.time() + 0.1))
+                assert not future.done(), "SQLite must hold the reservation past expiry"
+            finally:
+                blocker.execute("COMMIT")
+                blocker.close()
+            result = future.result(timeout=5)
+    
+>       assert result["state"] == "denied" and result["reason"] == "capability_denied"
+E       AssertionError: assert ('executed' == 'denied'
+E         
+E         - denied
+E         + executed)
+
+tests/test_review_regressions.py:72: AssertionError
+_ test_expiry_while_sqlite_reservation_waits_prevents_provider_io[document_read] _
+
+executor = <executor.Executor object at 0x7ff23afdc050>
+provider = ('http://127.0.0.1:45483', 'synthetic-provider', <capability_test_provider.Provider object at 0x7ff23b538590>)
+grant_data = {'account': 'alice', 'agent': 'agent:alice', 'auto_limit_minor': 1000, 'currency': 'CAD', ...}
+order = {'account': 'alice', 'amount_minor': 500, 'currency': 'CAD', 'merchant': 'shop.test', ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ff23afaca70>
+operation = 'document_read'
+
+    @pytest.mark.parametrize("operation", ["approved_order", "automatic_order", "document_read"])
+    def test_expiry_while_sqlite_reservation_waits_prevents_provider_io(
+            executor, provider, grant_data, order, monkeypatch, operation):
+        expiry = int(time.time()) + 3
+        grant = executor.create_grant("human:alice", {
+            **grant_data, "expires_at": expiry,
+            "auto_limit_minor": 0 if operation == "approved_order" else 1000,
+        })
+        action = ({"type": "document.read", "account": "alice", "document_id": "public-note"}
+                  if operation == "document_read" else order)
+        body = submission(grant, action)
+        if operation == "approved_order":
+            pending = executor.submit("agent:alice", body)
+            assert pending["state"] == "pending"
+            perform = lambda: executor.approve("human:alice", pending["request_id"],
+                                              {"action_digest": pending["action_digest"]})
+        else:
+            perform = lambda: executor.submit("agent:alice", body)
+    
+        # Observe the actual reservation attempt, without replacing its real SQLite IO.
+        reservation_started = threading.Event()
+        observed_at = []
+        original_save = executor.save
+    
+        def observe_save(record):
+            if record["state"] == "dispatching":
+                observed_at.append(time.time())
+                reservation_started.set()
+            return original_save(record)
+    
+        monkeypatch.setattr(executor, "save", observe_save)
+        blocker = sqlite3.connect(executor.database, isolation_level=None)
+        blocker.execute("BEGIN IMMEDIATE")
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            future = pool.submit(perform)
+            try:
+                assert reservation_started.wait(timeout=1.5), "dispatch must reach the real locked write"
+                assert observed_at[0] < expiry
+                assert not future.done()
+                time.sleep(max(0, expiry - time.time() + 0.1))
+                assert not future.done(), "SQLite must hold the reservation past expiry"
+            finally:
+                blocker.execute("COMMIT")
+                blocker.close()
+            result = future.result(timeout=5)
+    
+>       assert result["state"] == "denied" and result["reason"] == "capability_denied"
+E       AssertionError: assert ('executed' == 'denied'
+E         
+E         - denied
+E         + executed)
+
+tests/test_review_regressions.py:72: AssertionError
+____ test_delayed_first_attachment_does_not_start_second_read_after_expiry _____
+
+executor = <executor.Executor object at 0x7ff23af6e520>
+provider = ('http://127.0.0.1:45563', 'synthetic-provider', <capability_test_provider.Provider object at 0x7ff23b5386e0>)
+grant_data = {'account': 'alice', 'agent': 'agent:alice', 'auto_limit_minor': 1000, 'currency': 'CAD', ...}
+email = {'account': 'alice', 'attachments': [{'id': 'public-note', 'version': 1}], 'bcc': [], 'body': 'Original message', ...}
+
+    def test_delayed_first_attachment_does_not_start_second_read_after_expiry(
+            executor, provider, grant_data, email):
+        server = provider[2]
+        server.document_started_at = []
+        expiry = int(time.time()) + 2
+    
+        class DelayFirstDocumentResponse(server.RequestHandlerClass):
+            def do_GET(self):
+                if self.path.startswith("/documents/"):
+                    self.server.document_started_at.append(time.time())
+                super().do_GET()
+    
+            def reply(self, status, payload):
+                if self.path.startswith("/documents/") and len(self.server.document_started_at) == 1:
+                    # The unchanged common provider has already recorded the authorized read.
+                    time.sleep(max(0, expiry - time.time() + 0.1))
+                super().reply(status, payload)
+    
+        server.RequestHandlerClass = DelayFirstDocumentResponse
+        grant = executor.create_grant("human:alice", {**grant_data, "expires_at": expiry})
+        body = submission(grant, {**email, "attachments": email["attachments"] * 2})
+        result = executor.submit("agent:alice", body)
+        assert result["state"] == "denied" and result["reason"] == "capability_denied"
+>       assert len(server.document_started_at) == 1
+E       assert 2 == 1
+E        +  where 2 = len([1789929203.6724637, 1789929205.1015399])
+E        +    where [1789929203.6724637, 1789929205.1015399] = <capability_test_provider.Provider object at 0x7ff23b5386e0>.document_started_at
+
+tests/test_review_regressions.py:106: AssertionError
+___ test_surrogate_json_subject_returns_400_without_provider_access[\ud800] ____
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py:103: in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:136: in handle_request
+    raise exc
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:106: in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:177: in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <HTTP11Connection ['http://127.0.0.1:44711', CLOSED, Request Count: 1]>
+timeout = 5.0
+
+    def _receive_event(
+        self, timeout: float | None = None
+    ) -> h11.Event | type[h11.PAUSED]:
+        while True:
+            with map_exceptions({h11.RemoteProtocolError: RemoteProtocolError}):
+                event = self._h11_state.next_event()
+    
+            if event is h11.NEED_DATA:
+                data = self._network_stream.read(
+                    self.READ_NUM_BYTES, timeout=timeout
+                )
+    
+                # If we feed this case through h11 we'll raise an exception like:
+                #
+                #     httpcore.RemoteProtocolError: can't handle event type
+                #     ConnectionClosed when role=SERVER and state=SEND_RESPONSE
+                #
+                # Which is accurate, but not very informative from an end-user
+                # perspective. Instead we handle this case distinctly and treat
+                # it as a ConnectError.
+                if data == b"" and self._h11_state.their_state == h11.SEND_RESPONSE:
+                    msg = "Server disconnected without sending a response."
+>                   raise RemoteProtocolError(msg)
+E                   httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:231: RemoteProtocolError
+
+The above exception was the direct cause of the following exception:
+
+executor = <executor.Executor object at 0x7ff23af6f820>
+provider = ('http://127.0.0.1:42567', 'synthetic-provider', <capability_test_provider.Provider object at 0x7ff23b53b4d0>)
+grant_data = {'account': 'alice', 'agent': 'agent:alice', 'auto_limit_minor': 1000, 'currency': 'CAD', ...}
+email = {'account': 'alice', 'attachments': [{'id': 'public-note', 'version': 1}], 'bcc': [], 'body': 'Original message', ...}
+subject = '\ud800'
+
+    @pytest.mark.parametrize("subject", ["\ud800", "\udfff"])
+    def test_surrogate_json_subject_returns_400_without_provider_access(
+            executor, provider, grant_data, email, subject):
+        server = Server(0, executor, {"agent:alice": "alice-token", "agent:bob": "bob-token",
+                                     "human:alice": "human-token"})
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            grant = executor.create_grant("human:alice", grant_data)
+            body = submission(grant, {**email, "subject": subject})
+            with httpx.Client(base_url=f"http://127.0.0.1:{server.server_port}", trust_env=False,
+                              headers={"Authorization": "Bearer alice-token"}) as client:
+                # Escaped surrogate is valid JSON syntax and reaches server-side string validation.
+>               response = client.post("/requests", content=json.dumps(body).encode("ascii"))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_review_regressions.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.13/site-packages/httpx/_client.py:1144: in post
+    return self.request(
+.venv/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.RemoteProtocolError: Server disconnected without sending a response.
+
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:118: RemoteProtocolError
+----------------------------- Captured stderr call -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 44254)
+Traceback (most recent call last):
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/server.py", line 103, in do_POST
+    self.reply(200, executor.submit(actor, body))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/executor.py", line 188, in submit
+    submission_hash = digest(submission)
+  File "/home/alacasse/projects/moraine/experiments/c_capability/actions.py", line 21, in digest
+    return hashlib.sha256(canonical(value).encode()).hexdigest()
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^
+UnicodeEncodeError: 'utf-8' codec can't encode character '\ud800' in position 132: surrogates not allowed
+----------------------------------------
+___ test_surrogate_json_subject_returns_400_without_provider_access[\udfff] ____
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py:103: in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:136: in handle_request
+    raise exc
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:106: in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:177: in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <HTTP11Connection ['http://127.0.0.1:43381', CLOSED, Request Count: 1]>
+timeout = 5.0
+
+    def _receive_event(
+        self, timeout: float | None = None
+    ) -> h11.Event | type[h11.PAUSED]:
+        while True:
+            with map_exceptions({h11.RemoteProtocolError: RemoteProtocolError}):
+                event = self._h11_state.next_event()
+    
+            if event is h11.NEED_DATA:
+                data = self._network_stream.read(
+                    self.READ_NUM_BYTES, timeout=timeout
+                )
+    
+                # If we feed this case through h11 we'll raise an exception like:
+                #
+                #     httpcore.RemoteProtocolError: can't handle event type
+                #     ConnectionClosed when role=SERVER and state=SEND_RESPONSE
+                #
+                # Which is accurate, but not very informative from an end-user
+                # perspective. Instead we handle this case distinctly and treat
+                # it as a ConnectError.
+                if data == b"" and self._h11_state.their_state == h11.SEND_RESPONSE:
+                    msg = "Server disconnected without sending a response."
+>                   raise RemoteProtocolError(msg)
+E                   httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+.venv/lib/python3.13/site-packages/httpcore/_sync/http11.py:231: RemoteProtocolError
+
+The above exception was the direct cause of the following exception:
+
+executor = <executor.Executor object at 0x7ff23b4bbe30>
+provider = ('http://127.0.0.1:35301', 'synthetic-provider', <capability_test_provider.Provider object at 0x7ff23b67be00>)
+grant_data = {'account': 'alice', 'agent': 'agent:alice', 'auto_limit_minor': 1000, 'currency': 'CAD', ...}
+email = {'account': 'alice', 'attachments': [{'id': 'public-note', 'version': 1}], 'bcc': [], 'body': 'Original message', ...}
+subject = '\udfff'
+
+    @pytest.mark.parametrize("subject", ["\ud800", "\udfff"])
+    def test_surrogate_json_subject_returns_400_without_provider_access(
+            executor, provider, grant_data, email, subject):
+        server = Server(0, executor, {"agent:alice": "alice-token", "agent:bob": "bob-token",
+                                     "human:alice": "human-token"})
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            grant = executor.create_grant("human:alice", grant_data)
+            body = submission(grant, {**email, "subject": subject})
+            with httpx.Client(base_url=f"http://127.0.0.1:{server.server_port}", trust_env=False,
+                              headers={"Authorization": "Bearer alice-token"}) as client:
+                # Escaped surrogate is valid JSON syntax and reaches server-side string validation.
+>               response = client.post("/requests", content=json.dumps(body).encode("ascii"))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_review_regressions.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.13/site-packages/httpx/_client.py:1144: in post
+    return self.request(
+.venv/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.RemoteProtocolError: Server disconnected without sending a response.
+
+.venv/lib/python3.13/site-packages/httpx/_transports/default.py:118: RemoteProtocolError
+----------------------------- Captured stderr call -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 50742)
+Traceback (most recent call last):
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/.python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/server.py", line 103, in do_POST
+    self.reply(200, executor.submit(actor, body))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/alacasse/projects/moraine/experiments/c_capability/executor.py", line 188, in submit
+    submission_hash = digest(submission)
+  File "/home/alacasse/projects/moraine/experiments/c_capability/actions.py", line 21, in digest
+    return hashlib.sha256(canonical(value).encode()).hexdigest()
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^
+UnicodeEncodeError: 'utf-8' codec can't encode character '\udfff' in position 132: surrogates not allowed
+----------------------------------------
+- generated xml file: /home/alacasse/projects/moraine/experiments/c_capability/evidence/review-regressions-before.xml -
+=========================== short test summary info ============================
+FAILED tests/test_review_regressions.py::test_expiry_while_sqlite_reservation_waits_prevents_provider_io[approved_order]
+FAILED tests/test_review_regressions.py::test_expiry_while_sqlite_reservation_waits_prevents_provider_io[automatic_order]
+FAILED tests/test_review_regressions.py::test_expiry_while_sqlite_reservation_waits_prevents_provider_io[document_read]
+FAILED tests/test_review_regressions.py::test_delayed_first_attachment_does_not_start_second_read_after_expiry
+FAILED tests/test_review_regressions.py::test_surrogate_json_subject_returns_400_without_provider_access[\ud800]
+FAILED tests/test_review_regressions.py::test_surrogate_json_subject_returns_400_without_provider_access[\udfff]
+6 failed in 13.30s

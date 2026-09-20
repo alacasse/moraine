@@ -1,0 +1,5 @@
+usage: host.py [-h] --port PORT --state-dir STATE_DIR
+               --provider-url PROVIDER_URL --provider-token PROVIDER_TOKEN
+               --agent-token AGENT_TOKEN --other-agent-token OTHER_AGENT_TOKEN
+               --human-token HUMAN_TOKEN
+host.py: error: argument --agent-token: expected one argument

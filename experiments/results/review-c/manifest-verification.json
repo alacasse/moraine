@@ -1,0 +1,18 @@
+{
+  "docs/experiments/C-implementation.md": true,
+  "experiments/c_capability/.gitignore": true,
+  "experiments/c_capability/README.md": true,
+  "experiments/c_capability/actions.py": true,
+  "experiments/c_capability/attenuate.py": true,
+  "experiments/c_capability/capabilities.py": true,
+  "experiments/c_capability/executor.py": true,
+  "experiments/c_capability/pyproject.toml": true,
+  "experiments/c_capability/run.sh": true,
+  "experiments/c_capability/server.py": true,
+  "experiments/c_capability/test.sh": true,
+  "experiments/c_capability/tests/conftest.py": true,
+  "experiments/c_capability/tests/test_capabilities.py": true,
+  "experiments/c_capability/tests/test_http.py": true,
+  "experiments/c_capability/tests/test_lifecycle.py": true,
+  "experiments/c_capability/uv.lock": true
+}

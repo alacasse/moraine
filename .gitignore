@@ -1,0 +1,30 @@
+# Reproducible local runtimes and caches; retain source locks and evidence reports.
+.venv/
+.cache/
+.uv-cache/
+.python/
+.tools/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Disposable test state, never the retained reports/source archives beside it.
+pytest-tmp/
+pytest-loopback-tmp/
+state/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.db
+*.lock-journal
+
+# Account credentials are never repository artifacts.
+.env
+.env.*
+!.env.example
+credentials/
+secrets/

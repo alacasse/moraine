@@ -1,0 +1,43 @@
+{
+  "provider": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "experiments/common",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 2.106
+  },
+  "a": {
+    "command": [
+      "bash",
+      "experiments/a_embedded/test.sh",
+      "-q"
+    ],
+    "exit_code": 0,
+    "seconds": 17.889
+  },
+  "b": {
+    "command": [
+      "bash",
+      "experiments/b_broker/test.sh"
+    ],
+    "exit_code": 0,
+    "seconds": 19.165
+  },
+  "c": {
+    "command": [
+      "bash",
+      "experiments/c_capability/test.sh",
+      "-q"
+    ],
+    "exit_code": 0,
+    "seconds": 14.381
+  }
+}

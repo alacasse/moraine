@@ -1,0 +1,354 @@
+{
+  "purpose": "Controlled mutation testing of campaign oracles; not defects in frozen A",
+  "mutations": {
+    "agent-can-create-grant": {
+      "cases": [
+        {
+          "name": "attachment_denied_before_read",
+          "passed": true,
+          "seconds": 0.0048
+        },
+        {
+          "name": "auto_order",
+          "passed": true,
+          "seconds": 0.0081
+        },
+        {
+          "name": "concurrent_approval_once",
+          "passed": true,
+          "seconds": 0.0138
+        },
+        {
+          "name": "concurrent_submission_once",
+          "passed": true,
+          "seconds": 0.0106
+        },
+        {
+          "name": "cross_agent_and_account",
+          "passed": true,
+          "seconds": 0.0092
+        },
+        {
+          "name": "direct_provider_access",
+          "passed": true,
+          "seconds": 0.0052
+        },
+        {
+          "name": "document_read_allow",
+          "passed": true,
+          "seconds": 0.0071
+        },
+        {
+          "name": "document_read_denied_before_disclosure",
+          "passed": true,
+          "seconds": 0.0036
+        },
+        {
+          "name": "email_approval_exact_snapshot",
+          "passed": true,
+          "seconds": 0.0104
+        },
+        {
+          "name": "expiration_pending",
+          "passed": true,
+          "seconds": 1.58
+        },
+        {
+          "name": "generated_order_boundary_matrix",
+          "passed": true,
+          "seconds": 0.1802
+        },
+        {
+          "name": "grant_creation_authority",
+          "passed": true,
+          "seconds": 0.0033
+        },
+        {
+          "name": "hard_denial_cannot_be_approved",
+          "passed": true,
+          "seconds": 0.0041
+        },
+        {
+          "name": "idempotency_cross_grant_binding",
+          "passed": true,
+          "seconds": 0.0078
+        },
+        {
+          "name": "idempotency_same_and_changed_action",
+          "passed": true,
+          "seconds": 0.009
+        },
+        {
+          "name": "identity_and_approval_spoofing",
+          "passed": false,
+          "error": "(200, {'reason': 'completed', 'request_id': '0d4d3ea6-fb49-4978-8054-fb109853784b', 'result': {'effect_id': 'effect-f84a0583b87964966b8d', 'execution_id': '2223e070-be13-4a45-a33d-d4e2f2f4b01c'}, 'state': 'executed'})",
+          "traceback": "Traceback (most recent call last):\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 232, in case\n    run()\n    ~~~^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 343, in test_identity_and_approval_spoofing\n    blocked(self.approve(request, actor=\"agent\"))\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 68, in blocked\n    require(400 <= status < 500 or (status < 400 and body.get(\"state\") == \"denied\"), response)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/alacasse/projects/moraine/experiments/run_campaign.py\", line 63, in require\n    raise AssertionError(detail)\nAssertionError: (200, {'reason': 'completed', 'request_id': '0d4d3ea6-fb49-4978-8054-fb109853784b', 'result': {'effect_id': 'effect-f84a0583b87964966b8d', 'execution_id': '2223e070-be13-4a45-a33d-d4e2f2f4b01c'}, 'state': 'executed'})\n",
+          "seconds": 0.0095
+        },
+        {
+          "name": "missing_authentication",
+          "passed": true,
+          "seconds": 0.0083
+        },
+        {
+          "name": "order_constraints",
+          "passed": true,
+          "seconds": 0.0122
+        },
+        {
+          "name": "order_requires_review",
+          "passed": true,
+          "seconds": 0.0082
+        },
+        {
+          "name": "policy_claims_in_document_are_data",
+          "passed": true,
+          "seconds": 0.0092
+        },
+        {
+          "name": "provider_ambiguous_completion",
+          "passed": true,
+          "seconds": 0.218
+        },
+        {
+          "name": "provider_rejection",
+          "passed": true,
+          "seconds": 0.0096
+        },
+        {
+          "name": "provider_unavailable",
+          "passed": true,
+          "seconds": 0.1153
+        },
+        {
+          "name": "recipient_checks_all_fields",
+          "passed": true,
+          "seconds": 0.0101
+        },
+        {
+          "name": "response_secret_separation",
+          "passed": true,
+          "seconds": 0.006
+        },
+        {
+          "name": "restart_pending_and_replay",
+          "passed": true,
+          "seconds": 0.4312
+        },
+        {
+          "name": "revocation_pending",
+          "passed": true,
+          "seconds": 0.0116
+        },
+        {
+          "name": "snapshot_survives_document_change",
+          "passed": true,
+          "seconds": 0.0113
+        },
+        {
+          "name": "unknown_action_and_stale_attachment",
+          "passed": true,
+          "seconds": 0.0058
+        },
+        {
+          "name": "wrong_digest_and_replacement",
+          "passed": true,
+          "seconds": 0.0077
+        }
+      ],
+      "passed": 29,
+      "failed": 1,
+      "additional_probe": {
+        "grant_created_with_agent_credential": [
+          201,
+          {
+            "grant_id": "c9958d7a-3043-4ceb-b70d-a4078efeec7e"
+          }
+        ],
+        "effect_from_self_issued_authority": {
+          "action": {
+            "account": "alice",
+            "amount_minor": 4999,
+            "currency": "CAD",
+            "merchant": "attacker.test",
+            "quantity": 1,
+            "recurring": false,
+            "shipping_address_id": "home",
+            "sku": "paper",
+            "type": "order.create"
+          },
+          "effect_id": "effect-418d980392545d263680",
+          "execution_id": "291f0df8-3729-468b-8220-28f22ccc8b69"
+        }
+      }
+    },
+    "false-executed-on-failure": {
+      "cases": [
+        {
+          "name": "attachment_denied_before_read",
+          "passed": true,
+          "seconds": 0.0047
+        },
+        {
+          "name": "auto_order",
+          "passed": true,
+          "seconds": 0.0076
+        },
+        {
+          "name": "concurrent_approval_once",
+          "passed": true,
+          "seconds": 0.0139
+        },
+        {
+          "name": "concurrent_submission_once",
+          "passed": true,
+          "seconds": 0.0104
+        },
+        {
+          "name": "cross_agent_and_account",
+          "passed": true,
+          "seconds": 0.0092
+        },
+        {
+          "name": "direct_provider_access",
+          "passed": true,
+          "seconds": 0.0048
+        },
+        {
+          "name": "document_read_allow",
+          "passed": true,
+          "seconds": 0.0067
+        },
+        {
+          "name": "document_read_denied_before_disclosure",
+          "passed": true,
+          "seconds": 0.0034
+        },
+        {
+          "name": "email_approval_exact_snapshot",
+          "passed": true,
+          "seconds": 0.01
+        },
+        {
+          "name": "expiration_pending",
+          "passed": true,
+          "seconds": 1.5277
+        },
+        {
+          "name": "generated_order_boundary_matrix",
+          "passed": true,
+          "seconds": 0.1774
+        },
+        {
+          "name": "grant_creation_authority",
+          "passed": true,
+          "seconds": 0.0033
+        },
+        {
+          "name": "hard_denial_cannot_be_approved",
+          "passed": true,
+          "seconds": 0.0042
+        },
+        {
+          "name": "idempotency_cross_grant_binding",
+          "passed": true,
+          "seconds": 0.0086
+        },
+        {
+          "name": "idempotency_same_and_changed_action",
+          "passed": true,
+          "seconds": 0.0086
+        },
+        {
+          "name": "identity_and_approval_spoofing",
+          "passed": true,
+          "seconds": 0.0076
+        },
+        {
+          "name": "missing_authentication",
+          "passed": true,
+          "seconds": 0.0079
+        },
+        {
+          "name": "order_constraints",
+          "passed": true,
+          "seconds": 0.0117
+        },
+        {
+          "name": "order_requires_review",
+          "passed": true,
+          "seconds": 0.0081
+        },
+        {
+          "name": "policy_claims_in_document_are_data",
+          "passed": true,
+          "seconds": 0.0095
+        },
+        {
+          "name": "provider_ambiguous_completion",
+          "passed": true,
+          "seconds": 0.2185
+        },
+        {
+          "name": "provider_rejection",
+          "passed": true,
+          "seconds": 0.0105
+        },
+        {
+          "name": "provider_unavailable",
+          "passed": true,
+          "seconds": 0.1167
+        },
+        {
+          "name": "recipient_checks_all_fields",
+          "passed": true,
+          "seconds": 0.0098
+        },
+        {
+          "name": "response_secret_separation",
+          "passed": true,
+          "seconds": 0.0059
+        },
+        {
+          "name": "restart_pending_and_replay",
+          "passed": true,
+          "seconds": 0.4313
+        },
+        {
+          "name": "revocation_pending",
+          "passed": true,
+          "seconds": 0.0117
+        },
+        {
+          "name": "snapshot_survives_document_change",
+          "passed": true,
+          "seconds": 0.0116
+        },
+        {
+          "name": "unknown_action_and_stale_attachment",
+          "passed": true,
+          "seconds": 0.0061
+        },
+        {
+          "name": "wrong_digest_and_replacement",
+          "passed": true,
+          "seconds": 0.008
+        }
+      ],
+      "passed": 30,
+      "failed": 0,
+      "additional_probe": {
+        "false_success_response": [
+          502,
+          {
+            "reason": "completed",
+            "request_id": "2476208b-f23a-4d55-b10f-09e7718e601c",
+            "state": "executed"
+          }
+        ],
+        "effect_delta": 0
+      }
+    }
+  },
+  "frozen_source_mismatches": []
+}

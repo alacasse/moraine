@@ -1,0 +1,55 @@
+{
+  "unicode": {
+    "observed": {
+      "connection_error": "RemoteProtocolError"
+    },
+    "subsequent_health": 200,
+    "effects": 0,
+    "reads": 0
+  },
+  "expiry_during_preparation": {
+    "expiry": 1789929074,
+    "read_started_at": [
+      1789929072.5798566,
+      1789929074.2014832
+    ],
+    "reads_after_expiry": 1,
+    "result": {
+      "request_id": "request-2a68a2deac2e40359524d31a09aa3e91",
+      "state": "denied",
+      "reason": "capability_denied",
+      "action_digest": "5300d8555567afa8e6de5375f6d86a70c858469ec00a676270e6318840f3d4a8"
+    },
+    "provider_reads": [
+      {
+        "sequence": 1,
+        "document_id": "public-note"
+      },
+      {
+        "sequence": 2,
+        "document_id": "public-note"
+      }
+    ]
+  },
+  "expiry_during_reservation": {
+    "expiry": 1789929077,
+    "approval_started_at": 1789929074.7103353,
+    "sqlite_lock_released_at": 1789929077.2000358,
+    "approval_waited_for_sqlite": true,
+    "effect_started_at": [
+      1789929077.2426183
+    ],
+    "effects_after_expiry": 1,
+    "result": {
+      "request_id": "request-b85ee7efad6c4d1793c4234550c17979",
+      "state": "executed",
+      "reason": "provider_confirmed",
+      "action_digest": "9c91fc45e6906b9eb0dc49d0baf440509a2ac7c7f8d8743c5952b13a25ac86d8",
+      "result": {
+        "effect_id": "effect-bbd9bd2a79bdef211e4b",
+        "execution_id": "execution-0c921ca87b81478fbcd9550d791d0593"
+      }
+    },
+    "provider_effect_count": 1
+  }
+}

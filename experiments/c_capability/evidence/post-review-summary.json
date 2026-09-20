@@ -1,0 +1,24 @@
+{
+  "scope": "Three independent-review fixes; initial review evidence and manifests preserved",
+  "regressions_before": {
+    "failed": 6,
+    "seconds": 13.3
+  },
+  "regressions_after": {
+    "passed": 6,
+    "seconds": 12.54
+  },
+  "full_custom_after": {
+    "passed": 41,
+    "seconds": 26.71
+  },
+  "common_after": {
+    "passed": 30,
+    "failed": 0,
+    "seconds": 3.0942
+  },
+  "unchanged_reviewer_probes_sha256": "3e5dacc3e7f43112d6d4847072a5d3d99a2de5482a836883b6b65e699e728fa5",
+  "pre_review_manifest_sha256": "7c63b829dc1b3be663be9e73e7a73db9338688cc560f5dc752ad9f7d859b543f",
+  "post_review_source_manifest": "post-review-source-manifest.json",
+  "limitations": "Local preflight after persistence and before each provider IO does not guarantee time of remote acceptance; crashes before terminal denial persistence remain unknown and do not retry."
+}
