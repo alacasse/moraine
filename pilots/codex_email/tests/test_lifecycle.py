@@ -41,7 +41,7 @@ def core(tmp_path):
 
 
 def grant_body():
-    return {"agent": "agent:pilot", "account_id": "pilot@example.test",
+    return {"kind": "reply", "agent": "agent:pilot", "account_id": "pilot@example.test",
             "expires_at": time.time() + 1200, "recipient": "friend@example.test",
             "reply_to_ref": "message-1", "resources": [{"resource_ref": "message-1",
             "provider_message_id": "provider-1", "kind": "message", "version": 1,

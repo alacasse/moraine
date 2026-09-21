@@ -2,7 +2,14 @@
 
 Implémentation locale sur **fournisseur simulé**, issue de [B](../experiments/b-broker.md) et du [plan revu](../plans/codex-mcp-email-pilot.md). Elle permet de déléguer quelques textes, proposer une réponse via le SDK MCP officiel, approuver/refuser par un socket humain, puis consulter le résultat durable.
 
-Les exemples utilisent le même utilisateur Linux. Ils prouvent les contrôles applicatifs et le protocole, **pas l'isolation OS**. Aucun compte fournisseur, OAuth, envoi réel ou configuration Codex n'est installé. La séparation des utilisateurs et l'installation du serveur MCP dans Codex appartiennent à l'étape 3; Gmail aux étapes 4–5.
+Le [parcours de demande d'accès](agent-access.md) ajoute une sélection fictive
+récupérée par API après accord, avec lecture seule et reprise entre conversations
+Codex. Son lanceur configure MCP uniquement pour le processus Codex de l'essai.
+
+Les exemples utilisent le même utilisateur Linux. Ils prouvent les contrôles
+applicatifs et le protocole, **pas l'isolation OS**. Aucun compte fournisseur,
+OAuth, envoi réel ou configuration Codex persistante n'est installé. La
+séparation des utilisateurs reste une qualification distincte.
 
 Le [runbook Linux](linux-deployment.md) prépare cette installation : socket détenu par le service, groupe de connexion distinct du contrôle `SO_PEERCRED`, surveillance d'OPA, unité systemd et sondes opt-in. Ces artefacts sont intégrés; leur exécution sous plusieurs identités et sous systemd reste à qualifier. Le [rapport d'intégration](../../pilot-results/parallel-workstreams/integration-20260920/REPORT.md) consigne les validations locales actuelles.
 
@@ -89,7 +96,8 @@ Lire tout le message et saisir `approve` ou `reject`. Le corps est présenté li
 
 ## Contrôles et limites
 
-- Quatre outils MCP seulement : `list_context`, `read_context`, `propose_reply`, `get_request`. Aucun appel MCP ne peut créer, approuver ou révoquer une délégation. Les autres outils d'un futur client Codex ne sont pas confinés par cette interface.
+- Six outils MCP : `request_access`, `get_access`, `list_context`, `read_context`, `propose_reply`, `get_request`. Demander un accès ne crée aucun grant. Aucun appel MCP ne peut approuver ou révoquer une délégation. Les autres outils d'un client Codex ne sont pas confinés par cette interface.
+- Le stockage est en version 2. Préparer un runtime neuf pour ce code; les anciennes bases en version 1 sont refusées sans migration. Les reprises ultérieures d'un runtime en version 2 conservent grants, décisions et captures.
 - Les identités configurées restent stables : un humain, un agent, une boîte. `SO_PEERCRED` authentifie le pair Unix. Les inputs ne peuvent fournir une identité d'approbateur. Le bearer MCP est considéré lisible par l'agent; seule son empreinte est conservée par la façade, et sa session expire après 24 heures. Révocation immédiate du bearer : arrêter le service; remplacer le fichier par un nouveau token avant redémarrage. Ce n'est pas un système de gestion de sessions multicomptes.
 - Les secrets sont fournis dans des fichiers privés, distincts et appartenant au compte de lancement, jamais dans les arguments. L'installation fiable des fichiers, utilisateurs/groupes, politiques et sockets est encore à valider à l'étape 3. Le home partagé de cette démo donne à son propriétaire tous les pouvoirs.
 - Sélection immuable : 1–5 messages texte et au plus une note; 32 Kio par texte, 128 Kio total. Réponse texte UTF-8 de 16 Kio maximum, un destinataire, aucun Cc/Bcc, HTML ou fichier joint. Les adresses acceptées forment un sous-ensemble ASCII strict, sans noms affichés, groupes ou parties locales entre guillemets.

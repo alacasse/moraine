@@ -15,14 +15,25 @@ import time
 import uuid
 
 from .mime import prepare_reply
-from .models import PilotError, canonical, digest, validate_grant, validate_proposal
+from .models import PilotError, canonical, digest, exact, identifier, validate_grant, validate_proposal
 from .policy import PolicyFailure
 
 
 class Broker:
     def __init__(self, state_dir: Path, policy, provider, *, owner="human:owner",
-                 agent="agent:pilot", account="pilot@example.test"):
+                 agent="agent:pilot", account="pilot@example.test", resource_sets=None):
         self.owner, self.agent, self.account = owner, agent, account
+        self.resource_sets = deepcopy({} if resource_sets is None else resource_sets)
+        if type(self.resource_sets) is not dict or len(self.resource_sets) > 8:
+            raise PilotError("invalid_resource_sets")
+        for ref, ids in self.resource_sets.items():
+            identifier(ref)
+            if type(ids) is not list or not 1 <= len(ids) <= 5:
+                raise PilotError("invalid_resource_sets")
+            for item in ids:
+                identifier(item)
+            if len(set(ids)) != len(ids):
+                raise PilotError("invalid_resource_sets")
         self.policy, self.provider = policy, provider
         self.lock = threading.RLock()
         self.suspended = False
@@ -40,12 +51,12 @@ class Broker:
                                   check_same_thread=False, isolation_level=None)
         os.chmod(self.directory / "broker.sqlite3", 0o600)
         self.db.row_factory = sqlite3.Row
+        if self.db.execute("PRAGMA user_version").fetchone()[0] not in (0, 2):
+            self.close()
+            raise PilotError("storage_version")
         self.db.execute("PRAGMA journal_mode=WAL")
         self.db.execute("PRAGMA synchronous=FULL")
         self.db.execute("PRAGMA foreign_keys=ON")
-        if self.db.execute("PRAGMA user_version").fetchone()[0] not in (0, 1):
-            self.close()
-            raise PilotError("storage_version")
         self.db.executescript("""
             CREATE TABLE IF NOT EXISTS grants (
                 id TEXT PRIMARY KEY, scope TEXT NOT NULL, revoked INTEGER NOT NULL DEFAULT 0
@@ -78,11 +89,22 @@ class Broker:
                 resolved_at REAL, result TEXT
             );
             CREATE INDEX IF NOT EXISTS unresolved_source ON executions(account,source_id,state);
-            PRAGMA user_version=1;
+            CREATE TABLE IF NOT EXISTS access_requests (
+                id TEXT PRIMARY KEY, agent TEXT NOT NULL, idem TEXT NOT NULL,
+                resource_set_ref TEXT NOT NULL, input_digest TEXT NOT NULL,
+                scope TEXT NOT NULL, scope_digest TEXT NOT NULL,
+                created_at REAL NOT NULL, expires_at REAL NOT NULL,
+                decision TEXT NOT NULL, retrieval TEXT NOT NULL, reason TEXT NOT NULL,
+                nonce_hash TEXT, review_expires_at REAL, human TEXT, decided_at REAL,
+                activation_expires_at REAL, grant_id TEXT REFERENCES grants(id),
+                UNIQUE(agent,idem)
+            );
+            PRAGMA user_version=2;
         """)
         with self.transaction():
             self.db.execute("UPDATE requests SET state='unknown',reason='execution_interrupted' WHERE state='processing'")
             self.db.execute("UPDATE executions SET state='unknown' WHERE state='intent'")
+            self.db.execute("UPDATE access_requests SET retrieval='failed',reason='retrieval_interrupted' WHERE retrieval='fetching'")
         for suffix in ("-wal", "-shm"):
             path = self.directory / ("broker.sqlite3" + suffix)
             if path.exists():
@@ -155,18 +177,26 @@ class Broker:
             if value["agent"] != self.agent or value["account_id"] != self.account:
                 raise PilotError("scope_denied", status=403)
             resources = value.pop("resources")
-            value.update(owner=self.owner, resource_refs=[r["resource_ref"] for r in resources])
-            gid = str(uuid.uuid4())
             with self.transaction():
-                if value["expires_at"] <= self.now():
-                    raise PilotError("grant_expired")
-                self.db.execute("INSERT INTO grants(id,scope) VALUES(?,?)", (gid, canonical(value)))
-                for resource in resources:
-                    metadata = {k: v for k, v in resource.items() if k != "text"}
-                    metadata["digest"] = digest(resource)
-                    self.db.execute("INSERT INTO resources VALUES(?,?,?,?)",
-                                    (gid, resource["resource_ref"], canonical(metadata), resource["text"]))
+                gid = self._insert_grant(value, resources)
             return {"grant_id": gid, "expires_at": value["expires_at"]}
+
+    def _insert_grant(self, value, resources, source_digests=None):
+        # Caller owns the transaction, including the access-request publication.
+        value.update(owner=self.owner, resource_refs=[r["resource_ref"] for r in resources])
+        gid = str(uuid.uuid4())
+        now = self.now()
+        if self.suspended or value["expires_at"] <= now:
+            raise PilotError("grant_expired")
+        self.db.execute("INSERT INTO grants(id,scope) VALUES(?,?)", (gid, canonical(value)))
+        for resource in resources:
+            metadata = {k: v for k, v in resource.items() if k != "text"}
+            metadata["digest"] = digest(resource)
+            if source_digests is not None:
+                metadata["source_digest"] = source_digests[resource["provider_message_id"]]
+            self.db.execute("INSERT INTO resources VALUES(?,?,?,?)",
+                            (gid, resource["resource_ref"], canonical(metadata), resource["text"]))
+        return gid
 
     def revoke_grant(self, human, grant_id):
         with self.lock:
@@ -176,6 +206,192 @@ class Broker:
                 self.db.execute("UPDATE grants SET revoked=1 WHERE id=?", (grant_id,))
                 self.db.execute("UPDATE requests SET state='denied',reason='grant_revoked',nonce_hash=NULL WHERE grant_id=? AND state='pending'", (grant_id,))
             return {"grant_id": grant_id, "state": "revoked"}
+
+    def _access_agent(self, agent, resource_set_ref):
+        identifier(resource_set_ref)
+        if agent != self.agent or resource_set_ref not in self.resource_sets:
+            raise PilotError("scope_denied", status=403)
+
+    def _expire_access(self):
+        self.db.execute("UPDATE access_requests SET decision='expired',reason='request_expired',nonce_hash=NULL "
+                        "WHERE decision='pending' AND expires_at<=?", (self.now(),))
+
+    def _access_row(self, request_id):
+        row = self.db.execute("SELECT * FROM access_requests WHERE id=?", (request_id,)).fetchone()
+        if row is None:
+            raise PilotError("access_request_not_found", status=404)
+        scope = json.loads(row["scope"])
+        if (scope["agent"] != self.agent or scope["owner"] != self.owner
+                or scope["account_id"] != self.account):
+            raise PilotError("access_request_not_found", status=404)
+        return row
+
+    def _access_projection(self, row):
+        result = {"request_id": row["id"], "resource_set_ref": row["resource_set_ref"],
+                  "decision": row["decision"], "retrieval": row["retrieval"],
+                  "reason": row["reason"], "access": "none"}
+        if row["grant_id"]:
+            grant = self.grant(row["grant_id"])
+            result["expires_at"] = grant["expires_at"]
+            if grant["revoked"]:
+                result["access"] = "revoked"
+            elif self.now() >= grant["expires_at"]:
+                result["access"] = "expired"
+            elif self.active(grant, self.agent):
+                result.update(access="active", grant_id=row["grant_id"])
+            else:
+                result["access"] = "unavailable"
+        return result
+
+    def request_access(self, agent, resource_set_ref, idempotency_key):
+        with self.lock:
+            self._access_agent(agent, resource_set_ref)
+            identifier(idempotency_key)
+            self._expire_access()
+            if self.suspended:
+                raise PilotError("scope_denied", status=403)
+            # Idempotence covers the caller's input, not a later catalogue revision.
+            incoming = digest({"resource_set_ref": resource_set_ref})
+            previous = self.db.execute("SELECT id,input_digest FROM access_requests WHERE agent=? AND idem=?",
+                                       (agent, idempotency_key)).fetchone()
+            if previous:
+                if previous["input_digest"] != incoming:
+                    raise PilotError("idempotency_conflict", status=409)
+                return self._access_projection(self._access_row(previous["id"]))
+            for existing in self.db.execute("SELECT id FROM access_requests WHERE agent=? AND resource_set_ref=?",
+                                            (agent, resource_set_ref)).fetchall():
+                row = self._access_row(existing["id"])
+                if (row["decision"] == "pending" or row["retrieval"] == "fetching"
+                        or self._access_projection(row)["access"] == "active"):
+                    # Rejected key is NOT consumed. Call get_access to recover the existing request.
+                    raise PilotError("access_already_exists", status=409)
+            now = self.now()
+            rid = str(uuid.uuid4())
+            scope = {"owner": self.owner, "agent": agent, "account_id": self.account,
+                     "resource_set_ref": resource_set_ref, "kind": "context_read",
+                     "message_ids": sorted(self.resource_sets[resource_set_ref]),
+                     "grant_ttl": 1800, "request_expires_at": now + 1800}
+            with self.transaction():
+                self.db.execute("INSERT INTO access_requests "
+                    "(id,agent,idem,resource_set_ref,input_digest,scope,scope_digest,created_at,expires_at,decision,retrieval,reason) "
+                    "VALUES(?,?,?,?,?,?,?,?,?,'pending','not_started','awaiting_human')",
+                    (rid, agent, idempotency_key, resource_set_ref, incoming, canonical(scope), digest(scope), now, now + 1800))
+            return self._access_projection(self._access_row(rid))
+
+    def get_access(self, agent, resource_set_ref):
+        with self.lock:
+            self._access_agent(agent, resource_set_ref)
+            self._expire_access()
+            row = self.db.execute("SELECT id FROM access_requests WHERE agent=? AND resource_set_ref=? "
+                                  "ORDER BY rowid DESC LIMIT 1", (agent, resource_set_ref)).fetchone()
+            if row is None:
+                return {"resource_set_ref": resource_set_ref, "decision": "absent",
+                        "retrieval": "not_started", "access": "none"}
+            return self._access_projection(self._access_row(row["id"]))
+
+    def list_access_requests(self, human):
+        with self.lock:
+            self.human(human)
+            self._expire_access()
+            results = []
+            for item in self.db.execute("SELECT id FROM access_requests ORDER BY rowid DESC LIMIT 100").fetchall():
+                try:
+                    results.append(self._access_projection(self._access_row(item["id"])))
+                except PilotError as exc:
+                    if exc.reason != "access_request_not_found":
+                        raise
+            return {"requests": results}
+
+    def review_access(self, human, request_id):
+        with self.lock:
+            self.human(human)
+            self._expire_access()
+            row = self._access_row(request_id)
+            if row["decision"] != "pending" or self.suspended:
+                raise PilotError("access_not_pending", status=409)
+            nonce = secrets.token_urlsafe(32)
+            expires = min(self.now() + 300, row["expires_at"])
+            with self.transaction():
+                self.db.execute("UPDATE access_requests SET nonce_hash=?,review_expires_at=? WHERE id=?",
+                                (digest(nonce), expires, request_id))
+            return {"request_id": request_id, "scope": json.loads(row["scope"]),
+                    "scope_digest": row["scope_digest"], "nonce": nonce, "review_expires_at": expires}
+
+    def _capture_guard(self, row):
+        scope = json.loads(row["scope"])
+        now = self.now()
+        if (self.suspended or now >= row["activation_expires_at"]
+                or digest(scope) != row["scope_digest"]):
+            raise PilotError("activation_expired")
+        # Reuse the live read policy for the human-approved, closed capture scope.
+        grant = {**scope, "id": row["id"], "revoked": False, "resource_refs": [],
+                 "expires_at": row["activation_expires_at"]}
+        self.authorize(grant, self.agent, "list")
+
+    def decide_access(self, human, request_id, scope_digest, nonce, decision):
+        with self.lock:
+            self.human(human)
+            if decision not in ("approve", "reject"):
+                raise PilotError("invalid_decision")
+            self._expire_access()
+            row = self._access_row(request_id)
+            if row["decision"] != "pending":
+                return self._access_projection(row)
+            with self.transaction():
+                now = self.now()
+                if (self.suspended or now >= row["expires_at"] or not row["review_expires_at"]
+                        or now >= row["review_expires_at"]):
+                    raise PilotError("review_expired", status=409)
+                if (not row["nonce_hash"] or not hmac.compare_digest(row["nonce_hash"], digest(nonce))
+                        or not hmac.compare_digest(row["scope_digest"], scope_digest)
+                        or digest(json.loads(row["scope"])) != scope_digest):
+                    raise PilotError("invalid_review", status=409)
+                accepted = decision == "approve"
+                self.db.execute("UPDATE access_requests SET decision=?,retrieval=?,reason=?,nonce_hash=NULL,"
+                                "human=?,decided_at=?,activation_expires_at=? WHERE id=?",
+                                ("approved" if accepted else "rejected", "fetching" if accepted else "not_started",
+                                 "retrieving" if accepted else "human_rejected", human, now,
+                                 min(row["expires_at"], row["review_expires_at"]), request_id))
+            if not accepted:
+                return self._access_projection(self._access_row(request_id))
+            row = self._access_row(request_id)
+            scope = json.loads(row["scope"])
+            try:
+                self._capture_guard(row)
+                messages = self.provider.fetch_selected(scope["message_ids"])
+                if type(messages) is not list or len(messages) != len(scope["message_ids"]):
+                    raise PilotError("invalid_capture")
+                resources, source_digests, ids = [], {}, []
+                for message in messages:
+                    exact(message, "provider_message_id title text from_address reply_address message_id thread_id")
+                    mid = identifier(message["provider_message_id"])
+                    ids.append(mid)
+                    source_digests[mid] = digest(message)
+                    resources.append({**message, "kind": "message", "resource_ref": str(uuid.uuid4()), "version": 1})
+                if sorted(ids) != scope["message_ids"]:
+                    raise PilotError("invalid_capture")
+                value = validate_grant({"kind": "context_read", "agent": scope["agent"],
+                    "account_id": scope["account_id"], "expires_at": time.time() + scope["grant_ttl"],
+                    "resources": resources})
+                resources = value.pop("resources")
+                self._capture_guard(row)
+                with self.transaction():
+                    # BEGIN may wait. Recheck after it, before publishing anything.
+                    self._capture_guard(row)
+                    value["expires_at"] = self.now() + scope["grant_ttl"]
+                    gid = self._insert_grant(value, resources, source_digests)
+                    now = self.now()
+                    if self.suspended or now >= row["activation_expires_at"]:
+                        raise PilotError("activation_expired")
+                    self.db.execute("UPDATE access_requests SET retrieval='ready',reason='available',grant_id=? WHERE id=?",
+                                    (gid, request_id))
+            except Exception as exc:
+                reason = "activation_expired" if self.now() >= row["activation_expires_at"] else "retrieval_failed"
+                if isinstance(exc, PilotError) and exc.reason == "activation_expired":
+                    reason = "activation_expired"
+                with self.transaction():
+                    self.db.execute("UPDATE access_requests SET retrieval='failed',reason=? WHERE id=?", (reason, request_id))
+            return self._access_projection(self._access_row(request_id))
 
     def list_context(self, agent, grant_id):
         with self.lock:
@@ -276,6 +492,8 @@ class Broker:
                 return self.projection(self.request(previous["id"], agent), agent)
             grant = self.grant(body["grant_id"])
             self.require_active(grant, agent)
+            if grant["kind"] != "reply":
+                raise PilotError("scope_denied", status=403)
             if body["reply_to_ref"] != grant["reply_to_ref"]:
                 raise PilotError("scope_denied", status=403)
             resources = [json.loads(r[0]) for r in self.db.execute(

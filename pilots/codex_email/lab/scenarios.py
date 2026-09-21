@@ -108,7 +108,7 @@ def run_scenario(lab, name):
                     run.restart()
                     state(run, "unknown", "provider_outcome_unknown")
                     mcp_error(run, run.agent("propose_reply", {**run.proposal, "idempotency_key": str(uuid.uuid4())}), "source_unresolved")
-                    new_grant = run.human("create_grant", body={"agent": "agent:pilot", "account_id": "pilot@example.test",
+                    new_grant = run.human("create_grant", body={"kind": "reply", "agent": "agent:pilot", "account_id": "pilot@example.test",
                         "expires_at": time.time() + 600, "recipient": run.message["reply_address"],
                         "reply_to_ref": "message-1", "resources": [run.message]})
                     mcp_error(run, run.agent("propose_reply", {**run.proposal, "grant_id": new_grant["grant_id"],

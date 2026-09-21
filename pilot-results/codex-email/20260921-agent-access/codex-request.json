@@ -1,0 +1,74 @@
+{
+  "thread_id": "01a0c4d1-0945-7331-a3ef-24c569b338e9",
+  "completed_items": [
+    {
+      "id": "item_0",
+      "type": "agent_message",
+      "text": "Je vérifie uniquement l’état d’accès Moraine pour `travaux-demo`, sans lire de fichier ni utiliser le shell."
+    },
+    {
+      "id": "item_1",
+      "type": "mcp_tool_call",
+      "server": "moraine",
+      "tool": "get_access",
+      "arguments": {
+        "resource_set_ref": "travaux-demo"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"resource_set_ref\": \"travaux-demo\",\n  \"decision\": \"absent\",\n  \"retrieval\": \"not_started\",\n  \"access\": \"none\"\n}"
+          }
+        ],
+        "structured_content": {
+          "resource_set_ref": "travaux-demo",
+          "decision": "absent",
+          "retrieval": "not_started",
+          "access": "none"
+        }
+      },
+      "error": null,
+      "status": "completed"
+    },
+    {
+      "id": "item_2",
+      "type": "agent_message",
+      "text": "Aucun accès n’existe. Je dépose donc une demande en lecture seule avec une nouvelle clé d’idempotence; je ne tenterai aucune approbation."
+    },
+    {
+      "id": "item_3",
+      "type": "mcp_tool_call",
+      "server": "moraine",
+      "tool": "request_access",
+      "arguments": {
+        "resource_set_ref": "travaux-demo",
+        "idempotency_key": "travaux-demo-20260921T000000-america-toronto-7f3a9c"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"request_id\": \"8c9f1c61-f432-45e2-8c4d-81e00a350e31\",\n  \"resource_set_ref\": \"travaux-demo\",\n  \"decision\": \"pending\",\n  \"retrieval\": \"not_started\",\n  \"reason\": \"awaiting_human\",\n  \"access\": \"none\"\n}"
+          }
+        ],
+        "structured_content": {
+          "request_id": "8c9f1c61-f432-45e2-8c4d-81e00a350e31",
+          "resource_set_ref": "travaux-demo",
+          "decision": "pending",
+          "retrieval": "not_started",
+          "reason": "awaiting_human",
+          "access": "none"
+        }
+      },
+      "error": null,
+      "status": "completed"
+    },
+    {
+      "id": "item_4",
+      "type": "agent_message",
+      "text": "Demande d’accès en attente d’approbation humaine.\n\nRéférence : `8c9f1c61-f432-45e2-8c4d-81e00a350e31`"
+    }
+  ],
+  "turn_completed": true
+}

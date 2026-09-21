@@ -11,7 +11,7 @@ from tests.fixtures.provider_server import ProviderServer
 @pytest.fixture
 def grant_body():
     return {
-        "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + 600,
+        "kind": "reply", "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + 600,
         "recipient": "correspondent@example.test", "reply_to_ref": "message-1",
         "resources": [{"resource_ref": "message-1", "provider_message_id": "upstream-1", "kind": "message",
                        "version": 1, "title": "Question du pilote", "text": "Peux-tu confirmer mardi ?",

@@ -6,9 +6,13 @@ une action; un service indépendant vérifie ses droits, conserve le message exa
 et attend l'approbation avant d'effectuer une tentative d'envoi.
 
 Le pilote actuel prépare une réponse email en texte simple à un seul destinataire.
-Il utilise un vrai broker Python, OPA, SQLite, quatre outils MCP et un canal humain
+Il utilise un vrai broker Python, OPA, SQLite, six outils MCP et un canal humain
 Unix. Le fournisseur email est simulé et observe ses tentatives et effets dans
 ses propres journaux.
+
+Un [parcours de demande d'accès](docs/pilot/agent-access.md) permet aussi à
+Codex de demander une sélection d'emails fictifs, de la lire après accord
+humain local et de retrouver cet accès dans une autre conversation.
 
 ## Essayer en local
 

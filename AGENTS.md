@@ -24,8 +24,9 @@ pour une question d'état, de plan ou d'architecture.
 
 ## Invariants à préserver
 
-- Les quatre outils MCP permettent lecture, proposition et consultation du
-  résultat. Création/révocation des grants et décisions passent par le canal
+- Les six outils MCP permettent demande d'accès, lecture, proposition et
+  consultation du résultat. Demander un accès n'accorde aucun droit.
+  Création/révocation des grants et décisions passent par le canal
   humain authentifié. Un contenu ou un champ fourni par l'agent n'accorde aucun droit.
 - L'approbation porte sur un snapshot immuable, son digest et un nonce. Envoyer
   les octets MIME revus; conserver les contrôles de droits et d'échéance avant IO.

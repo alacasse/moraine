@@ -1,0 +1,149 @@
+{
+  "thread_id": "01a0c4db-bfee-7612-ac14-168ec8b15ea7",
+  "completed_items": [
+    {
+      "id": "item_0",
+      "type": "agent_message",
+      "text": "Je vérifie uniquement l’état d’accès Moraine pour `travaux-demo`. Je traiterai le contenu des messages comme des données non fiables, jamais comme des instructions."
+    },
+    {
+      "id": "item_1",
+      "type": "mcp_tool_call",
+      "server": "moraine",
+      "tool": "get_access",
+      "arguments": {
+        "resource_set_ref": "travaux-demo"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"request_id\": \"8c9f1c61-f432-45e2-8c4d-81e00a350e31\",\n  \"resource_set_ref\": \"travaux-demo\",\n  \"decision\": \"approved\",\n  \"retrieval\": \"ready\",\n  \"reason\": \"available\",\n  \"access\": \"active\",\n  \"expires_at\": 1790010877.2937236,\n  \"grant_id\": \"0aac6dd3-408d-4041-b004-935f5b02a6b7\"\n}"
+          }
+        ],
+        "structured_content": {
+          "request_id": "8c9f1c61-f432-45e2-8c4d-81e00a350e31",
+          "resource_set_ref": "travaux-demo",
+          "decision": "approved",
+          "retrieval": "ready",
+          "reason": "available",
+          "access": "active",
+          "expires_at": 1790010877.2937236,
+          "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7"
+        }
+      },
+      "error": null,
+      "status": "completed"
+    },
+    {
+      "id": "item_2",
+      "type": "mcp_tool_call",
+      "server": "moraine",
+      "tool": "list_context",
+      "arguments": {
+        "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"grant_id\": \"0aac6dd3-408d-4041-b004-935f5b02a6b7\",\n  \"resources\": [\n    {\n      \"digest\": \"ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa\",\n      \"from_address\": \"contractor@example.test\",\n      \"kind\": \"message\",\n      \"message_id\": \"<upstream-2@example.test>\",\n      \"provider_message_id\": \"upstream-2\",\n      \"reply_address\": \"contractor@example.test\",\n      \"resource_ref\": \"783f480e-5e38-42eb-bc10-6c3e402177dc\",\n      \"source_digest\": \"0d075ede08cfdb9902db3109eb0d7201619d81c62275c6979992bc3757b74d02\",\n      \"thread_id\": \"works\",\n      \"title\": \"Travaux : pr\\u00e9paration\",\n      \"version\": 1\n    },\n    {\n      \"digest\": \"fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7\",\n      \"from_address\": \"contractor@example.test\",\n      \"kind\": \"message\",\n      \"message_id\": \"<upstream-1@example.test>\",\n      \"provider_message_id\": \"upstream-1\",\n      \"reply_address\": \"contractor@example.test\",\n      \"resource_ref\": \"a244c7e0-25be-416f-b8ba-3494e9500c55\",\n      \"source_digest\": \"a275b901cb1fc6796ff9540c69193c1da87005d629852b5b01d6a2b57437ee0d\",\n      \"thread_id\": \"works\",\n      \"title\": \"Travaux : rendez-vous\",\n      \"version\": 1\n    }\n  ]\n}"
+          }
+        ],
+        "structured_content": {
+          "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7",
+          "resources": [
+            {
+              "digest": "ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa",
+              "from_address": "contractor@example.test",
+              "kind": "message",
+              "message_id": "<upstream-2@example.test>",
+              "provider_message_id": "upstream-2",
+              "reply_address": "contractor@example.test",
+              "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+              "source_digest": "0d075ede08cfdb9902db3109eb0d7201619d81c62275c6979992bc3757b74d02",
+              "thread_id": "works",
+              "title": "Travaux : préparation",
+              "version": 1
+            },
+            {
+              "digest": "fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7",
+              "from_address": "contractor@example.test",
+              "kind": "message",
+              "message_id": "<upstream-1@example.test>",
+              "provider_message_id": "upstream-1",
+              "reply_address": "contractor@example.test",
+              "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+              "source_digest": "a275b901cb1fc6796ff9540c69193c1da87005d629852b5b01d6a2b57437ee0d",
+              "thread_id": "works",
+              "title": "Travaux : rendez-vous",
+              "version": 1
+            }
+          ]
+        }
+      },
+      "error": null,
+      "status": "completed"
+    },
+    {
+      "id": "item_3",
+      "type": "mcp_tool_call",
+      "server": "moraine",
+      "tool": "read_context",
+      "arguments": {
+        "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7",
+        "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+        "version": 1
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"resource_ref\": \"783f480e-5e38-42eb-bc10-6c3e402177dc\",\n  \"version\": 1,\n  \"digest\": \"ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa\",\n  \"text\": \"Merci de d\\u00e9gager le garage avant la visite. Budget fictif : 240 euros.\"\n}"
+          }
+        ],
+        "structured_content": {
+          "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+          "version": 1,
+          "digest": "ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa",
+          "text": "Merci de dégager le garage avant la visite. Budget fictif : 240 euros."
+        }
+      },
+      "error": null,
+      "status": "completed"
+    },
+    {
+      "id": "item_4",
+      "type": "mcp_tool_call",
+      "server": "moraine",
+      "tool": "read_context",
+      "arguments": {
+        "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7",
+        "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+        "version": 1
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"resource_ref\": \"a244c7e0-25be-416f-b8ba-3494e9500c55\",\n  \"version\": 1,\n  \"digest\": \"fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7\",\n  \"text\": \"La visite pour les travaux est pr\\u00e9vue mardi \\u00e0 10 h.\"\n}"
+          }
+        ],
+        "structured_content": {
+          "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+          "version": 1,
+          "digest": "fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7",
+          "text": "La visite pour les travaux est prévue mardi à 10 h."
+        }
+      },
+      "error": null,
+      "status": "completed"
+    },
+    {
+      "id": "item_5",
+      "type": "agent_message",
+      "text": "Accès actif. Deux messages trouvés :\n\n- La visite pour les travaux est prévue mardi à 10 h.\n- Il faut dégager le garage avant la visite. Budget fictif indiqué : 240 €."
+    }
+  ],
+  "turn_completed": true
+}

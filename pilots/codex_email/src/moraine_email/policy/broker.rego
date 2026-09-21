@@ -4,6 +4,7 @@ import rego.v1
 default decision := {"decision": "deny", "reason": "scope_denied"}
 
 common if {
+    input.grant.kind in {"context_read", "reply"}
     input.subject == input.grant.agent
     input.subject == input.trusted.agent
     input.grant.owner == input.trusted.owner
@@ -19,6 +20,7 @@ read_scope if {
 read_scope if { input.operation == "list" }
 
 send_scope if {
+    input.grant.kind == "reply"
     input.operation == "reply"
     input.reply_to_ref == input.grant.reply_to_ref
     input.recipient == input.grant.recipient

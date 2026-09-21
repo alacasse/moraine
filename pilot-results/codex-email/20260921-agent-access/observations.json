@@ -1,0 +1,18 @@
+{
+  "at_utc": "2026-09-21T16:43:08.396172+00:00",
+  "requests": [
+    {
+      "id": "8c9f1c61-f432-45e2-8c4d-81e00a350e31",
+      "decision": "pending",
+      "retrieval": "not_started",
+      "reason": "awaiting_human",
+      "grant_id": null,
+      "human": null,
+      "decided_at": null,
+      "review_expires_at": null
+    }
+  ],
+  "grant_count": 0,
+  "resource_count": 0,
+  "provider_read_count": 0
+}

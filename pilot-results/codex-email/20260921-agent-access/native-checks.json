@@ -1,0 +1,115 @@
+{
+  "read_conversations": [
+    {
+      "thread_id": "01a0c4db-1710-7573-89d1-ecb5c95b1c76",
+      "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7",
+      "resources": [
+        {
+          "digest": "ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa",
+          "from_address": "contractor@example.test",
+          "kind": "message",
+          "message_id": "<upstream-2@example.test>",
+          "provider_message_id": "upstream-2",
+          "reply_address": "contractor@example.test",
+          "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+          "source_digest": "0d075ede08cfdb9902db3109eb0d7201619d81c62275c6979992bc3757b74d02",
+          "thread_id": "works",
+          "title": "Travaux : préparation",
+          "version": 1
+        },
+        {
+          "digest": "fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7",
+          "from_address": "contractor@example.test",
+          "kind": "message",
+          "message_id": "<upstream-1@example.test>",
+          "provider_message_id": "upstream-1",
+          "reply_address": "contractor@example.test",
+          "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+          "source_digest": "a275b901cb1fc6796ff9540c69193c1da87005d629852b5b01d6a2b57437ee0d",
+          "thread_id": "works",
+          "title": "Travaux : rendez-vous",
+          "version": 1
+        }
+      ],
+      "reads": [
+        {
+          "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+          "version": 1,
+          "digest": "ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa",
+          "text": "Merci de dégager le garage avant la visite. Budget fictif : 240 euros."
+        },
+        {
+          "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+          "version": 1,
+          "digest": "fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7",
+          "text": "La visite pour les travaux est prévue mardi à 10 h."
+        }
+      ]
+    },
+    {
+      "thread_id": "01a0c4db-bfee-7612-ac14-168ec8b15ea7",
+      "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7",
+      "resources": [
+        {
+          "digest": "ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa",
+          "from_address": "contractor@example.test",
+          "kind": "message",
+          "message_id": "<upstream-2@example.test>",
+          "provider_message_id": "upstream-2",
+          "reply_address": "contractor@example.test",
+          "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+          "source_digest": "0d075ede08cfdb9902db3109eb0d7201619d81c62275c6979992bc3757b74d02",
+          "thread_id": "works",
+          "title": "Travaux : préparation",
+          "version": 1
+        },
+        {
+          "digest": "fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7",
+          "from_address": "contractor@example.test",
+          "kind": "message",
+          "message_id": "<upstream-1@example.test>",
+          "provider_message_id": "upstream-1",
+          "reply_address": "contractor@example.test",
+          "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+          "source_digest": "a275b901cb1fc6796ff9540c69193c1da87005d629852b5b01d6a2b57437ee0d",
+          "thread_id": "works",
+          "title": "Travaux : rendez-vous",
+          "version": 1
+        }
+      ],
+      "reads": [
+        {
+          "resource_ref": "783f480e-5e38-42eb-bc10-6c3e402177dc",
+          "version": 1,
+          "digest": "ebc6ab375c56e5078950ae4763e896de1f1dc00992ce87e3bd66060c2994cdaa",
+          "text": "Merci de dégager le garage avant la visite. Budget fictif : 240 euros."
+        },
+        {
+          "resource_ref": "a244c7e0-25be-416f-b8ba-3494e9500c55",
+          "version": 1,
+          "digest": "fc4eb1d6da95047be51f99c08b336f36c69668a8de1b8f3ef57047cdc9766ba7",
+          "text": "La visite pour les travaux est prévue mardi à 10 h."
+        }
+      ]
+    }
+  ],
+  "provider_reads": [
+    {
+      "at": 1790009077.2908392,
+      "message_ids": [
+        "upstream-1",
+        "upstream-2"
+      ],
+      "source_digests": {
+        "upstream-1": "a275b901cb1fc6796ff9540c69193c1da87005d629852b5b01d6a2b57437ee0d",
+        "upstream-2": "0d075ede08cfdb9902db3109eb0d7201619d81c62275c6979992bc3757b74d02"
+      },
+      "mode": "normal"
+    }
+  ],
+  "approval_channel": "simulated_operator_cli",
+  "request_count": 1,
+  "grant_count": 1,
+  "resource_count": 2,
+  "send_attempts": 0
+}

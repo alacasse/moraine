@@ -84,7 +84,7 @@ def test_official_client_process_restart_and_observed_effect(tmp_path, grant_bod
             async with ClientSession(r, w) as session:
                 await session.initialize()
                 names = {tool.name for tool in (await session.list_tools()).tools}
-                assert names == {"list_context", "read_context", "propose_reply", "get_request"}
+                assert names == {"request_access", "get_access", "list_context", "read_context", "propose_reply", "get_request"}
                 replies = []
                 for name, arguments, expected_error in actions:
                     response = await session.call_tool(name, arguments)

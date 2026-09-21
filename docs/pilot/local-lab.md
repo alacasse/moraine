@@ -91,7 +91,7 @@ API opérateur : `GET /api/state` et `POST /api/action`, en JSON, avec
 `actor`, `provider_mode` optionnels), `read`, `propose` (avec `body`), `review`,
 `approve`, `reject`, `refresh`, `restart`, `revoke`, `verify`, `campaign`.
 Une page obsolète reçoit 409. Ce contrôle est réservé à l'opérateur du lab,
-distinct des quatre outils MCP de l'agent. Aucun endpoint ne lit un chemin
+distinct des outils MCP de l'agent. Aucun endpoint ne lit un chemin
 arbitraire ou n'exécute une commande fournie par le client.
 
 Deux outils WebMCP facultatifs partagent les boutons de lecture et proposition
@@ -104,7 +104,12 @@ outils ne sont pas qualifiés; le parcours testé passe par les boutons.
 Services métier et messages sont locaux; l'IA de cette session ne devient pas un
 modèle installé localement. Le rôle humain est simulé pour les tests autorisés.
 Les processus partagent le même utilisateur Linux, qui a accès à tous les
-fichiers privés. Ni isolation multi-UID/systemd, ni intégration du serveur MCP
-dans la configuration Codex, ni ingestion B, ni Prompt Guard, ni livraison email
+fichiers privés. Les preuves de ce laboratoire ne qualifient ni isolation
+multi-UID/systemd, ni intégration du serveur MCP dans Codex, ni ingestion B,
+ni Prompt Guard, ni livraison email
 réelle ne sont qualifiés. Le résultat métier `delivery_status=unverified` reste
 inchangé même lorsque le laboratoire observe son propre effet local.
+
+Le [parcours de demande d'accès dans Codex](agent-access.md) possède son propre
+lanceur et ses propres preuves; il ne réutilise pas les grants préremplis de
+ce laboratoire d'envoi.

@@ -1,0 +1,259 @@
+{
+  "base_commit": "6e5a48372d74fa35d3709b041f22ce8a6e371348",
+  "workspace_uncommitted": true,
+  "source_files": [
+    {
+      "path": "pilots/codex_email/bootstrap.py",
+      "sha256": "d252347f8f98223733a4a30ea4f1b7a0f2d3c0f48892e6825ca2e98576410f1c"
+    },
+    {
+      "path": "pilots/codex_email/dependencies.lock.json",
+      "sha256": "2069eaade9433ad6611aab83c6ddd9ffbff041d691761ab138a959cd6da3c4b9"
+    },
+    {
+      "path": "pilots/codex_email/deploy/config.json",
+      "sha256": "09ad18fdf8661e47801efc3813aa2a75d833c99738d691096048d3e13bd06792"
+    },
+    {
+      "path": "pilots/codex_email/deploy/moraine-email.service.in",
+      "sha256": "1347210dd62e4c070a83e1d67ea5ea2d3617bab5c8a2f79e16fb37580fcc7ebb"
+    },
+    {
+      "path": "pilots/codex_email/deploy/probe_identity.py",
+      "sha256": "be7b9a809d747636e3286f760a5a7af13ccf5eea53e18155beee63b653d62829"
+    },
+    {
+      "path": "pilots/codex_email/deploy/probe_supervision.py",
+      "sha256": "8cf26f6ab3e786c26e3b78e23fea8fe55e9709fa24ffdc6dea8b679062e2830f"
+    },
+    {
+      "path": "pilots/codex_email/deploy/verify_install.py",
+      "sha256": "8884fadf2aa68f8ce104b56dcae2cbac36857d536eba4f4cfec19d189adf4a83"
+    },
+    {
+      "path": "pilots/codex_email/examples/access_demo.py",
+      "sha256": "365d509763c36f474be1d979f85daa79044b278832b02b761030e9e2d7d4d5fb"
+    },
+    {
+      "path": "pilots/codex_email/examples/agent_client.py",
+      "sha256": "4f761b53b4022ba3a60ea641f1bd9d7ebad5f39c9ede7c29d9338393736d81c1"
+    },
+    {
+      "path": "pilots/codex_email/examples/prepare_demo.py",
+      "sha256": "9f4be1399f85c0112ed6bb8f356aa854c8f572c3e4682a303b551359fc13ce9f"
+    },
+    {
+      "path": "pilots/codex_email/lab/__init__.py",
+      "sha256": "81ca0d5c630698051abef0ae639cdaa8aadff7676c147421b5f8425b9a2a9deb"
+    },
+    {
+      "path": "pilots/codex_email/lab/__main__.py",
+      "sha256": "735da590119709b49b41efa81ee67b5edf487bcf78d93e3163bd8066b5b753c4"
+    },
+    {
+      "path": "pilots/codex_email/lab/runtime.py",
+      "sha256": "ef8bcfba8f618db63907186070e1e33cc2811333ba16a32b03a069f279611610"
+    },
+    {
+      "path": "pilots/codex_email/lab/scenarios.py",
+      "sha256": "32900e3431a999bdfbf35b2204306f1e4db68917aa6a9414e85ee6fa3ecc8d21"
+    },
+    {
+      "path": "pilots/codex_email/lab/server.py",
+      "sha256": "9a8a0909107aef218cfd0af3e785f0350c89a09c22616ef99869e4f094eb9dd5"
+    },
+    {
+      "path": "pilots/codex_email/lab/static/app.js",
+      "sha256": "c4b64cba1642b2bcb14913a19166debb2f54a76f299ea9bc614719f4f33b1aa9"
+    },
+    {
+      "path": "pilots/codex_email/lab/static/index.html",
+      "sha256": "6364334997c326449ab48e1b26eb1077a1d197bb1afc48c0d8dd060ad7de882d"
+    },
+    {
+      "path": "pilots/codex_email/lab/static/style.css",
+      "sha256": "fc718684d650b875c86d932af200abff548b795556e2025d16c3f49c97cf80aa"
+    },
+    {
+      "path": "pilots/codex_email/pyproject.toml",
+      "sha256": "1b2010d1e352b2a2c7ccf6cb5c02827dfa794af88cfeb9f40584cb4775d55b1b"
+    },
+    {
+      "path": "pilots/codex_email/setup.sh",
+      "sha256": "19497d7907d892530de1a7d84c6a8178b9f8672b1144a0b8cbf7312e4d21e94e"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/adapters/simulated.py",
+      "sha256": "e838445a74edc8a68114940e1d154c3c37896ebf44c93bbc03daeca5e92b7ee3"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/broker.py",
+      "sha256": "7dfd35d5e03e8b172b6c35c2f78229f6f5e0295c0c1182563fee3a16e3a2fd26"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/human_cli.py",
+      "sha256": "4c9a40d96a17f41785eda7789b05712c79ec3b110de23e5c01120d631dfd76ba"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/human_server.py",
+      "sha256": "52f7e12026fb7a192ba78897d7b899c3403dab9218e7b9a1188906289d906580"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/mcp_server.py",
+      "sha256": "136ef31cdda529c09613324778a78afc734476a9b9c53cbbac5a94359da3c647"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/mime.py",
+      "sha256": "c3006b8790ff9825911ddd52992f624f6076457a35dacaf35091ade07774930b"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/models.py",
+      "sha256": "1f39979fd5519d794b2a36e4d31e82c1be18947393f98a5291827e1951d787bc"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/policy.py",
+      "sha256": "cf7d606204d2f255e60d3d1cc530f2f3ff2fc474cbbfdebef3eb0df14b29356b"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/policy/broker.rego",
+      "sha256": "47938d2c4b4dc165b720e9067b4efae941819c94e403e8a37e5756887d94a83d"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/policy/system_authz.rego",
+      "sha256": "e2b30aad7ed314a6c9df28f9eadb70f9c5773d6b5cf750ba4c4cc75e9f3a2d66"
+    },
+    {
+      "path": "pilots/codex_email/src/moraine_email/server.py",
+      "sha256": "a474537f761ca0656e318882b87d2a00e58cbb093877eb44695bea5edf1c94d5"
+    },
+    {
+      "path": "pilots/codex_email/test.sh",
+      "sha256": "1bdba03ccff9504ca5c5b59b93ef93cc6424d8905a50f08bb8f106c18c3e385a"
+    },
+    {
+      "path": "pilots/codex_email/tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pilots/codex_email/tests/conftest.py",
+      "sha256": "c0f0f29f82a3a811460bd878fbc86f35fbc2b68f1f0fd7129205fed1b0309b7b"
+    },
+    {
+      "path": "pilots/codex_email/tests/fixtures/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pilots/codex_email/tests/fixtures/provider_server.py",
+      "sha256": "16084eb872af15dc7499ba6a76dac4f0aaa46fe15133a9259e581f626dfe22e9"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_access.py",
+      "sha256": "5e76a715489363db69a9588a5454120fd3074ce7466de207314738d01c60d169"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_access_process.py",
+      "sha256": "a641b0bca3d6a3d2728674233eece16c13c9e3f28e6d3952b64566b8c99ddd97"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_deployment_preparation.py",
+      "sha256": "9b2e109a1575e673a92e2025c595429485336c64e521b775ba23c725e8903d78"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_human_review.py",
+      "sha256": "1164402b16a6994dc2f98d26e2ff1a2cfc0f0d0d41c23874b22035530755318a"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_isolation_lifecycle.py",
+      "sha256": "f65594baba1f76a92d1f1e036e6da5c025bfd3b25305a98b2a77cfc34f810a20"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_lifecycle.py",
+      "sha256": "afa64732b10ef9153c74b8b1f479bdd9a7adefd44b94c21b7cc562cc67020d8a"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_local_lab.py",
+      "sha256": "e69a7c01a41b2eccfbac461cb5372fc2cf9242ca16a0d216a236a6ec218a0352"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_mcp.py",
+      "sha256": "14a71731893004e106bf236098c929dac75be3c9c845974d38be0e9bf284c17a"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_mime_snapshot.py",
+      "sha256": "7c149e9d9eb292191ef4741e3f7de03e5207f8a5f952b79858feab6f7be9b42d"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_policy.py",
+      "sha256": "6c2e8bce5696487873b6d59ced7947565dd06b8825acb9cbea2560a31e424929"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_process_workflow.py",
+      "sha256": "d806ff8b82721dbf1b0aa9b6aef9a0ac3170efeb7d8c3bec7c1486558e27f3bc"
+    },
+    {
+      "path": "pilots/codex_email/tests/test_socket_isolation.py",
+      "sha256": "2fc891f1619cc6efa03b7d84ac6ed205f54d3c0234ca43dea0c011297ffe9f70"
+    },
+    {
+      "path": "pilots/codex_email/uv.lock",
+      "sha256": "e2b1417ced245e41ed53d6c9968fb5b942d51c033f94aca722d923d854f8fe07"
+    }
+  ],
+  "source_archive_sha256": "2e82a97f10c8e31934772bce57853d5046ddf3f116a866dc03b77a17a73f2bbd",
+  "final_validation": {
+    "command": "./test.sh -q",
+    "cwd": "pilots/codex_email",
+    "exit_code": 0,
+    "pytest_passed": 122,
+    "warnings": 2,
+    "seconds": 61.06
+  },
+  "evidence_files": [
+    {
+      "path": "codex-read-first.json",
+      "sha256": "8a7e2ce79dee7393af5db4fe161243376a47393faad841f7a44d682d731a39b4"
+    },
+    {
+      "path": "codex-read-second.json",
+      "sha256": "400842c8de543c78cf3c4ef7e217a28277d0e008e90b08c1b3f197b835082609"
+    },
+    {
+      "path": "codex-request.json",
+      "sha256": "33380ec555a1badea4c8a844e9d5c56765912ce2b61ea08bd3783309be8fba29"
+    },
+    {
+      "path": "human-simulated.txt",
+      "sha256": "b0cb57dbbf4a68af0c1bea7be3afe41a3658088c5f7c49b156aca33da516abe1"
+    },
+    {
+      "path": "native-checks.json",
+      "sha256": "d569583d3b3e9e786bd34812b145232c03dbcce14e6559d85223b773ccdff632"
+    },
+    {
+      "path": "observations.json",
+      "sha256": "4ae9fa95ce1eacb75d0a520bc4edde94a4bf71c34b9dc4bd5716e8a4131593f3"
+    },
+    {
+      "path": "revocation-checks.json",
+      "sha256": "63fc3cbb54d653761bae5f3c6cdd383eb802a9673d4e69ee0bb74621c41721b4"
+    }
+  ],
+  "native_validation": {
+    "request_conversations": 1,
+    "read_conversations": 2,
+    "same_grant": true,
+    "human_channel": "simulated_operator",
+    "provider_retrievals": 1,
+    "resources_read_per_conversation": 2,
+    "revocation_denied_reads": true,
+    "runtime_stopped": true
+  }
+}

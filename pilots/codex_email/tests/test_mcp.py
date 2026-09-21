@@ -51,7 +51,7 @@ def test_real_sdk_initialize_discovery_and_dispatch(client):
     assert response.status_code == 200
     assert "protocolVersion" in response.json()["result"]
     tools = rpc(client, "tools/list").json()["result"]["tools"]
-    assert {tool["name"] for tool in tools} == {"list_context", "read_context", "propose_reply", "get_request"}
+    assert {tool["name"] for tool in tools} == {"request_access", "get_access", "list_context", "read_context", "propose_reply", "get_request"}
     assert all(tool["inputSchema"]["additionalProperties"] is False for tool in tools)
     response = rpc(client, "tools/call", {"name": "list_context", "arguments": {"grant_id": "g1"}})
     assert response.json()["result"]["structuredContent"] == {"resources": [{"resource_ref": "m1"}]}

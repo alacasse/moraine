@@ -1,0 +1,29 @@
+{
+  "request_id": "8c9f1c61-f432-45e2-8c4d-81e00a350e31",
+  "scope": {
+    "account_id": "pilot@example.test",
+    "agent": "agent:pilot",
+    "grant_ttl": 1800,
+    "kind": "context_read",
+    "message_ids": [
+      "upstream-1",
+      "upstream-2"
+    ],
+    "owner": "human:owner",
+    "request_expires_at": 1790010253.5381477,
+    "resource_set_ref": "travaux-demo"
+  },
+  "scope_digest": "4c0ff8d133f3d99ff675c93099b0546de5565f2fdb04bf91aaf0a5be18e59733",
+  "review_expires_at": 1790009377.2825785
+}
+Read-only capture of these exact IDs. Future messages are excluded. Synthetic provider only.
+Type approve or reject for this exact scope (anything else cancels): {
+  "request_id": "8c9f1c61-f432-45e2-8c4d-81e00a350e31",
+  "resource_set_ref": "travaux-demo",
+  "decision": "approved",
+  "retrieval": "ready",
+  "reason": "available",
+  "access": "active",
+  "expires_at": 1790010877.2937236,
+  "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7"
+}

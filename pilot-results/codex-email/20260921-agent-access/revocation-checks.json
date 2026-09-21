@@ -1,0 +1,26 @@
+{
+  "operator": "simulated_human",
+  "revocation": {
+    "grant_id": "0aac6dd3-408d-4041-b004-935f5b02a6b7",
+    "state": "revoked"
+  },
+  "receipt": {
+    "request_id": "8c9f1c61-f432-45e2-8c4d-81e00a350e31",
+    "resource_set_ref": "travaux-demo",
+    "decision": "approved",
+    "retrieval": "ready",
+    "reason": "available",
+    "access": "revoked",
+    "expires_at": 1790010877.2937236
+  },
+  "denied_reads": [
+    {
+      "tool": "list_context",
+      "error": "scope_denied"
+    },
+    {
+      "tool": "read_context",
+      "error": "scope_denied"
+    }
+  ]
+}

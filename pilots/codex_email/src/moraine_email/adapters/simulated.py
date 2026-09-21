@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 
 import httpx
 
-from ..models import PilotError
+from ..models import PilotError, strict_json
 
 
 class SimulatedProvider:
@@ -30,6 +30,30 @@ class SimulatedProvider:
         if hashlib.sha256(raw).hexdigest() != prepared["mime_sha256"]:
             raise PilotError("invalid_prepared_mime")
         return asyncio.run(self._send(prepared, execution_id))
+
+    def fetch_selected(self, message_ids):
+        return asyncio.run(self._fetch(message_ids))
+
+    async def _fetch(self, message_ids):
+        try:
+            async with asyncio.timeout(4):
+                async with httpx.AsyncClient(base_url=self.url, timeout=1, trust_env=False,
+                                             follow_redirects=False, headers=self.headers,
+                                             transport=httpx.AsyncHTTPTransport(retries=0)) as client:
+                    async with client.stream("POST", "/messages", json={"message_ids": message_ids}) as response:
+                        raw = bytearray()
+                        async for chunk in response.aiter_bytes():
+                            raw.extend(chunk)
+                            if len(raw) > 262144:
+                                raise ValueError("capture too large")
+                        if response.status_code != 200:
+                            raise ValueError("capture refused")
+                        value = strict_json(bytes(raw))
+                        if type(value) is not dict or set(value) != {"messages"}:
+                            raise ValueError("invalid capture envelope")
+                        return value["messages"]
+        except (httpx.HTTPError, ValueError, TimeoutError, PilotError):
+            raise PilotError("retrieval_failed") from None
 
     async def _send(self, prepared, execution_id):
         try:

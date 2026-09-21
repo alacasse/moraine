@@ -15,6 +15,7 @@ from .broker import Broker
 from .human_server import HumanServer, strict_json
 from .mcp_server import create_app
 from .policy import OPA, PolicyFailure
+from .models import PilotError
 
 
 def read_secret(path: Path) -> str:
@@ -74,6 +75,7 @@ def main():
     parser.add_argument("--human-uid", required=True, type=int)
     parser.add_argument("--human-socket-gid", type=int, help="Connection group; peer UID remains authoritative")
     parser.add_argument("--opa-runtime-dir", type=Path, help="Existing private service runtime directory")
+    parser.add_argument("--resource-sets", type=Path, help="Local synthetic selection catalogue: public names to closed message ID lists")
     parser.add_argument("--port", default=8765, type=int)
     args = parser.parse_args()
     policy = provider = broker = human = worker = None
@@ -109,7 +111,14 @@ def main():
             raise ValueError("state directory must be private and owned by the service UID")
         policy = OPA(args.opa_binary, runtime_dir=args.opa_runtime_dir)
         provider = SimulatedProvider(args.provider_url, provider_token)
-        broker = Broker(args.state_dir, policy, provider, **config)
+        resource_sets = None
+        if args.resource_sets:
+            with args.resource_sets.open("rb") as source:
+                raw = source.read(8193)
+            if len(raw) > 8192:
+                raise ValueError("resource catalogue too large")
+            resource_sets = strict_json(raw)
+        broker = Broker(args.state_dir, policy, provider, resource_sets=resource_sets, **config)
         human = HumanServer(args.human_socket, broker, allowed_uid=args.human_uid, owner=config["owner"],
                             socket_gid=args.human_socket_gid)
         worker = threading.Thread(target=human.serve_forever, name="human-channel", daemon=True)
@@ -117,7 +126,7 @@ def main():
         app = create_app(broker, token=token, agent=config["agent"], port=args.port)
         del token, provider_token
         run_http(app, policy, args.port)
-    except (OSError, ValueError, PolicyFailure):
+    except (OSError, ValueError, PolicyFailure, PilotError):
         parser.exit(1, "Pilot startup refused; check protected configuration, paths and local dependencies.\n")
     finally:
         signal.signal(signal.SIGTERM, signal.SIG_IGN)

@@ -15,7 +15,7 @@ for name in ("agent-token", "provider-token"):
     path.chmod(0o600)
 (args.directory / "config.json").write_text(json.dumps({
     "agent": "agent:pilot", "owner": "human:owner", "account": "pilot@example.test"}))
-body = {"agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + 1800,
+body = {"kind": "reply", "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + 1800,
         "recipient": "correspondent@example.test", "reply_to_ref": "message-1",
         "resources": [{"resource_ref": "message-1", "provider_message_id": "upstream-1", "kind": "message",
                        "version": 1, "title": "Question du pilote", "text": "Peux-tu confirmer mardi ?",

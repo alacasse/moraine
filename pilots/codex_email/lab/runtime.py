@@ -108,11 +108,11 @@ class Run:
             self.start("broker", self.broker_command)
             self.wait_ready("broker", self.endpoint, self.human_socket)
             self.human("create_grant", body={
-                "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + 600,
+                "kind": "reply", "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + 600,
                 "recipient": self.witness["reply_address"], "reply_to_ref": "message-private",
                 "resources": [self.witness]})
             self.grant = self.human("create_grant", body={
-                "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + ttl,
+                "kind": "reply", "agent": "agent:pilot", "account_id": "pilot@example.test", "expires_at": time.time() + ttl,
                 "recipient": self.message["reply_address"], "reply_to_ref": "message-1",
                 "resources": [self.message]})
             self.event("run.ready", {"actor": actor, "provider_mode": provider_mode})

@@ -10,7 +10,7 @@ complètent cette vue.
 
 ```mermaid
 flowchart LR
-    Agent[Client agent] -->|quatre outils MCP| MCP[Façade MCP]
+    Agent[Client agent] -->|six outils MCP| MCP[Façade MCP]
     Human[Opérateur humain] -->|socket Unix et SO_PEERCRED| Unix[Canal humain]
     MCP --> Broker[Broker]
     Unix --> Broker
@@ -20,8 +20,8 @@ flowchart LR
     Provider --> Evidence[(Journaux tentatives et effets)]
 ```
 
-La façade MCP authentifie le bearer et fournit uniquement `list_context`,
-`read_context`, `propose_reply`, `get_request`. Le canal humain peut créer ou
+La façade MCP authentifie le bearer et fournit `request_access`, `get_access`,
+`list_context`, `read_context`, `propose_reply`, `get_request`. Le canal humain peut créer ou
 révoquer une délégation, consulter la revue exacte et décider. L'identité vient
 du transport/configuration, jamais d'un champ d'autorité fourni par l'agent.
 
@@ -38,11 +38,26 @@ du transport/configuration, jamais d'un champ d'autorité fourni par l'agent.
 
 ## Données et invariants
 
-Une délégation lie agent, boîte, destinataire, durée et liste fermée de ressources.
+Une délégation lie agent, boîte, durée et liste fermée de ressources. Son type
+explicite est `context_read` ou `reply`; seul le second fixe un destinataire
+et une cible de réponse. Un accès de lecture ne permet aucune proposition d'envoi.
 La sélection est immuable : 1 à 5 messages, éventuellement une note. Le broker
 contrôle chaque lecture et ne déduit pas un droit du contenu des messages.
 L'[ingestion proposée](plans/email-ingestion-contract.md) n'est pas implémentée :
-les textes sont actuellement fournis par le canal humain.
+le chemin historique reçoit les textes par le canal humain. Le nouveau
+[parcours d'accès](pilot/agent-access.md) récupère des objets JSON fictifs par
+HTTP après accord humain; il ne qualifie pas l'ingestion de messages réels.
+
+`request_access` enregistre un périmètre de lecture figé dans `access_requests`.
+L'accord est conservé avant la récupération; le grant, les captures et la
+disponibilité sont publiés atomiquement. Un échec laisse l'accord enregistré,
+sans grant. `get_access` retrouve la demande et l'accès de l'identité configurée
+par un nom public de sélection, y compris dans une nouvelle conversation.
+La consultation ne provoque aucune récupération. Au redémarrage, une capture
+interrompue devient un échec et n'est jamais relancée automatiquement.
+
+SQLite utilise désormais la version 2. Les anciennes bases ne sont pas migrées
+automatiquement; les preuves et runtimes historiques doivent être conservés.
 
 Une proposition référence un grant et un message sélectionné, avec une clé
 d'idempotence et un corps texte. Le broker prépare et conserve les octets MIME,

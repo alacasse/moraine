@@ -69,12 +69,16 @@ def header(value, limit=512):
 
 
 def validate_grant(body):
-    exact(body, "agent account_id expires_at recipient reply_to_ref resources")
+    if type(body) is not dict or body.get("kind") not in ("reply", "context_read"):
+        raise PilotError("invalid_grant_kind")
+    fields = "kind agent account_id expires_at resources"
+    exact(body, fields + (" recipient reply_to_ref" if body["kind"] == "reply" else ""))
     result = copy.deepcopy(body)
     identifier(result["agent"])
     result["account_id"] = address(result["account_id"])
-    result["recipient"] = address(result["recipient"])
-    identifier(result["reply_to_ref"])
+    if result["kind"] == "reply":
+        result["recipient"] = address(result["recipient"])
+        identifier(result["reply_to_ref"])
     expiry = result["expires_at"]
     now = time.time()
     if type(expiry) not in (int, float) or not now < expiry <= now + 1800:
@@ -113,9 +117,10 @@ def validate_grant(body):
         total += len(resource["text"].encode("utf-8"))
     if not 1 <= messages <= 5 or notes > 1 or total > 131072:
         raise PilotError("selection_too_large")
-    source = next((r for r in resources if r["resource_ref"] == result["reply_to_ref"]), None)
-    if not source or source["kind"] != "message" or result["recipient"] != source["reply_address"]:
-        raise PilotError("invalid_reply_target")
+    if result["kind"] == "reply":
+        source = next((r for r in resources if r["resource_ref"] == result["reply_to_ref"]), None)
+        if not source or source["kind"] != "message" or result["recipient"] != source["reply_address"]:
+            raise PilotError("invalid_reply_target")
     return result
 
 

@@ -33,6 +33,9 @@ def strict_json(raw: bytes):
 
 
 OPERATIONS = {
+    "list_access_requests": set(),
+    "review_access": {"request_id"},
+    "decide_access": {"request_id", "scope_digest", "nonce", "decision"},
     "create_grant": {"body"},
     "revoke_grant": {"grant_id"},
     "get_request": {"request_id"},
@@ -60,7 +63,7 @@ def dispatch(broker, owner: str, payload):
                 raise PilotError("invalid_human_request")
         elif not isinstance(value, str) or not value or len(value) > 128:
             raise PilotError("invalid_human_request")
-    if operation == "decide_review" and args["decision"] not in {"approve", "reject"}:
+    if operation in {"decide_review", "decide_access"} and args["decision"] not in {"approve", "reject"}:
         raise PilotError("invalid_human_request")
     return getattr(broker, operation)(owner, **args)
 

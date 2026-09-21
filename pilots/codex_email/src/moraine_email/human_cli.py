@@ -62,16 +62,36 @@ def review(path: Path, request_id: str, *, read_input=input):
                         "decision": choice}))
 
 
+def review_access(path: Path, request_id: str, *, read_input=input):
+    envelope = call(path, {"operation": "review_access", "request_id": request_id})
+    display({key: value for key, value in envelope.items() if key != "nonce"})
+    print("Read-only capture of these exact IDs. Future messages are excluded. Synthetic provider only.")
+    choice = read_input("Type approve or reject for this exact scope (anything else cancels): ").strip()
+    if choice not in {"approve", "reject"}:
+        print("Cancelled; no decision sent.")
+        return
+    display(call(path, {"operation": "decide_access", "request_id": request_id,
+                        "scope_digest": envelope["scope_digest"], "nonce": envelope["nonce"], "decision": choice}))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--socket", type=Path, required=True)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("create-grant").add_argument("file", type=Path)
     commands.add_parser("revoke-grant").add_argument("grant_id")
+    commands.add_parser("list-access-requests")
+    commands.add_parser("review-access").add_argument("request_id")
     for command in ("get-request", "review", "resolve-unknown"):
         commands.add_parser(command).add_argument("request_id")
     args = parser.parse_args()
     try:
+        if args.command == "review-access":
+            review_access(args.socket, args.request_id)
+            return
+        if args.command == "list-access-requests":
+            display(call(args.socket, {"operation": "list_access_requests"}))
+            return
         if args.command == "review":
             review(args.socket, args.request_id)
             return
