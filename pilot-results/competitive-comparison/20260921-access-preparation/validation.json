@@ -1,0 +1,60 @@
+{
+  "checked_at": "2026-09-21T17:50:26.199917+00:00",
+  "scope": "local preparation and retained evidence, not SaaS behavior",
+  "checks": {
+    "preexisting_files": {
+      "checked": 397,
+      "changed": []
+    },
+    "plan_and_mandate": {
+      "plan_sha256": "24b480003e61d742b8bb24af7f9ecfa2580e84069f9f6e045a7ac79549eea497",
+      "plan_copies_matching": 3,
+      "mandate_matches": true
+    },
+    "historical_evidence": {
+      "evidence_files": 7,
+      "archive_verified": true,
+      "archived_sources_verified": 51,
+      "content_crosschecks": true,
+      "product_tests_rerun": false
+    },
+    "corpus": {
+      "resources": 4,
+      "unique_markers_and_synthetic_ids": 12,
+      "expected_rights_match_plan": true,
+      "not_uploaded": true
+    },
+    "planned_cases": {
+      "count": 126,
+      "cross_controls_B_only": 6,
+      "revocation_schedule_matches": true,
+      "executed": 0
+    },
+    "csv": {
+      "rows": 21,
+      "columns": 21,
+      "scenarios_per_candidate": 7,
+      "new_product_calls": 0,
+      "roundtrip": true,
+      "preview_inspected": true
+    },
+    "json_parsing": {
+      "files": 13
+    },
+    "markdown_links": {
+      "local_targets_checked": 58,
+      "anchors_checked": 0,
+      "broken": [],
+      "snapshot_origin_resolution": true
+    },
+    "content_hygiene": {
+      "trailing_whitespace": [],
+      "common_secret_pattern_hits": [],
+      "limit": "pattern scan and manual inspection of authored content; no authentication data collected"
+    },
+    "git_diff_check": {
+      "exit_code": 0,
+      "new_files_checked_directly": true
+    }
+  }
+}

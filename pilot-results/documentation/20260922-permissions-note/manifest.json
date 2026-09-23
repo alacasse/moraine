@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-22",
+  "purpose": "Preserve the previously uncommitted documentation index before adding the permission note link",
+  "head": "29a883450f585fc6662e151de133559670fc5864",
+  "source_before": {
+    "original_path": "docs/README.md",
+    "snapshot_path": "README-before.md",
+    "sha256": "afd1a06c766328f22addd7e64a64f9f89be7828d44a02f166d185a6dad250189",
+    "resolve_relative_links_from": "docs/",
+    "referenced_by_historical_manifest": "pilot-results/competitive-comparison/20260921-access-preparation/manifest.json"
+  },
+  "documents_after": [
+    {
+      "path": "docs/research/permission-enforcement-gateway.md",
+      "sha256": "c957724a66870b5532ab7cac4cf7032f0e8cc816e9c2203199aee1be03f02660"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "817efee049c7d5ed420bc79d2aa4d6678515aa7bb3327c35863b3e1168f133e1"
+    }
+  ],
+  "validation": {
+    "checked_at": "2026-09-22T15:59:54.063233+00:00",
+    "local_links_checked": 43,
+    "broken_links": [],
+    "preexisting_files_checked": 422,
+    "preexisting_files_unchanged": 421,
+    "only_modified_preexisting_file": "docs/README.md",
+    "index_change_is_only_the_new_entry": true,
+    "index_previous_bytes_archived": true,
+    "new_document_whitespace_checked": true,
+    "git_diff_check_exit_code": 0,
+    "business_tests_rerun": false,
+    "external_trial": false
+  },
+  "publication": "no commit or push"
+}

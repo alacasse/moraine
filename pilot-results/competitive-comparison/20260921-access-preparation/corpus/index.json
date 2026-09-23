@@ -1,0 +1,79 @@
+{
+  "fictional": true,
+  "uploaded": false,
+  "provider_ids_assigned": false,
+  "resources": [
+    {
+      "logical_id": "D1",
+      "synthetic_id": "MC26-ID-D1-33a123e5",
+      "provider_id": null,
+      "provider_version": null,
+      "title": "Plan du projet Atlas [MC26-T1-7AF3]",
+      "title_marker": "MC26-T1-7AF3",
+      "body_marker": "MC26-C1-92D8",
+      "space_role": "atlas",
+      "path": "corpus/D1.md",
+      "sha256": "fb46226855a7e6a95844974c71b51fbf1f35f38eb69714f77d43911c57b5f518",
+      "expected_read": {
+        "U": true,
+        "A": true,
+        "B": true
+      },
+      "source_observed": false
+    },
+    {
+      "logical_id": "D2",
+      "synthetic_id": "MC26-ID-D2-2265f533",
+      "provider_id": null,
+      "provider_version": null,
+      "title": "Budget Atlas [MC26-T2-6BC4]",
+      "title_marker": "MC26-T2-6BC4",
+      "body_marker": "MC26-C2-A53E",
+      "space_role": "atlas",
+      "path": "corpus/D2.md",
+      "sha256": "015cbb0d53b7a3d1af94513de6de077d5ba1384b76c8376b00972597cdb89964",
+      "expected_read": {
+        "U": true,
+        "A": true,
+        "B": false
+      },
+      "source_observed": false
+    },
+    {
+      "logical_id": "D3",
+      "synthetic_id": "MC26-ID-D3-bed7abea",
+      "provider_id": null,
+      "provider_version": null,
+      "title": "Projet Boréal témoin exclu [MC26-T3-C8F1]",
+      "title_marker": "MC26-T3-C8F1",
+      "body_marker": "MC26-C3-1ED9",
+      "space_role": "boreal",
+      "path": "corpus/D3.md",
+      "sha256": "a33d714ccef6bd03077db7bc21bbb969d2a18ae0676e0e44b18a3d35805fc043",
+      "expected_read": {
+        "U": true,
+        "A": false,
+        "B": false
+      },
+      "source_observed": false
+    },
+    {
+      "logical_id": "D4",
+      "synthetic_id": "MC26-ID-D4-080f6260",
+      "provider_id": null,
+      "provider_version": null,
+      "title": "Espace réservé à O [MC26-T4-D2A6]",
+      "title_marker": "MC26-T4-D2A6",
+      "body_marker": "MC26-C4-8B70",
+      "space_role": "reserve_o",
+      "path": "corpus/D4.md",
+      "sha256": "3cd1078a5414a113982e0e97dbc6f8c3120d6871b7406709d8a38bc805c6234b",
+      "expected_read": {
+        "U": false,
+        "A": false,
+        "B": false
+      },
+      "source_observed": false
+    }
+  ]
+}

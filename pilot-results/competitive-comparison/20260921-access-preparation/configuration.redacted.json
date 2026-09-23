@@ -1,0 +1,50 @@
+{
+  "state": "prepared_not_applied",
+  "upstream_identity": "U",
+  "operator": "O",
+  "ordinary_U_distinct_from_O": true,
+  "tenant": null,
+  "billing": {
+    "authorized_new_spend": 0,
+    "currency": null,
+    "payment_method_authorized": false,
+    "trial_end_at": null
+  },
+  "agents": {
+    "A": {
+      "authenticated_principal": null,
+      "credential_reference": null,
+      "connection_id": null,
+      "allowed_documents": [
+        "D1",
+        "D2"
+      ]
+    },
+    "B": {
+      "authenticated_principal": null,
+      "credential_reference": null,
+      "connection_id": null,
+      "allowed_documents": [
+        "D1"
+      ]
+    }
+  },
+  "candidate_configuration": {
+    "Arcade": {
+      "project": null,
+      "edition": null,
+      "auth_mode_proposal": "User Source OIDC; jamais Headers seul",
+      "callback": null,
+      "scopes_granted": []
+    },
+    "Workato": {
+      "workspace": null,
+      "edition": null,
+      "identity_proposal": "Workato Identity",
+      "connection_type_proposal": "User's connection / VUA / OAuth authorization code",
+      "callback": null,
+      "scopes_granted": []
+    }
+  },
+  "global_agent_configuration_changed": false
+}

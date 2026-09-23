@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "campaign": "20260921-access-preparation",
+  "created_at": "2026-09-21T17:50:50.870103+00:00",
+  "head": "29a883450f585fc6662e151de133559670fc5864",
+  "status": "partial_local_preparation_no_product_trials",
+  "authorization_source": "user request invoking docs/prompts/run-agent-access-comparison.md",
+  "external_accounts_designated": false,
+  "product_scenarios_executed": 0,
+  "new_spend": 0,
+  "documentation_root": "docs",
+  "source_snapshots": [
+    {
+      "path": "PLAN.md",
+      "origin": "docs/plans/agent-access-competitive-comparison.md",
+      "resolve_relative_links_from": "docs/plans/"
+    },
+    {
+      "path": "MANDATE.md",
+      "origin": "docs/prompts/run-agent-access-comparison.md",
+      "resolve_relative_links_from": "docs/prompts/"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/prompts/run-agent-access-comparison.md",
+      "sha256": "35152cc1e14d0e78123e46d3df5c7283aecabb4832a72a79eecd07d51420b063"
+    },
+    {
+      "path": "docs/plans/agent-access-competitive-comparison.md",
+      "sha256": "24b480003e61d742b8bb24af7f9ecfa2580e84069f9f6e045a7ac79549eea497"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "afd1a06c766328f22addd7e64a64f9f89be7828d44a02f166d185a6dad250189"
+    },
+    {
+      "path": "docs/documentation.md",
+      "sha256": "b34fce391fe3ab6b7f610bf73c017f24c46fe3a89ec61ffc4f6a3bb2d040c7bd"
+    },
+    {
+      "path": "docs/status.md",
+      "sha256": "ed8bd2613d86fca3b5c0a47ce29c90c39cf879f17fcdb5618d65637e9cbde918"
+    },
+    {
+      "path": "docs/pilot/interface.md",
+      "sha256": "4a80b512dff17dfdd4755cfa36236f4029586007f0b40e7849372928769707ec"
+    },
+    {
+      "path": "docs/research/agent-access-comparison-prerequisites.md",
+      "sha256": "91cfdd624097d19696472b468bfb135ef02eff0a6e23a0d835ab94ce9d916331"
+    },
+    {
+      "path": "docs/research/enterprise-agent-access-market.md",
+      "sha256": "6482363035ad6a44953dcd58443b2e0757909325c38c4c6c6a8378fdcc16c833"
+    },
+    {
+      "path": "pilot-results/competitive-comparison/20260921-plan-review/PLAN-v2.md",
+      "sha256": "24b480003e61d742b8bb24af7f9ecfa2580e84069f9f6e045a7ac79549eea497"
+    },
+    {
+      "path": "pilot-results/competitive-comparison/20260921-plan-review/REPORT.md",
+      "sha256": "572c8dd35f40eb99554d8b54702784eabba68c00673700f06ea417dae620d30a"
+    },
+    {
+      "path": "pilot-results/competitive-comparison/20260921-plan-review/REVIEW-v2.md",
+      "sha256": "d3b907bebc6e735db81d289b239eeb372fc1234f554573b70155789a4b1cc070"
+    },
+    {
+      "path": "pilot-results/codex-email/20260921-agent-access/REPORT.md",
+      "sha256": "63629afad082a400a3d48d0ca703af01aff850f8d45277309f9f395a7a0559b4"
+    },
+    {
+      "path": "pilot-results/codex-email/20260921-agent-access/native-checks.json",
+      "sha256": "d569583d3b3e9e786bd34812b145232c03dbcce14e6559d85223b773ccdff632"
+    },
+    {
+      "path": "pilot-results/codex-email/20260921-agent-access/revocation-checks.json",
+      "sha256": "63fc3cbb54d653761bae5f3c6cdd383eb802a9673d4e69ee0bb74621c41721b4"
+    },
+    {
+      "path": "pilot-results/codex-email/20260921-agent-access/manifest.json",
+      "sha256": "8cfb7df6809535fe9fba97d09fdaed5b4c87783f2dd66ee671f1f416492b9e52"
+    },
+    {
+      "path": "pilot-results/codex-email/20260921-agent-access/source.zip",
+      "sha256": "2e82a97f10c8e31934772bce57853d5046ddf3f116a866dc03b77a17a73f2bbd"
+    }
+  ],
+  "files": [
+    {
+      "path": "MANDATE.md",
+      "bytes": 5571,
+      "sha256": "35152cc1e14d0e78123e46d3df5c7283aecabb4832a72a79eecd07d51420b063"
+    },
+    {
+      "path": "PLAN.md",
+      "bytes": 19818,
+      "sha256": "24b480003e61d742b8bb24af7f9ecfa2580e84069f9f6e045a7ac79549eea497"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 11751,
+      "sha256": "4e1a35536c3156e223c9907f59d0a88716cba2c08ee9b1083e39dc33bbaa31c2"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "bytes": 7487,
+      "sha256": "b86be4bf7bfc8425c10ba12fcff684605872c64440a1be4ba5642c8b39a71488"
+    },
+    {
+      "path": "arcade-prerequisites.md",
+      "bytes": 12147,
+      "sha256": "3ade8aa41d0b207ccace0ceba2c09f1c5af98e67354cf8784eac8badc3de0174"
+    },
+    {
+      "path": "collection/cases.json",
+      "bytes": 43904,
+      "sha256": "d5233c0f2ef755fc7e1db280828f2a3825ed3ab5643d539a4a7a704b05672667"
+    },
+    {
+      "path": "collection/observation-template.json",
+      "bytes": 1089,
+      "sha256": "e65146ac058c9b6801a384cd91a61f46dbbe6fe87b1464f6ecb22507fccec586"
+    },
+    {
+      "path": "collection/resource-register.json",
+      "bytes": 234,
+      "sha256": "301ee858fb6559621c15e950eebe8224a5eceed707709d96d15a789125c6f5cf"
+    },
+    {
+      "path": "collection/source-observations.json",
+      "bytes": 120,
+      "sha256": "ef540a634f0eaf61ce68474369a8b1924c31d75d8c149f09371bab917707d8f8"
+    },
+    {
+      "path": "collection/transcripts.redacted.json",
+      "bytes": 81,
+      "sha256": "78febf544bc4040c29f12862bf47c2c377148d7d796c7fea5b3e81016ff930c7"
+    },
+    {
+      "path": "configuration.redacted.json",
+      "bytes": 1184,
+      "sha256": "88938e48a49a2da90e4475f51bc40e5d03ca134d6107973514a4c38b655722e9"
+    },
+    {
+      "path": "corpus/D1.md",
+      "bytes": 506,
+      "sha256": "fb46226855a7e6a95844974c71b51fbf1f35f38eb69714f77d43911c57b5f518"
+    },
+    {
+      "path": "corpus/D2.md",
+      "bytes": 528,
+      "sha256": "015cbb0d53b7a3d1af94513de6de077d5ba1384b76c8376b00972597cdb89964"
+    },
+    {
+      "path": "corpus/D3.md",
+      "bytes": 351,
+      "sha256": "a33d714ccef6bd03077db7bc21bbb969d2a18ae0676e0e44b18a3d35805fc043"
+    },
+    {
+      "path": "corpus/D4.md",
+      "bytes": 329,
+      "sha256": "3cd1078a5414a113982e0e97dbc6f8c3120d6871b7406709d8a38bc805c6234b"
+    },
+    {
+      "path": "corpus/index.json",
+      "bytes": 2256,
+      "sha256": "7983ad297160f9f060bbfcfd4a70cbdf030a63704770a8a921861c11e23489a4"
+    },
+    {
+      "path": "matrix.csv",
+      "bytes": 10487,
+      "sha256": "db12fd5c63139584d9aba1c57746b1c9b40e76ac1f29707f5dcd0abc3b63be6b"
+    },
+    {
+      "path": "preexisting-inventory.json",
+      "bytes": 51455,
+      "sha256": "052c3aef9161e7204b69e9c46b84cc5a0ccbdf11d944b941080a8e8a15387818"
+    },
+    {
+      "path": "source-prerequisites.md",
+      "bytes": 5032,
+      "sha256": "cdea9d8894f24a9bf838854c2e4481ff296bc05a2ecbbdb9c832db628dd07c3e"
+    },
+    {
+      "path": "source-register.json",
+      "bytes": 3251,
+      "sha256": "88f525cfd313625e0bc8c23dab81c8ff03aef6b93f940f021de1a3c81e3e628a"
+    },
+    {
+      "path": "timing.json",
+      "bytes": 818,
+      "sha256": "d01bd1e6cffaf2ac564941749d25099332cfa8a81a9d1e36e432cab01698d97d"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1607,
+      "sha256": "1e04a7b3b082a1939a87839adc195ef872b95ccdcb5414d0c1ea60cef27c2906"
+    },
+    {
+      "path": "versions.json",
+      "bytes": 1892,
+      "sha256": "8ea83037efd1ebfbf3a6685f13577cccda842933349f70741d20044af0e47091"
+    },
+    {
+      "path": "workato-prerequisites.md",
+      "bytes": 13929,
+      "sha256": "54520451cf73e8b09aaf9d22db0fd2141c1b5435a711dda3dc2748507e319050"
+    }
+  ],
+  "manifest_self_excluded": true,
+  "public_source_consultations": "source-register.json",
+  "redaction_note": "Only synthetic corpus, public documentation summaries, paths and digests; no external authentication data collected",
+  "cleanup": "No external resources, server processes or connections created; local evidence retained",
+  "publication": "No commit or push"
+}

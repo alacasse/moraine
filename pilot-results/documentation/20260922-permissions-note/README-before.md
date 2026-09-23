@@ -67,11 +67,6 @@ Les recherches sont datées et ne valent pas qualification du projet :
   exploration du 21 septembre 2026, plusieurs fournisseurs, mobile/web, accès
   continu et suspension pour inactivité; huit questions à reprendre et choix
   produit ouverts.
-- [Application des permissions dans la passerelle](research/permission-enforcement-gateway.md) :
-  reprise des 22–23 septembre 2026; agent qui formule les requêtes, Moraine qui
-  contrôle leur exécution à l'aller et les résultats au retour. Permissions
-  hybrides, inspection et valeur produit; principes retenus et questions
-  ouvertes, aucun mandat d'implémentation.
 - [Standards de délégation](research/delegation-standards-sources.md)
 - [Moteurs de politique et recouvrements](research/policy-overlap-sources.md)
 - [Identités, MCP et approbation](research/identity-mcp-approval-sources.md)

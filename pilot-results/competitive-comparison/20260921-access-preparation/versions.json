@@ -1,0 +1,64 @@
+{
+  "captured_at": "2026-09-21T17:49:18.079023+00:00",
+  "head": "29a883450f585fc6662e151de133559670fc5864",
+  "documentation_root": "docs",
+  "installed_for_campaign": false,
+  "actual_versions": {
+    "Arcade Cloud": null,
+    "Workato SaaS": null,
+    "Confluence Cloud": null,
+    "MCP client": null,
+    "MCP negotiated protocol": null,
+    "IdP": null
+  },
+  "documented_versions": [
+    {
+      "component": "Arcade Confluence toolkit",
+      "version": "3.0.2",
+      "evidence": "arcade-prerequisites.md",
+      "actually_deployed": false
+    },
+    {
+      "component": "Arcade HTTP logic extension schema",
+      "version": "1.0",
+      "evidence": "arcade-prerequisites.md",
+      "actually_deployed": false
+    },
+    {
+      "component": "Atlassian REST endpoints",
+      "version": "v1 search / v2 page",
+      "evidence": "workato-prerequisites.md",
+      "actually_used": false
+    }
+  ],
+  "editions": {
+    "Arcade": {
+      "proposed_entry": "Cloud Free",
+      "active": null,
+      "required_feature_access": "non établi"
+    },
+    "Workato": {
+      "proposed_entry": "Free",
+      "active": null,
+      "required_feature_access": "non établi"
+    },
+    "Confluence": {
+      "proposed_minimum": "Standard",
+      "active": null,
+      "D4": "bloqué par prérequis source"
+    }
+  },
+  "test_client_proposal": {
+    "diagnostic": "client MCP utilisant OAuth et Streamable HTTP, sans filtrage de réponse",
+    "specific_client_and_version": null,
+    "native": "client agent compatible à désigner et autoriser",
+    "global_configuration_changes": false
+  },
+  "authorizations": {
+    "local_preparation": "user invoked run-agent-access-comparison.md",
+    "external_named_accounts": [],
+    "external_oauth_connections": [],
+    "new_spend_authorized": false,
+    "S0_request": "présentée pendant cette session; aucune réponse à la clôture du bilan"
+  }
+}

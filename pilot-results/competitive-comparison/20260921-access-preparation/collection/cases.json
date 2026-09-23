@@ -1,0 +1,1909 @@
+{
+  "purpose": "planned_checks_not_results",
+  "cases": [
+    {
+      "case_id": "Arcade-S0-U-D1-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D1-search",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D1-list",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D2-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D2-search",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D2-list",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D3-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D3-search",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D3-list",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D4-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D4-search",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S0-U-D4-list",
+      "candidate": "Arcade",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D1-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D1-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D1-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D2-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D2-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D2-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D3-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D3-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D3-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D4-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D4-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-A-D4-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D1-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D1-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D1-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D2-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D2-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D2-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D3-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D3-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D3-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D4-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D4-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-D4-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D1-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D1-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D1-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D2-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D2-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D2-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D3-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D3-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D3-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D4-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D4-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-A-D4-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D1-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D1-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D1-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D2-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D2-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D2-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D3-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D3-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D3-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D4-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D4-search",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S3-B-D4-list",
+      "candidate": "Arcade",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-via-A-D2-direct_id",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "direct_id",
+      "endpoint": "public_A_endpoint_or_selector",
+      "credentials": "B_only",
+      "expected_read": false,
+      "status": "not_attempted",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-via-A-D2-search",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "search",
+      "endpoint": "public_A_endpoint_or_selector",
+      "credentials": "B_only",
+      "expected_read": false,
+      "status": "not_attempted",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Arcade-S2-B-via-A-D2-list",
+      "candidate": "Arcade",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "list",
+      "endpoint": "public_A_endpoint_or_selector",
+      "credentials": "B_only",
+      "expected_read": false,
+      "status": "not_attempted",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D1-direct_id",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D1-search",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D1-list",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D2-direct_id",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D2-search",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D2-list",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D3-direct_id",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D3-search",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D3-list",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D4-direct_id",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D4-search",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S0-U-D4-list",
+      "candidate": "Workato",
+      "scenario": "S0",
+      "actor": "U",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D1-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D1-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D1-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D2-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D2-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D2-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D3-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D3-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D3-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D4-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D4-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-A-D4-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D1-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D1-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D1-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D2-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D2-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D2-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D3-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D3-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D3-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D4-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D4-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-D4-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D1-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D1-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D1-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D2-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D2-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D2-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D3-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D3-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D3-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D4-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D4-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-A-D4-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "A",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D1-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "direct_id",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D1-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "search",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D1-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D1",
+      "surface": "list",
+      "expected_read": true,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D2-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D2-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D2-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D3-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D3-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D3-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D3",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D4-direct_id",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "direct_id",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D4-search",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "search",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S3-B-D4-list",
+      "candidate": "Workato",
+      "scenario": "S3",
+      "actor": "B",
+      "resource": "D4",
+      "surface": "list",
+      "expected_read": false,
+      "status": "not_attempted",
+      "surface_availability": "not_established",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-via-A-D2-direct_id",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "direct_id",
+      "endpoint": "public_A_endpoint_or_selector",
+      "credentials": "B_only",
+      "expected_read": false,
+      "status": "not_attempted",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-via-A-D2-search",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "search",
+      "endpoint": "public_A_endpoint_or_selector",
+      "credentials": "B_only",
+      "expected_read": false,
+      "status": "not_attempted",
+      "run_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "case_id": "Workato-S2-B-via-A-D2-list",
+      "candidate": "Workato",
+      "scenario": "S2",
+      "actor": "B",
+      "resource": "D2",
+      "surface": "list",
+      "endpoint": "public_A_endpoint_or_selector",
+      "credentials": "B_only",
+      "expected_read": false,
+      "status": "not_attempted",
+      "run_numbers": [
+        1,
+        2
+      ]
+    }
+  ],
+  "revocation": {
+    "runs": [
+      1,
+      2
+    ],
+    "offset_seconds": [
+      0,
+      5,
+      30,
+      60,
+      300
+    ],
+    "stop_intermediate_after_first_denial": true,
+    "always_stability_at_300": true,
+    "A_resources": [
+      "D1",
+      "D2"
+    ],
+    "contexts": [
+      "already_open",
+      "empty"
+    ],
+    "B_controls_at_seconds": [
+      0,
+      300
+    ],
+    "B_expected": {
+      "D1": true,
+      "D2": false
+    },
+    "U_source_rights_unchanged": true
+  }
+}

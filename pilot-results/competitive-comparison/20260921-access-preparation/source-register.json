@@ -1,0 +1,59 @@
+[
+  {
+    "file": "arcade-prerequisites.md",
+    "consulted_on": "2026-09-21",
+    "method": "public official documentation via web tools; no authenticated product session",
+    "urls": [
+      "https://developer.atlassian.com/cloud/confluence/oauth-2-3lo-apps/",
+      "https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-search/",
+      "https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/",
+      "https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/",
+      "https://docs.arcade.dev/en/operate/deploy/architecture",
+      "https://docs.arcade.dev/en/operate/governance/audit-logs",
+      "https://docs.arcade.dev/en/operate/governance/contextual-access",
+      "https://docs.arcade.dev/en/operate/governance/mcp-gateways",
+      "https://docs.arcade.dev/en/operate/governance/tool-executions",
+      "https://docs.arcade.dev/en/operate/identity/user-sources",
+      "https://docs.arcade.dev/en/references/auth-providers/atlassian",
+      "https://docs.arcade.dev/en/resources/integrations/development/arcade-engine-api",
+      "https://docs.arcade.dev/en/resources/integrations/productivity/confluence",
+      "https://github.com/ArcadeAI/schemas/blob/main/logic_extensions/http/1.0/schema.yaml",
+      "https://www.arcade.dev/pricing/",
+      "https://www.arcade.dev/terms-of-service/"
+    ]
+  },
+  {
+    "file": "workato-prerequisites.md",
+    "consulted_on": "2026-09-21",
+    "method": "public official documentation via web tools; no authenticated product session",
+    "urls": [
+      "https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-search/",
+      "https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/#api-pages-id-get",
+      "https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/",
+      "https://docs.workato.com/en/connectors/confluence.html",
+      "https://docs.workato.com/en/features/logging-service",
+      "https://docs.workato.com/en/features/runtime-user-connections",
+      "https://docs.workato.com/en/mcp/mcp-gateway",
+      "https://docs.workato.com/en/mcp/mcp-server-access-and-configuration",
+      "https://docs.workato.com/en/mcp/prebuilt-mcps/confluence-mcp-server",
+      "https://docs.workato.com/en/mcp/verified-user-access",
+      "https://docs.workato.com/en/mcp/verified-user-access-configuration",
+      "https://docs.workato.com/en/pricing/self-service/self-service.html",
+      "https://docs.workato.com/en/workato-identity",
+      "https://docs.workato.com/mcp/mcp-authentication",
+      "https://www.workato.com/free"
+    ]
+  },
+  {
+    "file": "source-prerequisites.md",
+    "consulted_on": "2026-09-21",
+    "method": "public official documentation via web tools; no authenticated product session",
+    "urls": [
+      "https://support.atlassian.com/confluence-cloud/docs/learn-about-confluence-cloud-plans/",
+      "https://support.atlassian.com/confluence-cloud/docs/what-are-confluence-cloud-permissions-and-restrictions/",
+      "https://support.atlassian.com/subscriptions-and-billing/docs/cancel-a-subscription/",
+      "https://www.atlassian.com/en/software/confluence/pricing",
+      "https://www.atlassian.com/licensing/purchase-licensing"
+    ]
+  }
+]

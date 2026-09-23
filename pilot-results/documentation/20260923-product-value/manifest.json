@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-23T18:35:34.174520+00:00",
+  "purpose": "Preserve the permission note before recording the confirmed user benefit and reassessing product value",
+  "source_before": {
+    "original_path": "docs/research/permission-enforcement-gateway.md",
+    "snapshot_path": "permission-enforcement-gateway-before.md",
+    "sha256": "29df848fa79d13197f88ea4057ff6bbe5139812488b4bb48862af75d9e4e7287",
+    "resolve_relative_links_from": "docs/research/",
+    "referenced_by_historical_manifest": "pilot-results/documentation/20260922-permission-settings/manifest.json"
+  },
+  "publication": "no commit or push",
+  "document_after": {
+    "path": "docs/research/permission-enforcement-gateway.md",
+    "sha256": "315ee6e9d90ae05c47ef481403986367a9d265c6edb908c89358974a090a73e9"
+  },
+  "validation": {
+    "checked_at": "2026-09-23T18:35:44.118649+00:00",
+    "local_links_checked": 7,
+    "errors": [],
+    "git_diff_check_exit_code": 0,
+    "business_tests_rerun": false,
+    "external_research": false
+  }
+}

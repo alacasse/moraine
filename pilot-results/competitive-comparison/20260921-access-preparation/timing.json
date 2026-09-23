@@ -1,0 +1,21 @@
+{
+  "window_start_utc": "2026-09-21T17:44:03.270931+00:00",
+  "window_end_utc": "2026-09-21T17:50:50.870103+00:00",
+  "window_elapsed_seconds": 407.599,
+  "window_scope": "de la capture initiale aux livrables et contrôles locaux, travail parallèle inclus; lecture initiale antérieure non chronométrée",
+  "active_time_partition_measured": false,
+  "research_and_writing_elapsed_seconds": {
+    "Arcade": 182,
+    "Workato": 137
+  },
+  "external_configuration_seconds": 0,
+  "external_scenario_seconds": 0,
+  "external_product_calls": 0,
+  "external_access_wait_seconds": null,
+  "external_wait_note": "question S0 en attente; aucun parcours fournisseur ouvert; durée non mesurée",
+  "limits_seconds_per_candidate": {
+    "preparation_active": 10800,
+    "scenarios_active": 7200
+  },
+  "limit_reached": false
+}

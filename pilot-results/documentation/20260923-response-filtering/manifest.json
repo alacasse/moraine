@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-23T20:48:21.664320+00:00",
+  "purpose": "Preserve the note before recording hybrid principle acceptance and the proposed response inspection path",
+  "source_before": {
+    "original_path": "docs/research/permission-enforcement-gateway.md",
+    "snapshot_path": "permission-enforcement-gateway-before.md",
+    "sha256": "059b170aa7eeef7bd57a55288365fc309549e8b398b53feda75975a8da02bf00",
+    "resolve_relative_links_from": "docs/research/",
+    "referenced_by_historical_manifest": "pilot-results/documentation/20260923-hybrid-permissions/manifest.json"
+  },
+  "publication": "no commit or push",
+  "document_after": {
+    "path": "docs/research/permission-enforcement-gateway.md",
+    "sha256": "69b3b66e9b96afa43e1b0ae1bd429463a88b31fecb62fa96da3a81e16bc58b99"
+  },
+  "validation": {
+    "checked_at": "2026-09-23T20:48:34.057114+00:00",
+    "local_links_checked": 9,
+    "errors": [],
+    "git_diff_check_exit_code": 0,
+    "business_tests_rerun": false,
+    "mermaid_rendered": false,
+    "external_documentation_consulted": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html"
+    ]
+  }
+}
